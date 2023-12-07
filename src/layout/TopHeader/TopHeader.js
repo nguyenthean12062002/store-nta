@@ -14,7 +14,7 @@ const TopHeader = () => {
 
   return (
     <>
-      <Flex justify="between" className="px-[24px] border-b-[1px] z-10">
+      <Flex justify="between" className="px-full border-b-[1px] z-10">
         <div
           onClick={() => {
             window.location = "tel:0961563714";
@@ -27,9 +27,9 @@ const TopHeader = () => {
         {/* login */}
         <div>
           {user && user.name ? (
-            <div className="px-[8px] relative">
+            <div className=" relative">
               <h2
-                className="w-full select-none h-[70%] p-[4px] py-[8px] btn__logout capitalize cursor-pointer border-[1px] border-[#FEBD68] text-gray-500"
+                className="w-full select-none h-[70%] p-[4px] py-[4px] md:py-[8px] btn__logout capitalize cursor-pointer border-[1px] border-[#FEBD68] text-gray-500"
                 onClick={() => {
                   setIsShowLogout(!showLogout);
                 }}

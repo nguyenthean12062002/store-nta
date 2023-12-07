@@ -4,19 +4,16 @@ import Flex from "../flex/Flex";
 const CartModalPay = () => {
   return (
     <div className="text-[1rem]">
-      <h3 className="text-center text-main text-[1.2rem] py-[8px] font-bold select-none">
-        Paying in NTA
-      </h3>
       {/* chọn người nhận hàng và thêm mới nếu muốn */}
       <div className="px-full py-half">
         <Flex justify="">
-          <FaMapMarkerAlt className="text-main" />
+          <FaMapMarkerAlt className="text-red-500" />
           <h4 className="text-main font-bold text-[1.1rem]">
             Delivery Address
           </h4>
         </Flex>
         {/* show address */}
-        <div className="flex items-center justify-between mt-half border-b-[1px] border-[#FEBD68] pb-[12px]">
+        <div className="flex items-center justify-between mt-half border-b-[0.5px] border-[#999] pb-[12px]">
           <div>
             <span className="font-bold">An nè</span>
             <span className="font-bold ml-half">0961563714</span>
@@ -29,7 +26,7 @@ const CartModalPay = () => {
         </div>
         {/* show products want buy */}
         <div className="mt-half flex items-center justify-between">
-          <h3 className="text-main font-bold text-[1.1rem]">Products</h3>
+          <h3 className=" font-bold text-[1.1rem]">Products</h3>
           {/* price and couts */}
           <div className="flex items-center justify-between">
             <h4 className="text-gray-400 mr-full">Unit price</h4>
@@ -52,36 +49,28 @@ const CartModalPay = () => {
           </div>
         </div>
         {/* choose ship */}
-        <div className="border-t-1 w-fulll grid grid-cols-1 md:grid-cols-2 mt-full border-t-[0.5px] border-[#FEBD68] pt-half">
-          <div className="flex items-center justify-start mb-half md:mb-0">
-            <label className="mr-half" for="mes">
-              Messages
-            </label>
-            <input
-              id="mes"
-              placeholder="messages for seller"
-              className="w-[60%] border-[1px] border-[#999] px-[4px]"
-            />
-          </div>
+        <div className="border-t-1 w-fulll grid grid-cols-1  mt-full border-t-[0.5px] border-[#999] pt-half">
           <div className="flex items-start justify-start flex-col">
             <div className="w-full flex items-start justify-between">
               <h4 className="text-[1.05rem] text-main select-none">
                 Shipping Unit
               </h4>
-              <div>
-                <h3 className="font-bold mb-[2px]">Faster</h3>
-                <p className="text-gray-400 italic underline">
-                  Receive goods on ...
-                </p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-bold mb-[2px]">Faster</h3>
+                  <p className="text-gray-400 italic underline">
+                    Receive goods on ...
+                  </p>
+                </div>
+                <div className="text-main cursor-pointer">Changes</div>
               </div>
-              <div className="text-main cursor-pointer">Changes</div>
             </div>
             <h4 className="text-[0.9rem]">Jointly Checked</h4>
           </div>
         </div>
         {/* choose vouche */}
         <div className="mt-full">
-          <h4 className="text-main text-[1.1rem] font-bold">Voucher</h4>
+          <h4 className="text-[1.1rem] font-bold">Voucher</h4>
         </div>
         {/* phương thức thanh toán */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-full">
@@ -104,7 +93,7 @@ const CartModalPay = () => {
         {/* nhấn đặt hàng  */}
         <div className=" grid grid-cols-1 md:grid-cols-2 mt-full">
           <h6 className="text-gray-500 mb-half md:mb-0">
-            Clicking "Place Order" means you agree to abide by the NTA Terms
+            Clicking "Order" means you agree to abide by the NTA Terms
           </h6>
           <button className="bg-main h-[30px] text-white rounded-[4px] hover:opacity-[0.7]">
             Order

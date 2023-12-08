@@ -1,14 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ProductsContext } from "../../component/products/ProductsContext";
-// images banner slide
-import bannerSlide from "../../assets/images/banner__sales.avif";
+// search
+import Search from "../../component/search/Search";
 //slide
 import Slides from "../../component/slide/Slide";
 //cart context
 import { CartContext } from "../../component/cart/CartContext";
 // css
 import "./home.scss";
+// icon
+import { SiQuarkus } from "react-icons/si";
+import { FaSquareFontAwesomeStroke } from "react-icons/fa6";
+import { FaShippingFast } from "react-icons/fa";
+import { FaHandsHelping } from "react-icons/fa";
+
 const Home = () => {
   useEffect(() => {}, []);
   const navigate = useNavigate();
@@ -36,13 +42,62 @@ const Home = () => {
     <div className="w-full h-full transition-all duration-200 ">
       {/* slogan shop */}
       <div className="w-full flex items-center justify-center ">
-        <h3 className="text-center py-[22px] text-[1.1rem] italic underline text-main">
+        <h3 className="w-full text-center py-[0px] md:pb-full pt-[44px] text-[1.6rem] font-bold text-red-500 px-full">
           We always bring dedication and perfection in every product!
         </h3>
+      </div>
+      {/* search */}
+      <div className="w-full flex items-center justify-center border-b-[0.5px] border-[#FEBD68] py-full ">
+        <Search />
       </div>
       {/* banner  */}
       <div className="w-full h-full ">
         <Slides />
+      </div>
+      {/* show icon about shop */}
+      <div className="w-full flex items-center justify-center">
+        <div className="w-80% md:w-[85%] py-[88px] grid grid-cols-2 md:grid-cols-4 gap-[12px]">
+          {/* item */}
+          <div className="flex items-center select-none justify-center flex-col">
+            <SiQuarkus className="text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+              Commitment to quality
+            </h4>
+            <p className="text-gray-500 text-center pt-[4px] px-full">
+              Compensate 10 times the value if counterfeit goods are detected
+            </p>
+          </div>
+          {/* item */}
+          <div className="flex items-center select-none justify-center flex-col">
+            <FaSquareFontAwesomeStroke className="text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+              return the product
+            </h4>
+            <p className="text-gray-500 text-center pt-[4px] px-full">
+              Return the product within 24 hours from the time of receipt
+            </p>
+          </div>
+          {/* item */}
+          <div className="flex items-center select-none justify-center flex-col">
+            <FaShippingFast className="text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+              Delivery
+            </h4>
+            <p className="text-gray-500 text-center pt-[4px] px-full">
+              Nationwide delivery, COD payment at the place of delivery
+            </p>
+          </div>
+          {/* item */}
+          <div className="flex items-center select-none justify-center flex-col">
+            <FaHandsHelping className="text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+              Enthusiastic advice
+            </h4>
+            <p className="text-gray-500 text-center pt-[4px] px-full">
+              Enthusiastic care consulting and service 24/7
+            </p>
+          </div>
+        </div>
       </div>
       {/* details */}
       <div className="flex items-center justify-center flex-col my-half">
@@ -70,57 +125,62 @@ const Home = () => {
           })
           .map((item, index) => {
             return (
-              <div
-                key={index}
-                className="w-full h-[210px] flex items-center justify-between border-[1px] rounded-xl p-[8px] cursor-pointer hover:border-[#FEBD68] transition-all duration-300 "
-              >
-                {/* <h3 className="w-[40%] text-[1.1rem] font-semibold">
+              <div className=" relative">
+                <Link
+                  to={`/products/${item.id}`}
+                  key={index}
+                  className="w-full h-[210px] flex items-center justify-between border-[1px] rounded-xl p-[8px] cursor-pointer hover:border-[#FEBD68] transition-all duration-300 "
+                >
+                  {/* <h3 className="w-[40%] text-[1.1rem] font-semibold">
                   {item.category.name}
                 </h3> */}
-                <div className="w-[40%] h-full ">
-                  <img
-                    src={item.category.image}
-                    className="w-auto h-[100%] object-contain"
-                  />
-                </div>
-                <div className="w-full h-full flex-1 ml-full flex items-center justify-center">
-                  <div>
-                    <h3 className="text-[1.2rem] uppercase mb-[4px]">
-                      {item.category.name}
-                    </h3>
-                    <div className="text-[1rem] capitalize mb-[4px]">
-                      {item.title}
-                    </div>
+                  <div className="w-[40%] h-full ">
+                    <img
+                      src={item.category.image}
+                      className="w-auto h-[100%] object-contain"
+                    />
+                  </div>
+                  <div className="w-full h-full flex-1 ml-full flex items-center justify-center">
+                    <div>
+                      <h3 className="text-[1.2rem] uppercase mb-[4px]">
+                        {item.category.name}
+                      </h3>
+                      <div className="text-[1rem] capitalize mb-[4px]">
+                        {item.title}
+                      </div>
 
-                    <h4 className="text-main italic mb-[4px]">
-                      $ {item.price}
-                    </h4>
-                    <p className="text-gray-500 text-[0.9rem] mb-[4px]">
-                      {item.description}
-                    </p>
-                    {/* button action */}
-                    <div className="mt-[8px]">
-                      <button className="bg-main mr-[8px] p-[4px] rounded-lg text-white">
-                        Buy now
-                      </button>
-                      <button
-                        className=" border-[1px] border-[#333] p-[4px] rounded-lg bg-gray-100"
-                        onClick={() => {
-                          console.log(item.id);
-                          addProducts(item, item.id);
-                        }}
-                      >
-                        Add to cart
-                      </button>
+                      <h4 className="text-main italic mb-[4px]">
+                        $ {item.price}
+                      </h4>
+                      <p className="text-gray-500 text-[0.9rem] mb-[4px] line-clamp-2">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
+                </Link>
+                {/* button action */}
+                <div className="mt-[8px] absolute bottom-[10%] right-[10%]">
+                  <Link
+                    to="/cart/buy"
+                    className="bg-main mr-[8px] p-[4px] rounded-lg text-white"
+                  >
+                    Buy now
+                  </Link>
+                  <button
+                    className=" border-[1px] border-[#333] p-[4px] rounded-lg bg-gray-100"
+                    onClick={() => {
+                      addProducts(item, item.id);
+                    }}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             );
           })}
       </div>
       {/* sales */}
-      <h3 className="  px-full my-full text-[1.3rem] text-main font-semibold underline">
+      <h3 className="  px-full my-full text-[1.3rem] text-red-500 font-semibold underline">
         Many customer appreciation programs
       </h3>
       <div className="w-full mt-[30px]  md:h-[300px] flex items-center justify-center md:justify-between flex-col md:flex-row  px-[24px]">
@@ -140,7 +200,7 @@ const Home = () => {
             onClick={() => {
               navigate("/products");
             }}
-            className="bg-white absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[10%] text-[1.1rem] rounded-xl p-[4px] hover:text-main transition-all duration-300 hover:text-[1.2rem]"
+            className="bg-white absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[10%] text-[1.1rem] rounded-xl p-[4px] text-red-500 hover:text-main transition-all duration-300 hover:text-[1.2rem]"
           >
             Products Us
           </button>

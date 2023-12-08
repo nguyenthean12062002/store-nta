@@ -32,9 +32,9 @@ const Header = (props) => {
   }, []);
   // scrool của thằng header khi cuộn trang
   window.addEventListener("scroll", (item) => {
-    if (window.scrollY >= 10) {
+    if (window.scrollY >= 50) {
       setIsHeader(true);
-    } else if (window.scrollY <= 20) {
+    } else if (window.scrollY <= 100) {
       setIsHeader(false);
     }
   });
@@ -74,7 +74,7 @@ const Header = (props) => {
                 href="/"
                 className="text-[20px]  md:text-[25px] lg:text-[30px] font-bold italic font-serif tracking-[5px]"
               >
-                N
+                <span className="text-gray-400 text-[1.1rem]">N</span>
                 <span className="text-main text-[2.1rem] italic underline">
                   T
                 </span>

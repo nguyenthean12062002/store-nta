@@ -36,8 +36,14 @@ const Search = () => {
     handleShowProductsSearch();
   }, [value]);
   return (
-    <div className="w-full bg-white h-[30px] md:h-[40px] flex items-center ">
-      <form className="w-full text-[0.9rem] flex items-center justify-between">
+    <div className="w-[90%] md:w-[60%] bg-white relative  flex flex-col items-center z-[9]  ">
+      <div className="my-full">
+        <h5 className="text-gray-500 text-[1.2rem] select-none">
+          Explore our store with a wide variety of products and merchandise
+        </h5>
+      </div>
+      {/* input search */}
+      <form className="w-full h-[30px] md:h-[40px] text-[0.9rem] flex items-center justify-between z-[41">
         <div className="w-full flex-1 h-[40px] px-[5px] flex items-center justify-center relative">
           <input
             className="w-full min-w-full h-[30px] md:h-[40px] text-[0.8rem] md:text-[0.95rem] border-[1px] border-[#FEBD68] focus:outline-[#999] px-[12px] active:outline-[#999]"
@@ -45,25 +51,41 @@ const Search = () => {
             onClick={handleShowModal}
             onChange={handleEventInput}
           />
-          <Modal
-            isHidden={show}
-            onClick={() => {
-              console.log("modal");
-            }}
-          >
-            <div className="bg-white shadow-lg absolute top-[45px] left-0 right-0 w-[200%] md:w-full h-full min-h-[300px]">
-              <h4 className="py-[12px] px-[12px] text-[1.1rem] text-gray-500 text-center">
-                Sugesstions:
-              </h4>
-              {/*list products suggestions */}
-              <div className="mt-[20px]">{handleShowProductsSearch()}</div>
-            </div>
-          </Modal>
         </div>
         <button className="w-[60px] h-[30px] md:h-[40px] flex items-center justify-center bg-[#FEBD68]">
           <GrSearch />
         </button>
       </form>
+      {/* modal show search */}
+      {/* <Modal isHidden={show} onClick={() => {}}>
+        <div className="bg-white shadow-lg absolute bottom-[-300%] left-0 right-0 w-[200%] md:w-full h-full min-h-[300px]">
+          <h4 className="py-[12px] px-[12px] text-[1.1rem] text-gray-500 text-center">
+            Result:
+          </h4>
+          {/*list products suggestions */}
+      {/* <div className="w-full">
+        <h3 className="text-start text-[1.1rem] my-full text-red-500 font-bold w-full select-none  pl-[6px] ">
+          Trending search:
+        </h3>
+        <ul className=" mb-full text-gray-500 transition-all duration-200 border-[0.5px] border-[#999]">
+          {products.map((product, index) => {
+            if (index <= 4) {
+              return (
+                <li
+                  className="pl-full py-[3px] hover:bg-slate-100 cursor-pointer"
+                  key={index}
+                >
+                  {product.title}
+                </li>
+              );
+            }
+          })}
+        </ul>
+      </div> 
+          <div className="mt-[20px]">{handleShowProductsSearch()}</div>
+        </div>
+      </Modal> */}
+      {/* overlay */}
     </div>
   );
 };

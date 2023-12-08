@@ -21,8 +21,12 @@ const TopHeader = () => {
           }}
           className="cursor-pointer hover:underline decoration-[#999]"
         >
-          <span className="text-main text-[1rem] font-semibold">Hotline: </span>
-          <span className="italic text-gray-500 text-[0.9rem]">0961563714</span>
+          <span className="text-red-500 text-[1rem] font-semibold">
+            Hotline:{" "}
+          </span>
+          <span className="italic pl-[4px] text-gray-500 text-[0.9rem]">
+            0961563714
+          </span>
         </div>
         {/* login */}
         <div>
@@ -38,7 +42,7 @@ const TopHeader = () => {
               </h2>
               <div
                 hidden={showLogout}
-                className="z-10 absolute bottom-[-84px] shadow-gray-500 shadow-2xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
+                className="z-[60] absolute bottom-[-84px] shadow-gray-500 shadow-2xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
               >
                 <button className="w-[100%] py-[4px] h-[30px] border-[1px] border-[#FEBD68] bg-white my-[4px] p-[4px]">
                   Settings

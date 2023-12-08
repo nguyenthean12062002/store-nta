@@ -11,22 +11,19 @@ const Products = () => {
   const [values, setValue] = useState("");
 
   const Item = ({ children }) => {
-    const handleActive = () => {
-      const itemNameCategory = document.querySelectorAll(".item");
-      itemNameCategory.forEach((item) => {
-        item.addEventListener("click", () => {
-          itemNameCategory.forEach((item) => {
-            item.classList.remove("active");
-          });
-          item.classList.add("active");
+    const itemNameCategory = document.querySelectorAll(".item");
+    itemNameCategory.forEach((item) => {
+      item.addEventListener("click", () => {
+        itemNameCategory.forEach((item) => {
+          item.classList.remove("active");
         });
+        item.classList.add("active");
       });
-    };
+    });
     return (
       <div
         className="item my-[2px] w-full h-[42px] flex items-center justify-start cursor-pointer shadow-md p-[8px] hover:bg-[#FEBD68]"
         onClick={(e) => {
-          handleActive();
           setValue(e.target.innerText);
         }}
       >

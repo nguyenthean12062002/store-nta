@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Slide } from "react-slideshow-image";
 import "./slide.scss";
 //product context
 import { ProductsContext } from "../products/ProductsContext";
 const Slides = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (window.innerWidth <= 450) {
+      setIsMobile(true);
+    }
+  }, []);
   const { products } = useContext(ProductsContext);
   const spanStyle = {
     padding: "20px",
@@ -15,10 +21,9 @@ const Slides = () => {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundSize: "cover",
-    objectFit: "cover",
+    backgroundSize: "contain",
     width: "100%",
-    height: "500px",
+    height: isMobile ? "260px" : "500px",
   };
   const slideImages = [
     {

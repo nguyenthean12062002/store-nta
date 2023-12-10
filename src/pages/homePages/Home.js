@@ -42,7 +42,7 @@ const Home = () => {
     <div className="w-full h-full transition-all duration-200 ">
       {/* slogan shop */}
       <div className="w-full flex items-center justify-center ">
-        <h3 className="w-full text-center py-[0px] md:pb-full pt-[44px] text-[1.6rem] font-bold text-red-500 px-full">
+        <h3 className="w-full text-center py-[0px] md:pb-full pt-[44px] text-[1.2rem] md:text-[1.5rem] lg:text-[1.6rem] font-bold text-red-500 px-full">
           We always bring dedication and perfection in every product!
         </h3>
       </div>
@@ -55,45 +55,45 @@ const Home = () => {
         <Slides />
       </div>
       {/* show icon about shop */}
-      <div className="w-full flex items-center justify-center">
-        <div className="w-80% md:w-[85%] py-[88px] grid grid-cols-2 md:grid-cols-4 gap-[12px]">
+      <div className="w-full flex items-center justify-center px-full ">
+        <div className="w-full h-full md:w-[85%] py-[58px] md:py-[88px] grid grid-cols-2 md:grid-cols-4 gap-[12px] ">
           {/* item */}
-          <div className="flex items-center select-none justify-center flex-col">
-            <SiQuarkus className="text-[3.5rem] mb-full text-[#333] " />
-            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+          <div className="flex items-center select-none  justify-start flex-col">
+            <SiQuarkus className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1rem] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red-500 text-start">
               Commitment to quality
             </h4>
-            <p className="text-gray-500 text-center pt-[4px] px-full">
+            <p className="text-gray-500 text-center pt-[4px] px-full text-[0.85rem] tracking-wider md:text-[0.9rem]">
               Compensate 10 times the value if counterfeit goods are detected
             </p>
           </div>
           {/* item */}
-          <div className="flex items-center select-none justify-center flex-col">
-            <FaSquareFontAwesomeStroke className="text-[3.5rem] mb-full text-[#333] " />
-            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+          <div className="flex items-center select-none  justify-start flex-col">
+            <FaSquareFontAwesomeStroke className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1rem] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red-500 text-start">
               return the product
             </h4>
-            <p className="text-gray-500 text-center pt-[4px] px-full">
+            <p className="text-gray-500 text-center pt-[4px] px-full text-[0.85rem] tracking-wider md:text-[0.9rem]">
               Return the product within 24 hours from the time of receipt
             </p>
           </div>
           {/* item */}
-          <div className="flex items-center select-none justify-center flex-col">
-            <FaShippingFast className="text-[3.5rem] mb-full text-[#333] " />
-            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+          <div className="flex items-center select-none  justify-start flex-col">
+            <FaShippingFast className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1rem] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red-500 text-start">
               Delivery
             </h4>
-            <p className="text-gray-500 text-center pt-[4px] px-full">
+            <p className="text-gray-500 text-center pt-[4px] px-full text-[0.85rem] tracking-wider md:text-[0.9rem]">
               Nationwide delivery, COD payment at the place of delivery
             </p>
           </div>
           {/* item */}
-          <div className="flex items-center select-none justify-center flex-col">
-            <FaHandsHelping className="text-[3.5rem] mb-full text-[#333] " />
-            <h4 className="text-[1.1rem] uppercase text-red-500 text-center">
+          <div className="flex items-center select-none  justify-start flex-col">
+            <FaHandsHelping className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
+            <h4 className="text-[1rem] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red-500 text-start">
               Enthusiastic advice
             </h4>
-            <p className="text-gray-500 text-center pt-[4px] px-full">
+            <p className="text-gray-500 text-center pt-[4px] px-full text-[0.85rem] tracking-wider md:text-[0.9rem]">
               Enthusiastic care consulting and service 24/7
             </p>
           </div>
@@ -131,9 +131,6 @@ const Home = () => {
                   key={index}
                   className="w-full h-[210px] flex items-center justify-between border-[1px] rounded-xl p-[8px] cursor-pointer hover:border-[#FEBD68] transition-all duration-300 "
                 >
-                  {/* <h3 className="w-[40%] text-[1.1rem] font-semibold">
-                  {item.category.name}
-                </h3> */}
                   <div className="w-[40%] h-full ">
                     <img
                       src={item.category.image}
@@ -167,7 +164,7 @@ const Home = () => {
                     Buy now
                   </Link>
                   <button
-                    className=" border-[1px] border-[#333] p-[4px] rounded-lg bg-gray-100"
+                    className=" border-[1px] border-[#333] py-[6.5px] p-[4px] rounded-lg bg-gray-100"
                     onClick={() => {
                       addProducts(item, item.id);
                     }}

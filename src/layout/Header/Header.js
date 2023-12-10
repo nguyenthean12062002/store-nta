@@ -57,9 +57,9 @@ const Header = (props) => {
             <div
               className={`${
                 isHeader
-                  ? "shadow-md bg-slate-200 z-90 fixed top-0 transition-all duration-300"
+                  ? "shadow-md bg-slate-200 z-90 fixed top-0 transition-all duration-300 "
                   : ""
-              }   right-0 min-w-[100vw] w-full h-[60px]  flex items-center justify-between px-full  z-10`}
+              }   right-0  w-full h-[60px]  flex items-center justify-between px-full  z-10`}
             >
               {/* sidebar control */}
               <div
@@ -107,41 +107,39 @@ const Header = (props) => {
         </>
       ) : (
         <>
-          <div className="z-[99] w-full h-[60px] flex items-center justify-between border-b-[1px]">
-            {/* logo and nav */}
-            <div
-              className={`${
-                isHeader
-                  ? "shadow-md bg-slate-200 z-90 fixed top-0 transition-all duration-300"
-                  : ""
-              }   right-0 min-w-[100vw] w-full h-[60px]  flex items-center justify-between px-full z-10`}
+          {/* logo and nav */}
+          <div
+            className={`${
+              isHeader
+                ? "shadow-md bg-slate-200 z-90 fixed top-0 right-0 left-0 transition-all duration-300 px-full "
+                : ""
+            }     w-full h-[60px]  flex items-center justify-between px-full  z-10`}
+          >
+            {/* logo */}
+            <a
+              href="/"
+              className="text-[20px] md:text-[25px] lg:text-[30px] font-bold italic font-serif tracking-[5px]"
             >
-              {/* logo */}
-              <a
-                href="/"
-                className="text-[20px] md:text-[25px] lg:text-[30px] font-bold italic font-serif tracking-[5px]"
-              >
-                N
-                <span className="text-main text-[2.1rem] italic underline">
-                  T
-                </span>
-                A
-              </a>
-              {/* navigation */}
-              <div className="flex-1 w-full h-full flex items-center justify-center">
-                <Nav />
-              </div>
-              {/* cart */}
-              <div
-                className="cart relative"
-                onClick={() => {
-                  navigate("/cart");
-                }}
-              >
-                <AiOutlineShoppingCart className="text-[29px] cursor-pointer" />
-                <div className="cursor-pointer absolute bottom-[-4px] right-[16px] bg-red-400 text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
-                  {cout}
-                </div>
+              N
+              <span className="text-main text-[2.1rem] italic underline">
+                T
+              </span>
+              A
+            </a>
+            {/* navigation */}
+            <div className="flex-1 w-full h-full flex items-center justify-center">
+              <Nav />
+            </div>
+            {/* cart */}
+            <div
+              className="cart relative  "
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              <AiOutlineShoppingCart className="text-[29px] cursor-pointer" />
+              <div className="cursor-pointer absolute bottom-[-6px] right-[15px] bg-red-400 text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
+                {cout}
               </div>
             </div>
           </div>

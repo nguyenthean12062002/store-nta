@@ -4,7 +4,6 @@ import { CartContext } from "../../component/cart/CartContext";
 import CartItem from "../../component/cart/CartItem";
 import { LoginContext } from "../../component/login/LoginProvider";
 //cart modal pay
-import CartModalPay from "../../component/cart/CartModalPay";
 const CartPages = () => {
   const { user } = useContext(LoginContext);
   const { cart, totalCart, removeAllProducts, cout } = useContext(CartContext);
@@ -74,7 +73,8 @@ const CartPages = () => {
             <span className="">${totalCart}</span>
           </div>
           <div>
-            <button
+            <Link
+              to="/cart/buy"
               className={`${
                 hiddenButtonBuy ? "select-none cursor-none opacity-[0.4]" : ""
               } bg-[#FEBD68] px-[8px] py-[12px] text-gray-800 text-[0.9rem]`}
@@ -83,7 +83,7 @@ const CartPages = () => {
               }}
             >
               Buy Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -94,9 +94,7 @@ const CartPages = () => {
       >
         {user && user.name ? (
           <>
-            <div className="w-full h-full ">
-              <CartModalPay />
-            </div>
+            <div className="w-full h-full "></div>
           </>
         ) : (
           <>

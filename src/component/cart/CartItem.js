@@ -13,24 +13,28 @@ const CartItem = ({ products }) => {
   return (
     <div className="flex items-center justify-between px-[14px] w-full h-full bg-white p-[12px] my-[12px] transtion-all duration-300 border-b-[1px] ">
       {/* img */}
-      <div className="w-[20%] mr-[8px] h-[60px] md:h-[80px] lg:h-[90px] object-cover">
-        <img className="h-full" src={images} />
+      <div className="w-[20%] mr-[8px] h-[60px] md:h-[80px] lg:h-[90px] object-cover flex items-center justify-center">
+        <img className="h-full object-cover w-[40%]" src={images} />
       </div>
       {/* actions */}
       <div className="w-[75%] md:w-[78%] lg:w-[80%]">
         {/* title and icon remove item */}
-        <div className="flex flex-1 items-center justify-between ">
-          <div className="mr-[10px] text-black font-medium line-clamp-1 text-[0.9rem]">
+        <div className="grid grid-cols-3 ">
+          <div className="w-full  mr-[10px] text-black font-medium line-clamp-1 text-[0.9rem]">
             <Link to={`/products/${id}`} className="text-[1.05rem] capitalize">
               {title}
             </Link>
+          </div>
+          {/* des */}
+          <div className="w-[100%] ">
+            <p className="text-gray-500 line-clamp-3 ">{description}</p>
           </div>
           {/* remove products */}
           <div
             onClick={() => {
               removeProduct(id);
             }}
-            className="text-[1.4rem] lg:text-[1.5rem] cursor-pointer text-red-500 hover:text-red-300 transition-all duration-200"
+            className="w-full text-[1.4rem] lg:text-[1.5rem] cursor-pointer text-red-500 hover:text-red-300 transition-all duration-200"
           >
             <BsTrash />
           </div>

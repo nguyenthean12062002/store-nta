@@ -42,10 +42,10 @@ const Products = () => {
     });
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[20%,80%] gap-[8px] md:gap-0 md:gap-x-[12px] px-[12px] transition-all duration-200">
-      <aside className="max-w-[90%] md:max-w-[80%] w-full h-full ml-[2px] ">
+    <div className="grid grid-cols-1 md:grid-cols-[20%,80%] px-[24px] transition-all duration-200">
+      <aside className="max-w-[90%] md:max-w-[80%] w-full h-full">
         <div className="w-[100%]">
-          <div className="  ">
+          <div className="w-full  ">
             <h3 className="font-bold text-[1.3rem] mt-[22px] mb-[20px] md:text-[1.6rem]">
               CATEGORY
             </h3>

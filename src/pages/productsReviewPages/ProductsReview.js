@@ -32,7 +32,7 @@ const ProductsReview = () => {
       {/* review */}
       <div className="w-full h-[700px] md:h-[500px] px-[10%] flex flex-col md:flex-row items-center justify-between">
         {/* img */}
-        <div className="w-[80%] md:w-[70%] lg:w-[50%] h-full md:h-[240px] lg:h-[300px]  flex flex-col items-center justify-center">
+        <div className="w-[90%] md:w-[70%] lg:w-[50%] h-full md:h-[240px] lg:h-[300px]  flex flex-col items-center justify-center">
           <img
             src={images || images[0]}
             alt=""
@@ -50,18 +50,18 @@ const ProductsReview = () => {
           </div>
         </div>
         {/* info products */}
-        <div className="h-full flex items-center justify-center p-[20px] pl-[40px]">
-          <div>
+        <div className="h-full w-full  flex items-center justify-center mt-half lg:p-[20px] md:pl-[40px]">
+          <div className="w-full">
             {/* title */}
-            <h4 className="py-half text-black font-extrabold text-[1.5rem]">
+            <h4 className="py-half text-black font-extrabold text-[1.5rem] text-center">
               {title}
             </h4>
             {/* category */}
-            <h5 className="text-[1.1rem] italic py-half">
+            <h5 className="text-[1.1rem] italic py-half text-center">
               {product.category.name}
             </h5>
             {/* des */}
-            <p className="text-gray-400 my-full tracking-tight text-[1.1rem]">
+            <p className="text-gray-400 my-full w-full tracking-tight text-[1.1rem] leading-[1.2rem] ">
               {description}
             </p>
             {/* price */}
@@ -81,13 +81,13 @@ const ProductsReview = () => {
                 </button>
                 <Link
                   to="/cart/buy"
-                  className="border py-[9.5px] text-white min-h-[32px] md:min-h-[40px] bg-red-500 h-full rounded-xl px-[6px] hover:opacity-80 "
+                  className="border py-[6px] md:py-[9.5px] text-white min-h-[32px] md:min-h-[40px] bg-red-500 h-full rounded-xl  px-[6px] hover:opacity-80 "
                 >
                   Buy now
                 </Link>
               </div>
               <button
-                className="h-full bg-gray-500 text-white px-[10px] flex items-center justify-between hover:text-main hover:bg-gray-200 transition-all duration-300 rounded-xl"
+                className="h-full bg-gray-500 shadow-xl text-white px-[10px] flex items-center justify-between hover:text-main hover:bg-gray-200 transition-all duration-300 rounded-xl"
                 onClick={() => {
                   navigate("/products");
                 }}
@@ -106,16 +106,21 @@ const ProductsReview = () => {
         </div>
       </div>
       {/* sản phẩm liên quan */}
-      <div className="w-full px-full mt-[60px]">
-        <h3 className="text-main text-[1.4rem] mb-full font-bold ">
-          Related Products:
-          <span className="text-red-500 pl-half text-[1.5rem]">
-            {product.category.name}
-          </span>
-        </h3>
+      <div className="w-full px-full mt-[60px] ">
+        <div
+          className="text-center w-full p
+        t-full md:mt-0"
+        >
+          <h3 className="text-main text-[1.4rem] mb-full font-bold ">
+            Related Products:
+            <span className="text-red-500 pl-half text-[1.5rem]">
+              {product.category.name}
+            </span>
+          </h3>
+        </div>
         {/* list sản phẩm liên quan */}
 
-        <div className="grid grid-colsZ-2 md:grid-cols-3 lg:grid-cols-4 gap-[36px] gap-y-[12px]">
+        <div className="grid grid-colsZ-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[36px]">
           {products
             .filter((item) => {
               if (

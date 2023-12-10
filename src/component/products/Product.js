@@ -14,7 +14,7 @@ const Product = ({ products }) => {
     <div className="group">
       <Link
         to={`/products/${id}`}
-        className="w-full z-5 h-[180px] md:h-[280px]  border flex flex-col items-center justify-center p-[10px] rounded-[12px] relative transition-all duration-300 hover:border-[2px] hover:border-[#999] "
+        className="w-full z-5 h-[190px] md:h-[280px]  border flex flex-col items-center justify-center p-[10px] rounded-[12px] relative transition-all duration-300 hover:border-[2px] hover:border-[#999] "
       >
         {/* image */}
         <div className="h-[110px] my-[8px]">
@@ -32,12 +32,12 @@ const Product = ({ products }) => {
             </Link>
           </h1>
           <h4 className="text-gray-500">{category.name}</h4>
-          <h3 className="font-medium text-[#FEBD68] underline italic mt-[2px]">
+          <h3 className="font-medium text-[#FEBD68] underline italic mt-[2px] pb-half">
             $ {price}
           </h3>
         </div>
       </Link>
-      <div className="z-20 flex flex-col relative items-center justify-center top-[-80%] right-[-5%]  bg-red-200 p-[4px] min-w-[40px] max-w-[40px] min-h-[45px] opacity-0 group-hover:opacity-100  transition-all duration-200 ">
+      <div className="z-20 flex flex-col relative items-center justify-center top-[-75%] right-[-4%] lg:top-[-80%] lg:right-[-5%]  bg-red-200 p-[4px] min-w-[40px] max-w-[40px] min-h-[45px] opacity-0 group-hover:opacity-100  transition-all duration-200 ">
         <button
           onClick={() => {
             addProducts(products, id);

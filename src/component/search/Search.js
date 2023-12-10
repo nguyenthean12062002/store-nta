@@ -36,24 +36,24 @@ const Search = () => {
     handleShowProductsSearch();
   }, [value]);
   return (
-    <div className="w-[90%] md:w-[60%] bg-white relative  flex flex-col items-center z-[9]  ">
-      <div className="my-full">
-        <h5 className="text-gray-500 text-[1.2rem] select-none">
+    <div className="w-[100%] px-full md:w-[60%] bg-white relative  flex flex-col items-center z-[9]  ">
+      <div className="my-[4px] md:my-full mb-[14px]">
+        <h5 className="text-gray-500 text-[1rem] md:text-[1.2rem] select-none text-center">
           Explore our store with a wide variety of products and merchandise
         </h5>
       </div>
       {/* input search */}
-      <form className="w-full h-[30px] md:h-[40px] text-[0.9rem] flex items-center justify-between z-[41">
-        <div className="w-full flex-1 h-[40px] px-[5px] flex items-center justify-center relative">
+      <form className="w-full h-[36px] md:h-[40px] text-[0.9rem] flex items-center justify-between z-[41">
+        <div className="w-full flex-1 h-[40px] pr-[5px] flex items-center justify-center relative">
           <input
-            className="w-full min-w-full h-[30px] md:h-[40px] text-[0.8rem] md:text-[0.95rem] border-[1px] border-[#FEBD68] focus:outline-[#999] px-[12px] active:outline-[#999]"
+            className="w-full min-w-full h-[36px] md:h-[40px] text-[0.96rem] md:text-[0.9rem] lg:text-[0.95rem] border-[1px] border-[#FEBD68] focus:outline-[#999] px-[12px] active:outline-[#999]"
             placeholder="Search NTA"
             onClick={handleShowModal}
             onChange={handleEventInput}
           />
         </div>
-        <button className="w-[60px] h-[30px] md:h-[40px] flex items-center justify-center bg-[#FEBD68]">
-          <GrSearch />
+        <button className="w-[60px] h-[36px] md:h-[40px] flex items-center justify-center bg-[#FEBD68]">
+          <GrSearch className="" />
         </button>
       </form>
       {/* modal show search */}

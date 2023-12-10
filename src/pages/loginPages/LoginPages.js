@@ -68,8 +68,8 @@ const LoginPages = () => {
             className="border-[1px] cursor-pointer bg-[#FEBD68] w-[90%] md:w-[65%] lg:w-[50%] h-[34px]"
             onClick={handleLogin}
           />
-          <h4>&</h4>
-          <h4>Google</h4>
+          {/* <h4>&</h4>
+          <h4>Google</h4> */}
         </div>
       </div>
       <ToastContainer />

@@ -22,7 +22,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className="w-full h-[44px] z-[50]">
+        <div className="w-ful h-[44px] z-[50]">
           <TopHeader />
         </div>
         <header className="z-[55]">

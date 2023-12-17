@@ -42,14 +42,14 @@ const Header = (props) => {
     return (
       <div
         hidden={showSidebar}
-        className="top-0 left-0 absolute bg-slate-300 w-[60%] h-[100vh] z-[100]"
+        className="top-[60px] left-0 fixed bg-slate-300 w-[60%] h-[100vh] z-[100]"
       >
         <ListItemNav />
       </div>
     );
   };
   return (
-    <div className=" relative transition-all duration-200">
+    <div className="transition-all duration-300 border-[1px] ">
       {isMobile ? (
         <>
           <div className=" w-full h-[60px] flex items-center justify-center border-b-[1px]">
@@ -57,7 +57,7 @@ const Header = (props) => {
             <div
               className={`${
                 isHeader
-                  ? "shadow-md bg-slate-200 z-90 fixed top-0 transition-all duration-300 "
+                  ? "shadow-md bg-main z-90 fixed top-0 transition-all duration-300 "
                   : ""
               }   right-0  w-full h-[60px]  flex items-center justify-between px-full  z-10`}
             >
@@ -75,7 +75,7 @@ const Header = (props) => {
                 className="text-[20px]  md:text-[25px] lg:text-[30px] font-bold italic font-serif tracking-[5px]"
               >
                 <span className="text-gray-400 text-[1.1rem]">N</span>
-                <span className="text-main text-[2.1rem] italic underline">
+                <span className="text-red-500 text-[2.1rem] italic underline">
                   T
                 </span>
                 A
@@ -89,7 +89,7 @@ const Header = (props) => {
                 }}
               >
                 <AiOutlineShoppingCart className="text-[29px] cursor-pointer" />
-                <div className="cursor-pointer absolute bottom-[-4px] right-[16px] bg-red-400 text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
+                <div className="cursor-pointer absolute bottom-[-4px] right-[16px] bg-red text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
                   {cout}
                 </div>
               </div>
@@ -101,7 +101,7 @@ const Header = (props) => {
               onClick={() => {
                 setShowSidebar(true);
               }}
-              className="z-[99] top-0 right-0 left-0 absolute bg-[rgba(0,0,0,0.4)] w-full h-[100vh]"
+              className="z-[99] top-0 right-0 left-0 fixed bg-[rgba(0,0,0,0.4)] w-full h-[100vh]"
             ></div>
           </div>
         </>
@@ -111,19 +111,17 @@ const Header = (props) => {
           <div
             className={`${
               isHeader
-                ? "shadow-md bg-slate-200 z-90 fixed top-0 right-0 left-0 transition-all duration-300 px-full "
+                ? "shadow-md bg-main z-90 fixed top-0 right-0 left-0 transition-all duration-300 px-full "
                 : ""
             }     w-full h-[60px]  flex items-center justify-between px-full  z-10`}
           >
             {/* logo */}
             <a
               href="/"
-              className="text-[20px] md:text-[25px] lg:text-[30px] font-bold italic font-serif tracking-[5px]"
+              className="text-[20px] md:text-[25px] lg:text-[2rem] font-bold italic font-serif tracking-[5px]"
             >
               N
-              <span className="text-main text-[2.1rem] italic underline">
-                T
-              </span>
+              <span className="text-red text-[2.1rem] italic underline">T</span>
               A
             </a>
             {/* navigation */}
@@ -137,8 +135,8 @@ const Header = (props) => {
                 navigate("/cart");
               }}
             >
-              <AiOutlineShoppingCart className="text-[29px] cursor-pointer" />
-              <div className="cursor-pointer absolute bottom-[-6px] right-[15px] bg-red-400 text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
+              <AiOutlineShoppingCart className="text-[33px] cursor-pointer" />
+              <div className="cursor-pointer absolute bottom-[-6px] right-[15px] bg-red text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
                 {cout}
               </div>
             </div>

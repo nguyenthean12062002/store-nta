@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Flex from "../../component/flex/Flex";
 // login redux
 import { LoginContext } from "../../component/login/LoginProvider";
@@ -8,28 +8,45 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 // icon
 import { FaRegUserCircle } from "react-icons/fa";
-
+// modal login
+import ModalLogin from "../ModalLogin/ModalLogin";
+import OverLay from "../OverLay.js/OverLay";
 const TopHeader = () => {
   const [showLogout, setIsShowLogout] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(true);
   const { user, logout, login } = useContext(LoginContext);
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (user && user.name) {
+      setShowLoginModal(true);
+    }
+  }, [user]);
   return (
     <>
-      <Flex justify="between" className="px-full border-b-[1px] z-10 ">
-        <div
-          onClick={() => {
-            window.location = "tel:0961563714";
-          }}
-          className="cursor-pointer hover:underline decoration-[#999]"
-        >
-          <span className="text-red-500 text-[1rem] font-semibold">
-            Hotline:{" "}
-          </span>
-          <span className="italic pl-[4px] text-gray-500 text-[0.9rem]">
-            0961563714
-          </span>
-        </div>
+      <Flex
+        justify="between"
+        className="px-full w-full h-full border-b-[1px] z-10 bg-main "
+      >
+        <Flex justify="start">
+          <div
+            onClick={() => {
+              window.location = "tel:0961563714";
+            }}
+            className="cursor-pointer hover:underline decoration-[#999]"
+          >
+            <span className="text-red-500 text-[1rem] font-semibold text-red">
+              Hotline:
+            </span>
+            <span className="italic pl-[4px] text-gray-500 text-[0.9rem]">
+              0961563714
+            </span>
+          </div>
+          {/* cskh */}
+          <div className="mx-half hidden md:block">|</div>
+          <h4 className="text-gray-600 cursor-pointer hidden md:block">
+            cskh@nta.com.vn
+          </h4>
+        </Flex>
         {/* login */}
         <div className=" flex items-center justify-center">
           {user && user.name ? (
@@ -41,14 +58,14 @@ const TopHeader = () => {
                     setIsShowLogout(!showLogout);
                   }}
                 />
-                <h2 className="w-full select-none h-[70%]  py-[4px] md:py-[8px] btn__logout capitalize  text-gray-500 flex items-center justify-center">
+                <h2 className="w-full select-none h-[70%]  py-[4px] md:py-[8px] btn__logout capitalize  text-red-500 border-[1px] flex items-center justify-center">
                   {user.name}
                 </h2>
               </div>
 
               <div
                 hidden={showLogout}
-                className="z-[60] absolute bottom-[-84px] shadow-gray-500 shadow-2xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
+                className="z-[60] absolute bottom-[-84px] shadow-gray-500 shadow-3xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
               >
                 <button className="w-[100%] py-[4px] h-[30px] border-[1px] border-[#FEBD68] bg-white my-[4px] p-[4px] text-gray-500">
                   Settings
@@ -69,11 +86,12 @@ const TopHeader = () => {
           ) : (
             <div
               onClick={() => {
-                navigate("/login");
+                setShowLoginModal(!showLoginModal);
               }}
-              className="w-full h-[80%]"
+              className="w-full h-[80%] transition-all duration-500"
             >
-              <span className="w-full h-full p-[4px] py-[4px] border-[1.2px]  cursor-pointer border-[#FEBD68] hover:bg-slate-100">
+              <span className="mr-[4px] text-gray-700">Hello!</span>
+              <span className="w-full h-full p-[4px] py-[4px] border-[1.2px] transition-all duration-500 bg-red text-white  cursor-pointer border-[#ef4444] hover:bg-slate-100">
                 Login
               </span>
             </div>
@@ -81,6 +99,20 @@ const TopHeader = () => {
         </div>
       </Flex>
       <ToastContainer />
+      {/* modal login */}
+      <div hidden={showLoginModal} className="transition-all duration-300">
+        <ModalLogin />
+      </div>
+      {/* overlay */}
+      <div
+        hidden={showLoginModal}
+        className="transition-all duration-300"
+        onClick={() => {
+          setShowLoginModal(true);
+        }}
+      >
+        <OverLay />
+      </div>
     </>
   );
 };

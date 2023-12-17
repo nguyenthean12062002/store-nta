@@ -1,10 +1,12 @@
 import React from "react";
+// header
+import Header from "../../layout/Header/Header";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Flex from "../../component/flex/Flex";
 const BuyProductsPages = () => {
   return (
-    <div>
-      <div className="text-[1rem]">
+    <div className="bg-bg w-full flex items-center justify-center">
+      <div className="text-[1rem] w-full max-w-[1300px] bg-white my-full py-full px-half">
         {/* chọn người nhận hàng và thêm mới nếu muốn */}
         <div className="px-full py-half">
           <Flex justify="">

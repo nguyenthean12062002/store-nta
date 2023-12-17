@@ -13,7 +13,7 @@ const Item = ({ children }) => {
 };
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center mt-[30px] border-t-[1px] pt-[30px] transition-all duration-300">
+    <div className="w-full flex flex-col bg-main items-center justify-center  border-t-[1px] pt-[30px] transition-all duration-300 pb-[12px]">
       <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-[20px] px-[20px] mb-[20px]">
         <div className="text-center ">
           <h4 className="font-bold text-[1.1rem] text-[#555]">Support</h4>
@@ -74,10 +74,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-gray-500 text-center bg-[#FEBD68] w-full h-[60px]  ">
-        <h5 className="font-bold mt-[12px] mb-[4px]">
+        <h5 className="font-bold mt-[12px] mb-[8px] text-white">
           Copy right by@ Nguyễn Thế An 1/11/2023.All rights reserved.
         </h5>
-        <h6 className="text-gray-400 mb-[12px]">
+        <h6 className="text-gray-500 mb-[12px]">
           Contact for me: nguyenthean12062002@gmail.com
         </h6>
       </div>

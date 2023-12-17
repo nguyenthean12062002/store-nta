@@ -1,8 +1,8 @@
 import React from "react";
-
+import Header from "../../layout/Header/Header";
 const Contact = () => {
   return (
-    <div>
+    <div className="bg-[#f5f5f5]">
       <h2 className="text-[1.6rem] text-center font-bold py-[22px]">CONTACT</h2>
       <div className="px-[5%] text-start md:px-[10%] leading-[1.4rem] tracking-[1px] text-[#444]">
         <ul className="mb-[12px]">

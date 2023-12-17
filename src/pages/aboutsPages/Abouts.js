@@ -1,8 +1,9 @@
 import React from "react";
-
+// header
+import Header from "../../layout/Header/Header";
 const Abouts = () => {
   return (
-    <div>
+    <div className="bg-bg">
       <h2 className="text-center py-[22px] font-bold text-[1.6rem]">ABOUTS</h2>
       <p className="px-[5%] text-start md:px-[10%] leading-[1.4rem] tracking-[1px] text-[#444] ">
         Welcome to NTA Store! We are a reliable online shopping website that

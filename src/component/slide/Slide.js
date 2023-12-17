@@ -23,7 +23,7 @@ const Slides = () => {
     justifyContent: "center",
     backgroundSize: "contain",
     width: "100%",
-    height: isMobile ? "260px" : "500px",
+    height: isMobile ? "260px" : "420px",
   };
   const slideImages = [
     {

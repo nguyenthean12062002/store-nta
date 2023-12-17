@@ -6,9 +6,12 @@ module.exports = {
     extend: {
       backgroundColor: {
         main: "#FEBD68",
+        bg: "#f5f5f5",
+        red: "#EF4444",
       },
       colors: {
         main: "#FEBD68",
+        red: "#EF4444",
       },
       padding: {
         full: "24px",
@@ -17,6 +20,11 @@ module.exports = {
       margin: {
         full: "24px",
         half: "12px",
+      },
+      boxShadow: {
+        // "3xl": "0 35px 50px -9px rgba(0, 0, 0, 0.8)",
+        "3xl": "0 0 15px rgba(0, 0, 0, 0.5)",
+        "4xl": "0 0 25px rgba(0, 0, 0, 0.8)",
       },
     },
   },

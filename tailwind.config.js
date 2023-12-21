@@ -26,6 +26,19 @@ module.exports = {
         "3xl": "0 0 15px rgba(0, 0, 0, 0.5)",
         "4xl": "0 0 25px rgba(0, 0, 0, 0.8)",
       },
+      animation: {
+        test: {
+          animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+          " @keyframes pulse": {
+            "0%, 100%": {
+              scale: 1,
+            },
+            "50%": {
+              scale: 0.5,
+            },
+          },
+        },
+      },
     },
   },
   plugins: [],

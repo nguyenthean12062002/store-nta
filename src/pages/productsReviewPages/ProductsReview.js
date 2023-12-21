@@ -10,8 +10,19 @@ import { ProductsContext } from "../../component/products/ProductsContext";
 import Product from "../../component/products/Product";
 import { BiArrowBack } from "react-icons/bi";
 const ProductsReview = () => {
+  const handleReload = () => {
+    window.location.href = "/"; // Đặt lại pathname về trang chủ
+  };
   useEffect(() => {
-    // window.onload(screenTop(0));
+    window.addEventListener("load", () => {
+      handleReload();
+    });
+    return () => {
+      window.removeEventListener("load", () => {});
+    };
+  }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
   }, []);
   const navigate = useNavigate();
   const { addProducts } = useContext(CartContext);
@@ -30,8 +41,8 @@ const ProductsReview = () => {
   const { title, images, price, description, amount } = product;
   console.log(product);
   return (
-    <div className="bg-[#f5f5f5] w-full h-full">
-      <div className="w-full max-w-[1300px] h-full mt-[36px] md:mt-[80px]">
+    <div className="bg-[#f5f5f5] w-full h-full flex items-center justify-center">
+      <div className="w-full max-w-[1200px] h-full mt-[36px] md:mt-[80px] pb-full">
         {/* review */}
         <div className="w-full h-[700px] md:h-[500px] px-[10%] flex flex-col md:flex-row items-center justify-between">
           {/* img */}
@@ -79,7 +90,7 @@ const ProductsReview = () => {
               <div className="flex items-center justify-between h-[32px] md:h-[40px] mt-[32px]">
                 <div className="h-full">
                   <button
-                    className="border p-[4px] text-white bg-red-500 h-full  rounded-xl px-[6px] mr-full hover:opacity-80 "
+                    className="border p-[4px] text-white bg-red h-full  rounded-xl px-[6px] mr-full hover:opacity-80 "
                     onClick={() => {
                       addProducts(product, id);
                     }}
@@ -88,7 +99,7 @@ const ProductsReview = () => {
                   </button>
                   <Link
                     to="/cart/buy"
-                    className="border py-[6px] md:py-[9.5px] text-white min-h-[32px] md:min-h-[40px] bg-red-500 h-full rounded-xl  px-[6px] hover:opacity-80 "
+                    className="border py-[6px] md:py-[9.5px] text-white min-h-[32px] md:min-h-[40px] bg-main h-full rounded-xl  px-[6px] hover:opacity-80 "
                   >
                     Buy now
                   </Link>
@@ -127,7 +138,7 @@ const ProductsReview = () => {
           </div>
           {/* list sản phẩm liên quan */}
 
-          <div className="grid grid-colsZ-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[36px]">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[12px]">
             {products
               .filter((item) => {
                 if (

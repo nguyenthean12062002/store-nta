@@ -1,12 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // header
 import Header from "../../layout/Header/Header";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Flex from "../../component/flex/Flex";
+import Modal from "../../component/modal/Modal";
+import OverLay from "../../layout/OverLay/OverLay";
 const BuyProductsPages = () => {
+  const handleReload = () => {
+    // window.location.href = "/"; // Đặt lại pathname về trang chủ
+  };
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      handleReload();
+    });
+    return () => {
+      window.removeEventListener("load", () => {});
+    };
+  }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
+  }, []);
+
+  // hanlde mở đóng các modal
+  const [modalAddress, setShowModalAddress] = useState(true);
+  const [modallShip, setModalShip] = useState(true);
+  // Item con của modal thêm sửa
+  const ItemEditModal = ({ label }) => {
+    return (
+      <div className="flex flex-col md:flex-row items-center justify-start mb-half">
+        <label
+          htmlFor="name"
+          className=" w-full md:w-[30%] block  mb-half md:inline-block text-gray-500"
+        >
+          {label}
+        </label>
+        <input
+          id="name"
+          placeholder="...aaa"
+          className="border-[0.5px] border-[#ef4444] px-[3px] text-[0.85rem] h-[28px] min-w-[140px] w-full"
+        />
+      </div>
+    );
+  };
   return (
-    <div className="bg-bg w-full flex items-center justify-center">
-      <div className="text-[1rem] w-full max-w-[1300px] bg-white my-full py-full px-half">
+    <div className="bg-bg w-full h-full flex items-center justify-center">
+      <div className="text-[1rem] w-full max-w-[1200px] bg-white my-full py-full px-half">
         {/* chọn người nhận hàng và thêm mới nếu muốn */}
         <div className="px-full py-half">
           <Flex justify="">
@@ -18,14 +56,19 @@ const BuyProductsPages = () => {
           {/* show address */}
           <div className="flex items-center justify-between mt-half border-b-[0.5px] border-[#999] pb-[12px]">
             <div>
-              <span className="font-bold">An nè</span>
-              <span className="font-bold ml-half">0961563714</span>
+              <span className="font-bold"></span>
+              <span className="font-bold ml-half"></span>
             </div>
             {/* address */}
-            <div className="text-gray-500 ml-half ">
-              783 Tam Trinh , phường Yên Sở, quận Hoàng Mai, Hà Nội
+            <div className="text-gray-500 ml-half "></div>
+            <div
+              className="text-main cursor-pointer"
+              onClick={() => {
+                setShowModalAddress(false);
+              }}
+            >
+              Changes
             </div>
-            <div className="text-main cursor-pointer">Changes Address</div>
           </div>
           {/* show products want buy */}
           <div className="mt-half flex items-center justify-between">
@@ -42,12 +85,12 @@ const BuyProductsPages = () => {
               <div className="flex items-center justify-between">
                 <img alt="img prodcuts" />
                 <p className="ml-full text-gray-500 text-[0.9rem]">
-                  Description prodcuts{" "}
+                  Description prodcuts
                 </p>
               </div>
               <div className="flex items-center justify-between w-[140px]">
-                <h5 className="text-main underline italic">$99.00</h5>
-                <h5 className="pr-full">3</h5>
+                <h5 className="text-main underline italic">$</h5>
+                <h5 className="pr-full"></h5>
               </div>
             </div>
           </div>
@@ -65,10 +108,17 @@ const BuyProductsPages = () => {
                       Receive goods on ...
                     </p>
                   </div>
-                  <div className="text-main cursor-pointer">Changes</div>
+                  <div
+                    className="text-main cursor-pointer"
+                    onClick={() => {
+                      setModalShip(false);
+                    }}
+                  >
+                    Changes
+                  </div>
                 </div>
               </div>
-              <h4 className="text-[0.9rem]">Jointly Checked</h4>
+              <h4 className="text-[0.9rem]"></h4>
             </div>
           </div>
           {/* choose vouche */}
@@ -85,7 +135,7 @@ const BuyProductsPages = () => {
               <h4 className="text-main cursor-pointer">Changes</h4>
             </div>
           </div>
-          {/* show tieefnf các thể loại phải trả */}
+          {/* show tiền các thể loại phải trả */}
           <div className="w-full flex  items-center justify-end">
             <div>
               <h3 className="mt-half text-gray-500">Total cost of goods:...</h3>
@@ -94,16 +144,110 @@ const BuyProductsPages = () => {
             </div>
           </div>
           {/* nhấn đặt hàng  */}
-          <div className=" grid grid-cols-1 md:grid-cols-2 mt-full">
+          <div className=" grid grid-cols-1 md:grid-cols-2 mt-full h-full">
             <h6 className="text-gray-500 mb-half md:mb-0">
-              Clicking "Order" means you agree to abide by the NTA Terms
+              Clicking <span className="text-main">"Order"</span> means you
+              agree to abide by the NTA Terms
             </h6>
-            <button className="bg-main h-[30px] text-white rounded-[4px] hover:opacity-[0.7]">
+            <button className="bg-red h-[36px] text-white rounded-2xl  hover:opacity-[0.7]">
               Order
             </button>
           </div>
         </div>
       </div>
+      {/* modal name, address */}
+      <Modal
+        isHidden={modalAddress}
+        className="w-[89%] xl:w-[50%] h-[48%] top-[15%] lg:top-[10%]"
+        title="Add  info/address"
+      >
+        {/* tên */}
+        <ItemEditModal label="Full Name" />
+        {/* số điện thoại */}
+        <ItemEditModal label="Number Phone" />
+        {/* Địa chỉ */}
+        <ItemEditModal label="Address" />
+        {/* button action */}
+        <div className="flex items-center justify-between mt-[36px] h-[32px]">
+          <buton
+            className=" py-[8px] px-[6px] bg-main flex item-center justify-center text-gray-500 cursor-pointer"
+            onClick={() => {
+              setShowModalAddress(true);
+            }}
+          >
+            Cancel
+          </buton>
+          <div>
+            <buton className="py-[8px] px-[6px] bg-bg mr-half cursor-pointer">
+              Edit
+            </buton>
+            <buton className="py-[8px] px-[6px] bg-red text-white cursor-pointer">
+              Completed
+            </buton>
+          </div>
+        </div>
+      </Modal>
+      <OverLay
+        hidden={modalAddress}
+        onClick={() => {
+          console.log(1);
+          setShowModalAddress(true);
+        }}
+      />
+      {/* modal ship */}
+      <Modal
+        isHidden={modallShip}
+        className="w-[89%] xl:w-[50%] h-[48%] top-[15%] lg:top-[10%]"
+        title="Change Ship"
+      >
+        {/* details */}
+        <div className="mt-full text-gray-500 text-[0.9rem]">
+          Shipping times vary between units. Please choose the appropriate
+          shipping method
+        </div>
+        {/* show */}
+        <div className="mt-half text-gray-800">
+          <h5 className="py-[3px] ml-half text-[1rem]">Fast : 2 - 3 days</h5>
+          <h5 className="py-[3px] ml-half text-[1rem]">
+            Express : 1-4 hour ( in the inner city area )
+          </h5>
+          <h5 className="py-[3px] ml-half text-[1rem]">Save : 3 - 5 days</h5>
+        </div>
+        <Flex justify="start" className="mt-half">
+          <h5 className="mr-half text-[1rem] ">Choose the shipping unit</h5>
+          <select className="text-red border-[0.5px]">
+            <option>Express</option>
+            <option>Save</option>
+            <option>Normal</option>
+          </select>
+        </Flex>
+        {/* button action */}
+        <div className="flex items-center justify-between mt-[36px] h-[32px]">
+          <buton
+            className=" py-[8px] px-[6px] bg-main flex item-center justify-center text-gray-500 cursor-pointer"
+            onClick={() => {
+              setModalShip(true);
+            }}
+          >
+            Cancel
+          </buton>
+          <div>
+            <buton className="py-[8px] px-[6px] bg-bg mr-half cursor-pointer">
+              Edit
+            </buton>
+            <buton className="py-[8px] px-[6px] bg-red text-white cursor-pointer">
+              Completed
+            </buton>
+          </div>
+        </div>
+      </Modal>
+      <OverLay
+        hidden={modallShip}
+        onClick={() => {
+          console.log(1);
+          setModalShip(true);
+        }}
+      />
     </div>
   );
 };

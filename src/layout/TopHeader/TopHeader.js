@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FaRegUserCircle } from "react-icons/fa";
 // modal login
 import ModalLogin from "../ModalLogin/ModalLogin";
-import OverLay from "../OverLay.js/OverLay";
+import OverLay from "../OverLay/OverLay";
 const TopHeader = () => {
   const [showLogout, setIsShowLogout] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(true);
@@ -22,98 +22,100 @@ const TopHeader = () => {
     }
   }, [user]);
   return (
-    <>
-      <Flex
-        justify="between"
-        className="px-full w-full h-full border-b-[1px] z-10 bg-main "
-      >
-        <Flex justify="start">
-          <div
-            onClick={() => {
-              window.location = "tel:0961563714";
-            }}
-            className="cursor-pointer hover:underline decoration-[#999]"
-          >
-            <span className="text-red-500 text-[1rem] font-semibold text-red">
-              Hotline:
-            </span>
-            <span className="italic pl-[4px] text-gray-500 text-[0.9rem]">
-              0961563714
-            </span>
-          </div>
-          {/* cskh */}
-          <div className="mx-half hidden md:block">|</div>
-          <h4 className="text-gray-600 cursor-pointer hidden md:block">
-            cskh@nta.com.vn
-          </h4>
-        </Flex>
-        {/* login */}
-        <div className=" flex items-center justify-center">
-          {user && user.name ? (
-            <div className=" relative">
-              <div className="flex items-center justify-center">
-                <FaRegUserCircle
-                  className="text-[2rem] mr-half cursor-pointer"
-                  onClick={() => {
-                    setIsShowLogout(!showLogout);
-                  }}
-                />
-                <h2 className="w-full select-none h-[70%]  py-[4px] md:py-[8px] btn__logout capitalize  text-red-500 border-[1px] flex items-center justify-center">
-                  {user.name}
-                </h2>
-              </div>
-
-              <div
-                hidden={showLogout}
-                className="z-[60] absolute bottom-[-84px] shadow-gray-500 shadow-3xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
-              >
-                <button className="w-[100%] py-[4px] h-[30px] border-[1px] border-[#FEBD68] bg-white my-[4px] p-[4px] text-gray-500">
-                  Settings
-                </button>
-                <button
-                  onClick={() => {
-                    logout(user.name);
-                    toast.success("Logout success");
-                    setIsShowLogout(true);
-                    navigate("/");
-                  }}
-                  className="w-[100%]  h-[30px] border-[2px] border-[#999] bg-white p-[4px] text-gray-500"
-                >
-                  Logout
-                </button>
-              </div>
-            </div>
-          ) : (
+    <div className=" z-[50] w-full h-full flex items-center justify-center bg-main ">
+      <div className="w-full max-w-[1200px] h-[44px] px-full md:px-full xl:px-0">
+        <Flex
+          justify="between"
+          className=" w-full h-full border-b-[1px] z-10  "
+        >
+          <Flex justify="start">
             <div
               onClick={() => {
-                setShowLoginModal(!showLoginModal);
+                window.location = "tel:0961563714";
               }}
-              className="w-full h-[80%] transition-all duration-500"
+              className="cursor-pointer hover:underline decoration-[#999]"
             >
-              <span className="mr-[4px] text-gray-700">Hello!</span>
-              <span className="w-full h-full p-[4px] py-[4px] border-[1.2px] transition-all duration-500 bg-red text-white  cursor-pointer border-[#ef4444] hover:bg-slate-100">
-                Login
+              <span className="text-red-500 text-[1rem] font-semibold text-red">
+                Hotline:
+              </span>
+              <span className="italic pl-[4px] text-gray-500 text-[0.9rem]">
+                0961563714
               </span>
             </div>
-          )}
+            {/* cskh */}
+            <div className="mx-half hidden md:block">|</div>
+            <h4 className="text-gray-600 cursor-pointer hidden md:block">
+              cskh@nta.com.vn
+            </h4>
+          </Flex>
+          {/* login */}
+          <div className=" flex items-center justify-center">
+            {user && user.name ? (
+              <div className=" relative">
+                <div className="flex items-center justify-center">
+                  <FaRegUserCircle
+                    className="text-[2rem] mr-half cursor-pointer"
+                    onClick={() => {
+                      setIsShowLogout(!showLogout);
+                    }}
+                  />
+                  <h2 className="w-full select-none h-[70%]  py-[4px] md:py-[8px] btn__logout capitalize  text-red-500 border-[1px] flex items-center justify-center">
+                    {user.name}
+                  </h2>
+                </div>
+
+                <div
+                  hidden={showLogout}
+                  className="z-[60] absolute bottom-[-84px] shadow-gray-500 shadow-3xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
+                >
+                  <button className="w-[100%] py-[4px] h-[30px] border-[1px] border-[#FEBD68] bg-white my-[4px] p-[4px] text-gray-500">
+                    Settings
+                  </button>
+                  <button
+                    onClick={() => {
+                      logout(user.name);
+                      toast.success("Logout success");
+                      setIsShowLogout(true);
+                      navigate("/");
+                    }}
+                    className="w-[100%]  h-[30px] border-[2px] border-[#999] bg-white p-[4px] text-gray-500"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  setShowLoginModal(!showLoginModal);
+                }}
+                className="w-full h-[80%] transition-all duration-500"
+              >
+                <span className="mr-[4px] text-gray-700">Hello!</span>
+                <span className="w-full h-full rounded-2xl px-[9px] py-[4px] border-[1.2px] transition-all duration-500 bg-red text-white  cursor-pointer border-[#ef4444] hover:text-main hover:bg-slate-100">
+                  Login
+                </span>
+              </div>
+            )}
+          </div>
+        </Flex>
+        <ToastContainer />
+        {/* modal login */}
+        <div hidden={showLoginModal} className="transition-all duration-300">
+          <ModalLogin />
         </div>
-      </Flex>
-      <ToastContainer />
-      {/* modal login */}
-      <div hidden={showLoginModal} className="transition-all duration-300">
-        <ModalLogin />
+        {/* overlay */}
+        <div
+          hidden={showLoginModal}
+          className="transition-all duration-300"
+          onClick={() => {
+            setShowLoginModal(true);
+          }}
+        >
+          <OverLay />
+        </div>
       </div>
-      {/* overlay */}
-      <div
-        hidden={showLoginModal}
-        className="transition-all duration-300"
-        onClick={() => {
-          setShowLoginModal(true);
-        }}
-      >
-        <OverLay />
-      </div>
-    </>
+    </div>
   );
 };
 

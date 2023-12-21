@@ -36,7 +36,9 @@ const Home = () => {
   const idRandom = Math.floor(Math.random() * lenghProducts);
   const idRandom2 = Math.floor(Math.random() * lenghProducts);
   const idRandom3 = Math.floor(Math.random() * lenghProducts);
-
+  useEffect(() => {
+    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
+  }, []);
   // show button scroll to top
   window.addEventListener("scroll", () => {
     var currentScrollPos = window.scrollY;
@@ -58,7 +60,7 @@ const Home = () => {
   };
   return (
     <div className="bg-bg w-full h-full flex items-center justify-center">
-      <div className="w-full max-w-[1300px] h-full transition-all duration-200 relative  py-full ">
+      <div className="w-full max-w-[1200px] h-full transition-all duration-200 relative  py-full ">
         {/* slogan shop */}
         <div className="w-full flex items-center justify-center ">
           <h3 className="w-full text-center py-[0px]  pt-[44px] text-[1rem] md:text-[1.3rem] lg:text-[1.4rem] font-medium text-red px-full">
@@ -128,11 +130,11 @@ const Home = () => {
           </ul>
         </div>
         {/* suggestion products */}
-        <div className="w-full h-full my-full  ">
+        <div className="w-full h-full my-full   ">
           <h3 className="mt-[42px] bg-white pl-half text-[1.4rem] py-full text-black font-medium ">
             Suggestion today
           </h3>
-          <div className=" w-full pt-[4px]  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[12px] md:gap-y-0 md:gap-x-[4px]">
+          <div className=" w-full pt-half px-full md:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[12px] md:gap-y-0 md:gap-x-[4px]">
             {products
               .filter((item, index) => {
                 if (
@@ -145,7 +147,7 @@ const Home = () => {
               })
               .map((item, index) => {
                 return (
-                  <div className="bg-white relative overflow-hidden ">
+                  <div className="bg-white relative overflow-hidden  ">
                     <Link
                       to={`/products/${item.id}`}
                       key={index}
@@ -179,12 +181,12 @@ const Home = () => {
                     <div className="mt-[8px] absolute bottom-[10%] right-[10%]">
                       <Link
                         to="/cart/buy"
-                        className="bg-main mr-[8px] p-[4px] rounded-lg text-white"
+                        className="bg-main mr-[8px] p-[4px] rounded-2xl text-white"
                       >
                         Buy now
                       </Link>
                       <button
-                        className=" border-[1px] border-[#333] py-[6.5px] p-[4px] rounded-lg bg-red text-white"
+                        className=" border-[1px] border-[#333] py-[6.5px] p-[4px] rounded-xl bg-red text-white"
                         onClick={() => {
                           addProducts(item, item.id);
                         }}
@@ -199,7 +201,7 @@ const Home = () => {
         </div>
         {/* sales */}
         <div className="w-full h-full bg-white my-[44px] ">
-          <h3 className="my-full pl-half text-[1.4rem] text-black font-medium pt-full">
+          <h3 className="my-full lg:pl-half text-[1.4rem] text-black font-medium pt-full px-half md:px-0">
             Many customer appreciation programs
           </h3>
           <div className="w-full mt-[30px] bg-white md:h-[380px] flex items-center justify-center md:justify-between flex-col md:flex-row  px-[24px]">
@@ -219,7 +221,7 @@ const Home = () => {
                 onClick={() => {
                   navigate("/products");
                 }}
-                className="bg-white absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[10%] text-[1.1rem] rounded-xl p-[4px] text-red hover:text-main transition-all duration-300 hover:text-[1.2rem]"
+                className="bg-white absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[10%] text-[1.1rem] rounded-xl p-[4px] text-red hover:text-main transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:text-[1.2rem]"
               >
                 Products Us
               </button>
@@ -228,14 +230,15 @@ const Home = () => {
         </div>
         {/* iconFacebook and messeger */}
         <div className="w-full h-[150px] top-[75%] left-[-10px]  fixed z-[110]">
-          <div className="flex items-center justify-end mb-[12px]">
+          <div className="flex items-center justify-end mb-[12px] animate-pulse">
             <IconFaceBook />
           </div>
-          <div className=" w-full flex items-center justify-end">
+          <div className=" w-full flex items-center justify-end animate-pulse">
             <IconMess />
           </div>
         </div>
         {/* button go to top pages */}
+
         <div
           hidden={showButtonToTop}
           className="fixed z-[110] w-full bottom-[20px] right-[-10px] transition-all duration-500 "
@@ -247,7 +250,7 @@ const Home = () => {
                 behavior: "smooth",
               });
             }}
-            className="w-[30px] h-[30px] md:w-[40px] flex items-center justify-center md:h-[40px] bg-main shadow-3xl cursor-pointer "
+            className="w-[30px] h-[30px] md:w-[40px] flex items-center justify-center md:h-[40px] bg-main shadow-3xl cursor-pointer animate-bounce"
           >
             <BsArrowUpCircleFill className="text-[2rem]" />
           </div>

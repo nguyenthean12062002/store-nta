@@ -6,28 +6,61 @@ import CartItem from "../../component/cart/CartItem";
 import { LoginContext } from "../../component/login/LoginProvider";
 import { BsCartCheck } from "react-icons/bs";
 import Flex from "../../component/flex/Flex";
+import { Modal } from "react-bootstrap";
 const CartPages = () => {
   const { user } = useContext(LoginContext);
   const { cart, totalCart, removeAllProducts, cout } = useContext(CartContext);
   const [show, setShow] = useState(true);
   const [hiddenButtonBuy, setHiddenButtonBuy] = useState(false);
+  const [checkAll, setCheckAll] = useState(false);
+  const navigate = useNavigate();
+  const handleReload = () => {
+    // window.location.href = "/"; // Đặt lại pathname về trang chủ
+  };
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      handleReload();
+    });
+    return () => {
+      window.removeEventListener("load", () => {});
+    };
+  }, []);
+  // Thực hiện scroll đến đầu trang khi component được render lại
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  // Xem giỏ hàng trống thì ẩn nút nhấn mua
   useEffect(() => {
     if (cart.length === 0) {
       setHiddenButtonBuy(true);
     }
-  });
-  const navigate = useNavigate();
+  }, [cart]);
+  // xử lí hành động thực hiện chọn tất cả các sản phẩm trong giỏ hàng
+  const handleCheckBokAll = (e) => {
+    const allCheckBox = document.querySelectorAll("#checBoxCartPages");
+    allCheckBox.forEach((item) => {
+      if (e.target.checked) {
+        item.checked = true;
+      } else item.checked = false;
+    });
+  };
+
   return (
     <div className="w-full h-full flex items-center justify-center bg-bg">
-      <div className="w-full max-w-[1300px] h-full relative  mt-full ">
-        <div className="px-[22px]">
+      <div className="w-full max-w-[1200px] h-full relative  mt-full ">
+        <div className=" lg:px-0">
           {/* title */}
           <Flex justify="between" className="bg-white py-full px-half">
             <Flex justify="start" className="">
               <BsCartCheck className="text-[1.5rem] mr-half text-red" />
               <h5 className=" text-[">ADDED PRODUCTS</h5>
             </Flex>
-            <div className=" ml-half">
+            <div
+              className=" ml-half"
+              onClick={(e) => {
+                handleCheckBokAll(e);
+              }}
+            >
               <input id="check" type="checkbox" />
               <label for="check" className="cursor-pointer ml-[4px] text-red">
                 Select all
@@ -48,9 +81,9 @@ const CartPages = () => {
                   <span className="text-gray-500 text-[1.3rem]">
                     Your cart is empty!{" "}
                   </span>
-                  <a href="/products" className="text-[1.1rem] underline">
+                  <Link to="/products" className="text-[1.1rem] underline">
                     Add the products
-                  </a>
+                  </Link>
                 </div>
               </div>
             ) : (
@@ -61,9 +94,7 @@ const CartPages = () => {
                       key={`key-${index}`}
                       className="flex items-center justify-between"
                     >
-                      <div className="flex items-center justify-beetwen mr-half">
-                        <input type="checkbox" className="w-[20px] h-[20px] " />
-                      </div>
+                      <div className="flex items-center justify-center mr-half "></div>
                       <CartItem products={products} />
                     </div>
                   );
@@ -73,18 +104,18 @@ const CartPages = () => {
           </div>
         </div>
         {/* button  buy */}
-        <div className="w-full h-[50px] flex items-center justify-end bg-gray-100  px-[12px] ">
+        <div className="w-full h-[50px] flex items-center justify-end bg-gray-100  px-full lg:px-0 ">
           <div className="flex items-center justify-beetwen">
             <div className="text-gray-500 font-semibold mr-[18px]">
-              <span>Total payment ({cout}) products:</span>
-              <span className="">${totalCart}</span>
+              <span>Total payment () products:</span>
+              <span className="text-main underline ml-half">${totalCart}</span>
             </div>
             <div>
               <Link
                 to="/cart/buy"
                 className={`${
                   hiddenButtonBuy ? "select-none cursor-none opacity-[0.4]" : ""
-                } bg-[#FEBD68] px-[8px] py-[12px] text-gray-800 text-[0.9rem]`}
+                } bg-red text-white px-[8px] py-[12px] text-gray-800 text-[0.9rem] rounded-2xl`}
                 onClick={() => {
                   setShow(false);
                 }}

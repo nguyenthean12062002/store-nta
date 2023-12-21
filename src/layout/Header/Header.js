@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Nav from "../Nav/Nav";
 import { BsList } from "react-icons/bs";
+import { GrMoney } from "react-icons/gr";
+
 //cart context
 import { CartContext } from "../../component/cart/CartContext";
 // login context
@@ -42,24 +44,24 @@ const Header = (props) => {
     return (
       <div
         hidden={showSidebar}
-        className="top-[60px] left-0 fixed bg-slate-300 w-[60%] h-[100vh] z-[100]"
+        className="top-[50px] left-0 fixed bg-slate-300 w-[60%] h-[100vh] z-[100]"
       >
         <ListItemNav />
       </div>
     );
   };
   return (
-    <div className="transition-all duration-300 border-[1px] ">
+    <div className={`w-full h-full flex items-center justify-center z-[90]`}>
       {isMobile ? (
         <>
-          <div className=" w-full h-[60px] flex items-center justify-center border-b-[1px]">
+          <div className=" w-full h-[60px] flex items-center justify-center border-b-[1px] transition-transform	">
             {/* logo and nav */}
             <div
               className={`${
                 isHeader
-                  ? "shadow-md bg-main z-90 fixed top-0 transition-all duration-300 "
+                  ? "shadow-md bg-main z-90 fixed top-0 right-0 transition-all duration-300 "
                   : ""
-              }   right-0  w-full h-[60px]  flex items-center justify-between px-full  z-10`}
+              }   right-0  w-full h-[60px]  flex items-center justify-between px-full  z-[90]`}
             >
               {/* sidebar control */}
               <div
@@ -106,14 +108,16 @@ const Header = (props) => {
           </div>
         </>
       ) : (
-        <>
+        <div
+          className={`w-full  max-w-[1200px] md:px-full xl:px-0 h-full flex justify-center items-center  `}
+        >
           {/* logo and nav */}
           <div
             className={`${
               isHeader
-                ? "shadow-md bg-main z-90 fixed top-0 right-0 left-0 transition-all duration-300 px-full "
+                ? "shadow-4xl bg-main w-full h-[60px]  fixed top-0 z-90 lg:px-[8.5%]  transition-opacity		  duration-300 z-[60] shadown-xl"
                 : ""
-            }     w-full h-[60px]  flex items-center justify-between px-full  z-10`}
+            }     w-full  h-[60px]  flex items-center justify-between px-full lg:px-0  z-10`}
           >
             {/* logo */}
             <a
@@ -128,20 +132,31 @@ const Header = (props) => {
             <div className="flex-1 w-full h-full flex items-center justify-center">
               <Nav />
             </div>
-            {/* cart */}
-            <div
-              className="cart relative  "
-              onClick={() => {
-                navigate("/cart");
-              }}
-            >
-              <AiOutlineShoppingCart className="text-[33px] cursor-pointer" />
-              <div className="cursor-pointer absolute bottom-[-6px] right-[15px] bg-red text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
-                {cout}
+
+            {/* giỏ hàng và tiền có trong tài khoản */}
+            <div className="flex items-center justify-start">
+              {/* tiền có trong ví */}
+              <div className="flex items-center justify-center mr-half relative">
+                <GrMoney className="mr-[4px] text-[1.6rem]" />
+                <div className="absolute bottom-[-6px] right-[15px] bg-red text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
+                  0
+                </div>
+              </div>
+              {/* cart */}
+              <div
+                className="cart relative  "
+                onClick={() => {
+                  navigate("/cart");
+                }}
+              >
+                <AiOutlineShoppingCart className="text-[1.8rem] cursor-pointer" />
+                <div className="cursor-pointer absolute bottom-[-6px] right-[15px] bg-red text-white  w-[17px] h-[17px] flex items-center justify-center rounded-full text-[0.9rem]">
+                  {cout}
+                </div>
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
       {/* overlay */}
     </div>

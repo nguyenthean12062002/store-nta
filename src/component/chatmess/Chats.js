@@ -15,13 +15,13 @@ const Chats = () => {
         {/* icon */}
         <div className=" relative">
           <AiOutlineMessage className="text-[3rem] ml-[22px] " />
-          <h5 className="text-white bg-red-300 w-[20px] h-[20px] rounded-full flex items-center justify-center absolute top-[30px] left-[50px]">
+          <h5 className="text-white bg-red animate-pulse w-[20px] h-[20px] rounded-full flex items-center justify-center absolute top-[30px] left-[50px]">
             1
           </h5>
         </div>
         <h3 className="ml-[42px] font-bold text-gray-500">Contact us</h3>
       </div>
-      <div className="absolute w-[70%] left-[42px] md:w-[50%] lg:w-[40%] z-10 transition-all duration-300 ">
+      <div className="absolute w-[70%] left-[6.6%] md:w-[50%] lg:w-[40%] z-10 transition-all duration-300 ">
         <ChatModal isShow={show} />
       </div>
     </div>

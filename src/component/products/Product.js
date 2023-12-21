@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
 import { toast } from "react-toastify";
 const Product = ({ products }) => {
-  console.log(products);
   const { id, title, images, price, description, category, amount } = products;
   const { addProducts } = useContext(CartContext);
   // thông báo của giỏ hàng khi được thêm sản phẩm mới
@@ -16,6 +15,12 @@ const Product = ({ products }) => {
   return (
     <div className="group w-full h-full relative">
       <Link
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", 
+          });
+        }}
         to={`/products/${id}`}
         className="w-full z-5 h-full cursor-pointer bg-white rounded-[12px] border-[1px] hover:border-[1px] hover:border-[#EF4444]   flex flex-col items-center justify-center p-[10px] transition-all duration-300   "
       >

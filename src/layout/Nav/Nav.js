@@ -4,7 +4,7 @@ import "./Nav.scss";
 const ItemNav = ({ children, classe }) => {
   return (
     <div
-      className={`${classe} item__nav text-[1.1rem]  hover:text-gray-500  w-full h-[50px] mx-[6px] my-[4px] md:my-[0px] md:h-[40px] text-start md:text-center  md:w-[full] lg:w-full transition-all duration-300`}
+      className={`${classe} item__nav text-[1.1rem] mx-full hover:text-gray-500  w-full h-[50px] mx-[6px] my-[4px] md:my-[0px] md:h-[36px] text-start md:text-center  md:w-[full] lg:w-full transition-all duration-300`}
     >
       {children}
     </div>
@@ -29,9 +29,9 @@ export const ListItemNav = () => {
   return (
     <div className="w-full">
       <section
-        className={`transition-all duration-200 w-full h-[full]  py-[2px] px-[8px] flex  items-center justify-center `}
+        className={`transition-all duration-300 w-full h-[full]  py-[2px] px-[8px] flex  items-center justify-center `}
       >
-        <nav className=" w-[70%] h-full flex items-center flex-col md:flex-row transition-all duration-300">
+        <nav className=" w-[60%] h-full flex items-center flex-col md:flex-row transition-all duration-300">
           <ItemNav classe="active">
             <Link
               className="w-full h-full flex items-center justify-start md:justify-center "

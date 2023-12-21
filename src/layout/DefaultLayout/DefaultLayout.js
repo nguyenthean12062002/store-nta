@@ -20,13 +20,13 @@ const DefaultLayout = () => {
   return (
     <Router>
       <div className="relative">
-        <div className="w-ful h-[44px] z-[50]">
+        <div className="w-ful ">
           <TopHeader />
         </div>
         <header>
           <Header />
         </header>
-        <main className="h-full">
+        <main className="w-full h-full ">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<ProductsPages />} />

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { GrFormView } from "react-icons/gr";
 
-import OverLay from "../OverLay.js/OverLay";
 const ModalLogin = () => {
   const navigate = useNavigate();
   const { user, login } = useContext(LoginContext);
@@ -51,9 +50,9 @@ const ModalLogin = () => {
   };
   return (
     <>
-      <div className="transition-all duration-300 fixed z-[100] top-0 right-0 left-0 m-auto mt-[25%] md:mt-[3%] w-[90%] md:w-[70%] h-[50%] md:h-[90%] bg-bg shadow-4xl ">
+      <div className="transition-all duration-300 fixed z-[100] top-0 right-0 left-0 m-auto mt-[25%] md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl ">
         <div className="w-full h-full min-h-[50vh] md:min-h-[70vh] relative px-[22px] flex items-start justify-center transition-all duration-300 ">
-          <div className=" w-[90%] md:w-[80%] lg:w-[70%] h-[80%]   mt-[22px] flex flex-col items-center justify-center pb-[22px] ">
+          <div className=" w-[90%] md:w-[80%] lg:w-[70%] h-[45%] xl:h-[80%]   mt-[22px] flex flex-col items-center justify-center pb-[22px] ">
             <h4 className="text-[1.3rem] text-red-500  lg:text-[1.5rem] font-bold py-[12px] text-center">
               LOGIN
             </h4>
@@ -75,7 +74,7 @@ const ModalLogin = () => {
               />
               {/* show error */}
               <div className="py-[4px]">
-                <h5 className="text-red-500 h-[12px] underline text-[0.8rem] pl-half">
+                <h5 className="text-red h-[12px] underline text-[0.8rem] pl-half">
                   {error}
                 </h5>
               </div>
@@ -99,7 +98,7 @@ const ModalLogin = () => {
               />
               {/* show error */}
               <div className="py-[4px]">
-                <h6 className="text-red-500 h-[12px] underline text-[0.8rem] pl-half">
+                <h6 className="text-red h-[12px] underline text-[0.8rem] pl-half">
                   {errorPass}
                 </h6>
               </div>

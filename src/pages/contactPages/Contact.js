@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Header from "../../layout/Header/Header";
 import { IoIosSend } from "react-icons/io";
 
 const Contact = () => {

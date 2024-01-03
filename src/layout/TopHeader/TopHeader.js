@@ -14,7 +14,7 @@ import OverLay from "../OverLay/OverLay";
 const TopHeader = () => {
   const [showLogout, setIsShowLogout] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(true);
-  const { user, logout, login } = useContext(LoginContext);
+  const { user, logout } = useContext(LoginContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (user && user.name) {

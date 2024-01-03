@@ -16,7 +16,6 @@ import Search from "../../component/search/Search";
 // path
 import Path from "../../layout/Path/Path";
 // icon
-import { FaAngleDown } from "react-icons/fa";
 import { CiFilter } from "react-icons/ci";
 import { CiCircleList } from "react-icons/ci";
 import { FaArrowDown } from "react-icons/fa6";
@@ -49,7 +48,6 @@ const Products = () => {
   }, []);
   const Item = ({ children }) => {
     const [isActive, setIsActive] = useState(false);
-
     const handleClick = () => {
       setIsActive(true);
     };
@@ -111,7 +109,6 @@ const Products = () => {
       </div>
     );
   };
-  var newArr = [];
   const handleFilterProductsPrice = () => {
     for (var i = 0; i < products.length - 1; i++) {
       for (var j = i; j < products.length; j++) {
@@ -220,6 +217,7 @@ const Products = () => {
                       <img
                         className="w-[70%] h-[80%] object-cover 	"
                         src={item.images}
+                        alt="img"
                       />
                       <span className="block text-center text-gray-400 pt-[4px] text-[0.8rem]">
                         {item.updatedAt}

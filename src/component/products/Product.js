@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
+// icon
 import { MdAdd } from "react-icons/md";
-import { BsFillEyeFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
 import { toast } from "react-toastify";
 const Product = ({ products }) => {
-  const { id, title, images, price, description, category, amount } = products;
+  const { id, title, images, price, category } = products;
   const { addProducts } = useContext(CartContext);
   // thông báo của giỏ hàng khi được thêm sản phẩm mới
 
@@ -27,6 +27,7 @@ const Product = ({ products }) => {
         {/* image */}
         <div className="h-[120px] md:h-[160px] my-[8px]">
           <img
+            alt="img_products"
             className="h-[100%] w-full object-cover  "
             src={images || products.images[0]}
           />

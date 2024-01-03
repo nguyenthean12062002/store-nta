@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TopHeader from "../TopHeader/TopHeader";
 import Footer from "../Footer";
 import Header from "../Header/Header";
@@ -14,9 +14,6 @@ import BuyProductsPages from "../../pages/buyProductsPages/BuyProductsPages";
 import { ToastContainer } from "react-toastify";
 
 const DefaultLayout = () => {
-  // isLogining
-  const [isLogining, setIsLogining] = useState(false);
-
   return (
     <Router>
       <div className="relative">

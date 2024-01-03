@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { GrSearch } from "react-icons/gr";
 // import Modal
 import Modal from "../modal/Modal";
@@ -11,7 +11,6 @@ const Search = () => {
   // show modal kết quả của tìm kiếm
   const [show, setShow] = useState(true);
   // value của input search
-  const { title, price } = products;
   const [value, setValue] = useState(" ");
   const handleShowModal = () => {
     setShow(false);

@@ -17,7 +17,7 @@ const ModalLogin = () => {
     if (localStorage.getItem("name")) {
       user.name = localStorage.getItem("name");
     }
-  }, []);
+  }, [user]);
   // hanlde login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -135,7 +135,7 @@ const ModalLogin = () => {
             <input
               type="submit"
               value="Login"
-              className="cursor-pointer text-white bg-main w-[100%] mt-half md:w-[65%] lg:w-[60%]  h-[42px] block"
+              className="cursor-pointer text-white bg-main w-[100%] mt-half md:w-[65%] lg:w-[60%] h-[42px] block"
               onClick={handleLogin}
             />
             {/* <h4>&</h4>

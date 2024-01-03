@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { IoIosRemove, IoMdAdd } from "react-icons/io";
-import { Link, useAsyncError } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Flex from "../flex/Flex";
 //import Cartcontext
 import { CartContext } from "./CartContext";
@@ -9,9 +9,8 @@ const CartItem = ({ products }) => {
   const { removeProduct, increaseAmout, decreaseAmout } =
     useContext(CartContext);
   // destructuring
-  const { id, title, images, price, description, category, amout } = products;
+  const { id, title, images, price, description, amout } = products;
   const [check, setCheck] = useState(false);
-  // useEffect(() => {}, [check]);
   return (
     <div className="w-full flex items-center justify-center bg-bg transition-all duration-500 my-half px-half border-[0.5px] border-transparent hover:border-[#EF4444] hover:border-[0.5px] ">
       {/* checkbox */}
@@ -31,7 +30,7 @@ const CartItem = ({ products }) => {
       >
         {/* img */}
         <div className="w-[20%] mr-[8px] h-[60px] md:h-[80px] lg:h-[90px] object-cover flex items-center justify-center">
-          <img className="h-full object-cover w-[40%]" src={images} />
+          <img alt="img" className="h-full object-cover w-[40%]" src={images} />
         </div>
         {/* actions */}
         <div className="w-[75%] md:w-[88%] lg:w-[80%] h-full">

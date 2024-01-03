@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
@@ -14,7 +14,7 @@ const CartProvider = ({ children }) => {
         }, 0);
       }
     });
-    setCout(isCout);
+    return setCout(isCout);
   }, [cart]);
   const addProducts = (product, id) => {
     const newItem = { ...product, amout: 1 };

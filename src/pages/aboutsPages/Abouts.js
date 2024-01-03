@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 // header
-import Header from "../../layout/Header/Header";
 const Abouts = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại

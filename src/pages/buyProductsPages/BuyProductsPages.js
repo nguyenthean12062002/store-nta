@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // header
 // icon
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -8,15 +8,6 @@ import { FaVoicemail } from "react-icons/fa6";
 
 import Flex from "../../component/flex/Flex";
 const BuyProductsPages = () => {
-  // hanlde mở đóng các modal
-
-  // giá trị của nhập địa chỉ số dt
-  const [name, setName] = useState("");
-  const [numberPhone, setNumberPhone] = useState("");
-  const [address, setAddress] = useState("");
-  // confirm
-  const [confirm, setConfirm] = useState(false);
-
   console.log("reset");
   const handleReload = () => {
     // window.location.href = "/"; // Đặt lại pathname về trang chủ
@@ -33,34 +24,10 @@ const BuyProductsPages = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Item con của modal thêm sửa
-  const ItemEditModal = ({ label, onChange, onBlur }) => {
-    const props = { onChange, onBlur };
-    return (
-      <div className="flex flex-col md:flex-row items-center justify-start mb-full">
-        <label
-          htmlFor="name"
-          className=" w-full md:w-[30%] block  mb-half md:inline-block text-gray-500"
-        >
-          {label}:
-        </label>
-        <input
-          id="name"
-          placeholder="...aaa"
-          {...props}
-          className="border-[0.5px] border-[#ef4444] px-[3px] text-[0.85rem] h-[28px] min-w-[140px] w-full"
-        />
-      </div>
-    );
-  };
-
-  // action confirm giá trị vừa nhập
-
   return (
-    <div className="bg-white w-full h-full flex items-center justify-center flex-col px-full">
+    <div className="bg-white w-full h-ful flex items-start justify-center flex-col px-full">
       {/* show products and info buyer */}
-      <div className="text-[1rem] w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[60%,38%] gap-x-[24px] bg-bg my-full py-full px-half">
+      <div className="text-[1rem] w-full h-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[60%,38%] gap-x-[24px] bg-bg my-half py-full px-half">
         {/* products want buy */}
         <div>
           {/* info products */}
@@ -152,7 +119,7 @@ const BuyProductsPages = () => {
         {/* nhấn đặt hàng  */}
       </div>
       {/* button click order */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-full h-full max-w-[1200px] mb-full">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 h-full max-w-[1200px] mb-full">
         <h6 className="text-gray-500 mb-half md:mb-0 flex items-center">
           Clicking <span className="text-main">"Order"</span> means you agree to
           abide by the NTA Terms
@@ -161,6 +128,7 @@ const BuyProductsPages = () => {
           Order
         </button>
       </div>
+      l
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../component/cart/CartContext";
 import CartItem from "../../component/cart/CartItem";
 import { LoginContext } from "../../component/login/LoginProvider";
@@ -8,15 +8,11 @@ import { BsCartCheck } from "react-icons/bs";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 // flex
 import Flex from "../../component/flex/Flex";
-import { logDOM } from "@testing-library/react";
 const CartPages = () => {
   const { user } = useContext(LoginContext);
-  const { cart, totalCart, removeAllProduct } = useContext(CartContext);
+  const { cart, totalCart } = useContext(CartContext);
   const [show, setShow] = useState(true);
   const [hiddenButtonBuy, setHiddenButtonBuy] = useState(false);
-  const [checkAll, setCheckAll] = useState(false);
-  const [total, setTotal] = useState("");
-  const navigate = useNavigate();
   const handleReload = () => {
     // window.location.href = "/"; // Đặt lại pathname về trang chủ
   };
@@ -69,9 +65,9 @@ const CartPages = () => {
   };
   handleTotalCart();
   return (
-    <div className="w-full h-full min-h-[85vh] flex items-center justify-center bg-white">
+    <div className="w-full h-full min-h-[85vh] mt-half flex items-start justify-center bg-white">
       {/* show products in cart */}
-      <div className="w-full max-w-[1200px] h-full relative  my-full ">
+      <div className="w-full max-w-[1200px] h-full relative ">
         <div className="lg:px-0">
           {/* title */}
           <Flex justify="between" className="bg-bg py-full px-full">

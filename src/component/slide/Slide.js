@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Slide } from "react-slideshow-image";
 import "./slide.scss";
 //product context
-import { ProductsContext } from "../products/ProductsContext";
 const Slides = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -10,12 +9,6 @@ const Slides = () => {
       setIsMobile(true);
     }
   }, []);
-  const { products } = useContext(ProductsContext);
-  const spanStyle = {
-    padding: "20px",
-    background: "#efefef",
-    color: "#000000",
-  };
 
   const divStyle = {
     display: "flex",

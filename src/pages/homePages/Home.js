@@ -8,13 +8,11 @@ import Slides from "../../component/slide/Slide";
 import { CartContext } from "../../component/cart/CartContext";
 // css
 import "./home.scss";
-// iconFB component
-import IconFaceBook from "../../component/iconComponent/IconFaceBook";
-//icon Mess
-import IconTele from "../../component/iconComponent/IconTele";
 // path
 import Path from "../../layout/Path/Path";
 // icon
+import IconFaceBook from "../../component/iconComponent/IconFaceBook";
+import IconTele from "../../component/iconComponent/IconTele";
 import { SiQuarkus } from "react-icons/si";
 import { FaSquareFontAwesomeStroke } from "react-icons/fa6";
 import { FaShippingFast } from "react-icons/fa";
@@ -50,7 +48,7 @@ const Home = () => {
   const DiversityHandle = () => {
     const arr = [];
     products.filter((item) => {
-      arr.push(item.category.name);
+      return arr.push(item.category.name);
     });
     const newArr = [...new Set(arr)];
     return newArr.map((item) => {
@@ -146,6 +144,8 @@ const Home = () => {
                   index === idRandom3
                 ) {
                   return item.category;
+                } else {
+                  return 0;
                 }
               })
               .map((item, index) => {
@@ -159,6 +159,7 @@ const Home = () => {
                       <div className="w-[40%] h-full ">
                         <img
                           src={item.category.image}
+                          alt="img"
                           className="w-auto h-[100%] object-contain"
                         />
                       </div>
@@ -217,6 +218,7 @@ const Home = () => {
             </div>
             <div className=" relative w-full h-[85%] rounded-3xl md:w-[65%] bg-bg py-half mb-[70px] md:mb-0  object-cover rounded-xl my-full">
               <img
+                alt="img"
                 src="https://intphcm.com/data/upload/banner-quang-cao-vang.jpg"
                 className="h-full object-contain w-full rounded-xl md:rounded-none"
               />
@@ -233,7 +235,7 @@ const Home = () => {
         </div>
       </div>
       {/* iconFacebook and messeger */}
-      <div className="w-full h-[150px] top-[75%] left-[-10px]  fixed z-[110]">
+      <div className="w-full h-[150px] top-[80%] md:top-[75%] left-[-10px]  fixed z-[110]">
         <div className="flex items-center justify-end mb-[12px] animate-pulse">
           <IconFaceBook />
         </div>

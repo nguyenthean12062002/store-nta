@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 export const ProductsContext = createContext();
 const API = "https://api.escuelajs.co/api/v1/products";
 const ProductsProvider = ({ children }) => {

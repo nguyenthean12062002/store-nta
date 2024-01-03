@@ -18,7 +18,7 @@ const Contact = () => {
     };
   }, []);
   return (
-    <div className="w-full h-full flex items-center justify-center bg-bg py-full">
+    <div className="w-full h-full flex items-center justify-center bg-white py-full">
       <div className="max-w-[1200px] px-full md:px-full lg:px-full xl:px-0">
         <h2 className="text-[1.6rem] text-center font-bold py-[22px]">
           CONTACT

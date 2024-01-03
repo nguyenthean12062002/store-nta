@@ -22,8 +22,8 @@ const TopHeader = () => {
     }
   }, [user]);
   return (
-    <div className=" z-[50] w-full h-full flex items-center justify-center bg-main ">
-      <div className="w-full max-w-[1200px] h-[44px] px-full md:px-full xl:px-0">
+    <div className=" z-[50] w-full h-full flex items-center justify-center bg-white ">
+      <div className="w-full max-w-[1200px] h-[54px] px-full md:px-half xl:px-0">
         <Flex
           justify="between"
           className=" w-full h-full border-b-[1px] z-10  "
@@ -49,7 +49,7 @@ const TopHeader = () => {
             </h4>
           </Flex>
           {/* login */}
-          <div className=" flex items-center justify-center">
+          <div className=" h-full flex items-center justify-center">
             {user && user.name ? (
               <div className=" relative">
                 <div className="flex items-center justify-center">
@@ -66,7 +66,7 @@ const TopHeader = () => {
 
                 <div
                   hidden={showLogout}
-                  className="z-[60] absolute bottom-[-84px] shadow-gray-500 shadow-3xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
+                  className="z-[160] absolute bottom-[-84px] shadow-gray-500 shadow-3xl  right-0  bg-[#FEBD68] w-[200px] h-[80px]  flex-col items-center justify-center px-[12px] py-[8px]"
                 >
                   <button className="w-[100%] py-[4px] h-[30px] border-[1px] border-[#FEBD68] bg-white my-[4px] p-[4px] text-gray-500">
                     Settings
@@ -89,12 +89,12 @@ const TopHeader = () => {
                 onClick={() => {
                   setShowLoginModal(!showLoginModal);
                 }}
-                className="w-full h-[80%] transition-all duration-500"
+                className="w-full h-[100%] transition-all duration-500 flex items-center justify-start"
               >
-                <span className="mr-[4px] text-gray-700">Hello!</span>
-                <span className="w-full h-full rounded-2xl px-[9px] py-[4px] border-[1.2px] transition-all duration-500 bg-red text-white  cursor-pointer border-[#ef4444] hover:text-main hover:bg-slate-100">
+                <span className="mr-half text-gray-700">Hello!</span>
+                <div className="w-full h-full flex items-center justify-center px-[9px] py-[4px] border-l-[1px] border-r-[1px] transition-all duration-500 bg-white text-red px-half  cursor-pointer  hover:text-main hover:bg-slate-100">
                   Login
-                </span>
+                </div>
               </div>
             )}
           </div>

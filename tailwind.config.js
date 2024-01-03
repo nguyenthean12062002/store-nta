@@ -4,6 +4,12 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      maxWidth: {
+        main: "1200px",
+      },
+      borderColor: {
+        red: "#EF4444",
+      },
       backgroundColor: {
         main: "#FEBD68",
         bg: "#f5f5f5",

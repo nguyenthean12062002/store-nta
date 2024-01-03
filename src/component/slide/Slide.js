@@ -40,7 +40,7 @@ const Slides = () => {
     },
   ];
   return (
-    <div className="slide-container">
+    <div className="slide-container z-[10]">
       <Slide autoplay={true}>
         {slideImages.map((slideImage, index) => (
           <div key={index}>

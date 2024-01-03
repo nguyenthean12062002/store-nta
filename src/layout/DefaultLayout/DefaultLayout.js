@@ -33,7 +33,7 @@ const DefaultLayout = () => {
             <Route path="/abouts" element={<Abouts />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<CartPages />} />
-            <Route path={`/products/:id`} element={<ProductsReview />} />
+            <Route path={`/products/id/:id`} element={<ProductsReview />} />
             <Route path="/cart/buy" element={<BuyProductsPages />} />
           </Routes>
         </main>

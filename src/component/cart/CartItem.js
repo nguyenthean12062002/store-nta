@@ -13,20 +13,19 @@ const CartItem = ({ products }) => {
   const [check, setCheck] = useState(false);
   // useEffect(() => {}, [check]);
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center bg-bg transition-all duration-500 my-half px-half border-[0.5px] border-transparent hover:border-[#EF4444] hover:border-[0.5px] ">
       {/* checkbox */}
       <input
         onClick={(e) => {
           setCheck(e.target.checked);
         }}
         checked={check}
-        value="1"
         type="checkbox"
         className="w-[20px] h-[20px] mr-[10px] md:mr-full "
         id="checBoxCartPages"
       />
       <div
-        className={`flex items-center justify-between  w-full h-full bg-white hover:border-[#ef4444] border-[0.5px] p-half my-half transtion-all duration-300 border-b-[1px] ${
+        className={`flex items-center justify-between  w-full h-full border-transparent p-half my-half transtion-all duration-300 border-b-[1px] ${
           check === true || check === true ? "border-[#ef4444]" : ""
         }`}
       >
@@ -35,11 +34,11 @@ const CartItem = ({ products }) => {
           <img className="h-full object-cover w-[40%]" src={images} />
         </div>
         {/* actions */}
-        <div className="w-[75%] md:w-[78%] lg:w-[80%] h-full">
+        <div className="w-[75%] md:w-[88%] lg:w-[80%] h-full">
           {/* title and icon remove item */}
-          <div className="grid grid-cols-3 ">
+          <div className="grid grid-cols-[40%,30%,20%]  ">
             {/* name product , add , remove ,price */}
-            <div className="w-full  mr-[10px] ">
+            <div className="w-full mr-[10px]">
               <Link
                 to={`/products/${id}`}
                 className=" mb-half capitalize font-medium line-clamp-1 text-black text-[1rem] "
@@ -74,7 +73,7 @@ const CartItem = ({ products }) => {
               </div>
             </div>
             {/* des */}
-            <Flex justify="center" className="">
+            <Flex justify="center" className="bg-blue">
               <p className="text-gray-500 line-clamp-3 leading-5 tracking-wide text-[0.9rem]  ">
                 {description}
               </p>

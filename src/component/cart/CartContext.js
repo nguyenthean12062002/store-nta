@@ -4,7 +4,6 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cout, setCout] = useState(0);
-  const [totalCart, setTotalCart] = useState(0);
   // add produt in cart
   useEffect(() => {
     let isCout = 0;
@@ -16,17 +15,6 @@ const CartProvider = ({ children }) => {
       }
     });
     setCout(isCout);
-
-    // total all cart
-    const totalCart = cart.reduce((current, item) => {
-      if (item.amout) {
-        return current + item.price * item.amout;
-      } else {
-        return current + item.price;
-      }
-    }, 0);
-
-    setTotalCart(totalCart);
   }, [cart]);
   const addProducts = (product, id) => {
     const newItem = { ...product, amout: 1 };
@@ -81,7 +69,6 @@ const CartProvider = ({ children }) => {
       value={{
         cart,
         cout,
-        totalCart,
         addProducts,
         removeProduct,
         removeAllProducts,

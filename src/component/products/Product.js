@@ -18,32 +18,32 @@ const Product = ({ products }) => {
         onClick={() => {
           window.scrollTo({
             top: 0,
-            behavior: "smooth", 
+            behavior: "smooth",
           });
         }}
-        to={`/products/${id}`}
-        className="w-full z-5 h-full cursor-pointer bg-white rounded-[12px] border-[1px] hover:border-[1px] hover:border-[#EF4444]   flex flex-col items-center justify-center p-[10px] transition-all duration-300   "
+        to={`/products/id/${id}`}
+        className="w-full z-5 h-full cursor-pointer bg-white  border-[0.6px] hover:border-[1px] hover:border-[#EF4444] hover:border-[0.8px] hover:translate-y-[4px]  flex flex-col items-center justify-center p-[10px] transition-all duration-300   "
       >
         {/* image */}
-        <div className="h-[160px] my-[8px]">
+        <div className="h-[120px] md:h-[160px] my-[8px]">
           <img
-            className="h-[100%] w-full object-cover rounded-xl "
+            className="h-[100%] w-full object-cover  "
             src={images || products.images[0]}
           />
         </div>
         {/* add and view */}
         {/* title , price,  */}
         <div className="flex items-center flex-col justify-start">
-          <h1 className="font-medium my-half  text-ellipsis overflow-hidden ...">
+          <h1 className="font-medium mb-[6px] md:mb-half  text-ellipsis overflow-hidden ...">
             <Link
               className="line-clamp-2 text-black capitalize"
-              to={`/products/${id}`}
+              to={`/products/id/${id}`}
             >
               {title}
             </Link>
           </h1>
-          <h4 className="text-gray-500 mb-half">{category.name}</h4>
-          <h3 className=" font-medium text-red underline italic mt-[2px] pb-half">
+          <h4 className="text-gray-500 mb-[6px] md:mb-half">{category.name}</h4>
+          <h3 className=" font-medium text-red underline italic mt-[2px] mb-[6px] md:mb-half">
             $ {price}
           </h3>
         </div>

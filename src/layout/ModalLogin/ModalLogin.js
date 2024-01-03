@@ -50,10 +50,10 @@ const ModalLogin = () => {
   };
   return (
     <>
-      <div className="transition-all duration-300 fixed z-[100] top-0 right-0 left-0 m-auto mt-[25%] md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl ">
-        <div className="w-full h-full min-h-[50vh] md:min-h-[70vh] relative px-[22px] flex items-start justify-center transition-all duration-300 ">
-          <div className=" w-[90%] md:w-[80%] lg:w-[70%] h-[45%] xl:h-[80%]   mt-[22px] flex flex-col items-center justify-center pb-[22px] ">
-            <h4 className="text-[1.3rem] text-red-500  lg:text-[1.5rem] font-bold py-[12px] text-center">
+      <div className="transition-all duration-300 fixed z-[100] top-0 right-0 left-0 m-auto mt-[25%]  md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl ">
+        <div className="w-full h-full  md:min-h-[70vh] relative px-[22px] flex items-start justify-center transition-all duration-300 ">
+          <div className=" w-[90%] md:w-[80%] lg:w-[70%] h-[85%] xl:h-[80%]   mt-[22px] flex flex-col items-center justify-center pb-[22px] ">
+            <h4 className="text-[1.3rem] text-red  lg:text-[1.5rem] font-bold py-[12px] text-center">
               LOGIN
             </h4>
             {/* form input */}
@@ -109,7 +109,7 @@ const ModalLogin = () => {
                   setViewPass(!viewPass);
                 }}
               >
-                <GrFormView className="text-[1.5rem] text-gray-400" />
+                <GrFormView className="text-[1.5rem] text-main" />
               </div>
             </div>
             {/* quên mật khẩu và nhớ tài khoản */}
@@ -122,12 +122,12 @@ const ModalLogin = () => {
                 />
                 <label
                   for="checkRemember"
-                  className="select-none cursor-pointer text-red-500"
+                  className="select-none cursor-pointer text-gray-500 text-[0.9rem]"
                 >
                   Remember me!
                 </label>
               </div>
-              <h4 className="text-end text-red-500 underline cursor-pointer">
+              <h4 className="text-end text-red underline cursor-pointer">
                 Forgot password?
               </h4>
             </div>
@@ -135,7 +135,7 @@ const ModalLogin = () => {
             <input
               type="submit"
               value="Login"
-              className="border-[1px] cursor-pointer text-white bg-[#FEBD68] w-[100%] mt-half md:w-[65%] lg:w-[60%] h-[42px]"
+              className="cursor-pointer text-white bg-main w-[100%] mt-half md:w-[65%] lg:w-[60%]  h-[42px] block"
               onClick={handleLogin}
             />
             {/* <h4>&</h4>

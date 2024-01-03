@@ -3,7 +3,7 @@ const Modal = ({ children, isHidden, title, onClick, className }) => {
   const props = { onClick };
   return (
     <div
-      className={`w-full h-full rounded-2xl fixed top-0 right-0 left-0 m-auto  bg-white shadown-4xl z-[90] ${className} `}
+      className={`w-full h-full  fixed top-0 right-0 left-0 m-auto  bg-white shadown-4xl z-[90] ${className} `}
       hidden={isHidden}
       {...props}
     >

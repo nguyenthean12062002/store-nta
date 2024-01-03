@@ -7,7 +7,7 @@ const Chats = () => {
   return (
     <div className=" z-100 ">
       <div
-        className="w-full pt-[30px] cursor-pointer border-transparent	border-[1px] hover:border-[1px] hover:border-[#888]"
+        className="w-full pt-[30px] cursor-pointer border-transparent	border-[1px] hover:border-[1px] rounded-3xl hover:border-[#888]"
         onClick={() => {
           setShow(!show);
         }}

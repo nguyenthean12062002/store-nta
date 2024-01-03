@@ -17,7 +17,7 @@ const Abouts = () => {
     };
   }, []);
   return (
-    <div className="bg-bg w-full h-full flex items-center  justify-center py-full">
+    <div className="bg-white w-full h-full flex items-center  justify-center py-full">
       <div className="w-full max-w-[1200px] px-full md:px-full xl:px-0">
         <h2 className="text-center py-[22px] font-bold text-[1.6rem]">
           ABOUTS

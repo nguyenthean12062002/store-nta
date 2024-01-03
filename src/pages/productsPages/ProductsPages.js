@@ -1,4 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+// cart context
+import { CartContext } from "../../component/cart/CartContext";
 // css pages
 import "./productsPages.scss";
 import { ProductsContext } from "../../component/products/ProductsContext";
@@ -7,6 +11,10 @@ import Product from "../../component/products/Product";
 //import Chats
 import Chats from "../../component/chatmess/Chats";
 import Flex from "../../component/flex/Flex";
+// search
+import Search from "../../component/search/Search";
+// path
+import Path from "../../layout/Path/Path";
 // icon
 import { FaAngleDown } from "react-icons/fa";
 import { CiFilter } from "react-icons/ci";
@@ -16,16 +24,29 @@ import { FaArrowUp } from "react-icons/fa6";
 import { BsArrowUpCircleFill } from "react-icons/bs";
 
 const Products = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
-  }, []);
-  const [values, setValue] = useState("");
+  const { addProducts } = useContext(CartContext);
 
   const { products } = useContext(ProductsContext);
   //  value filer category
+  const [values, setValue] = useState("");
+  const [upOrDown, setUpOrDown] = useState("=");
   // filter sản phẩm tăng hoặc giảm theo giá
   const [isStatusPrciceFilter, setIsStatusPriceFilter] = useState(null);
-  const [upOrDown, setUpOrDown] = useState("=");
+  // random ngẫu nhiên một sản phẩm review
+  const lenghProducts = products.length;
+  const idRandom = Math.floor(Math.random() * lenghProducts);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
+  }, []);
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      handleReload();
+    });
+    return () => {
+      window.removeEventListener("load", () => {});
+    };
+  }, []);
   const Item = ({ children }) => {
     const [isActive, setIsActive] = useState(false);
 
@@ -34,7 +55,7 @@ const Products = () => {
     };
     return (
       <div
-        className={`item my-[2px] w-full text-gray-500 hover:text-black h-[42px] flex items-center justify-start cursor-pointer p-[8px] ${
+        className={`item my-[2px] w-full capitalize text-gray-500 hover:text-black h-[42px] flex items-center justify-start cursor-pointer p-[8px] ${
           isActive ? "active" : ""
         }`}
         onClick={(e) => {
@@ -123,14 +144,7 @@ const Products = () => {
   const handleReload = () => {
     window.location.href = "/"; // Đặt lại pathname về trang chủ
   };
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      handleReload();
-    });
-    return () => {
-      window.removeEventListener("load", () => {});
-    };
-  }, []);
+
   const itemNameCategory = document.querySelectorAll(".item");
   itemNameCategory.forEach((item) => {
     item.addEventListener("click", () => {
@@ -138,7 +152,99 @@ const Products = () => {
     });
   });
   return (
-    <div className="bg-[#F5F5F5] w-full flex items-center justify-center relative">
+    <div className="bg-bg w-full flex items-center flex-col justify-center relative transition-all duration-500">
+      {/* path */}
+      <div className="w-full h-full max-w-main mt-full px-full md:px-0">
+        <Path />
+      </div>
+      {/* demo sản phẩm hot */}
+      <Flex
+        justify="center"
+        className="w-full h-full min-h-[400px] bg-white border-b-[1px] mb-half    "
+      >
+        {idRandom ? (
+          <>
+            {products.map((item, index) => {
+              if (index === idRandom) {
+                return (
+                  <div className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-full md:px-0">
+                    {/*info and button action  */}
+                    <div className="mb-full md:mb-0">
+                      {/* title */}
+                      <span className="text-[1.6rem] mb-[40px] block mt-[24px]">
+                        SALES PRODUCTS
+                      </span>
+                      {/* info */}
+                      <div>
+                        {/* tên sản phẩm */}
+                        <h2 className="py-half text-[1.3rem]">{item.title}</h2>
+                        {/* category */}
+                        <h4 className="text-main text-[1.1rem] py-half">
+                          {item.category.name}
+                        </h4>
+                        {/* des */}
+                        <p className="text-gray-500 tracking-wider text-[1rem]">
+                          {item.description}
+                        </p>
+                      </div>
+                      {/* button action */}
+                      <div className="mt-full">
+                        <Flex justify="start">
+                          <button
+                            onClick={() => {
+                              addProducts(item, item.id);
+                            }}
+                            className="bg-main mr-half border-[1px] p-half hover:opacity-[0.7]"
+                          >
+                            Add to cart
+                          </button>
+                          <Link
+                            to={`/cart/buy`}
+                            className="bg-red text-white border-[1px] p-half hover:opacity-[0.7]"
+                          >
+                            Buy now
+                          </Link>
+                        </Flex>
+                      </div>
+                      <Flex justify="center" className="mt-half">
+                        <Link
+                          to={`/products/id/${item.id}`}
+                          className="border-[1px] p-half hover:opacity-[0.7] bg-bg"
+                        >
+                          SEE MORE
+                        </Link>
+                      </Flex>
+                    </div>
+                    {/* ảnh */}
+                    <Flex justify="start" className="w-full h-full flex-col  ">
+                      <img
+                        className="w-[70%] h-[80%] object-cover 	"
+                        src={item.images}
+                      />
+                      <span className="block text-center text-gray-400 pt-[4px] text-[0.8rem]">
+                        {item.updatedAt}
+                      </span>
+                    </Flex>
+                  </div>
+                );
+              }
+            })}
+          </>
+        ) : (
+          <div className="flex items-center justify-center">Loading</div>
+        )}
+      </Flex>
+      {/* search */}
+      <h3
+        id="showproducts"
+        className="mt-full text-gray-600 text-[1.1rem] select-none"
+      >
+        Enter the product name you are looking for!
+      </h3>
+      <div className="w-[100%] md:w-[70%]">
+        <Search />
+      </div>
+      {/* list products */}
       <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[20%,80%] px-full md:px-full xl:px-0 transition-all duration-200  pb-full">
         {/* thanh bên */}
         <aside className="max-w-[90%]  md:max-w-[80%] w-full  mt-full ">
@@ -193,26 +299,26 @@ const Products = () => {
               <div className="w-full min-w-[100px]">
                 <span className="text-gray-500">Sorted by:</span>
               </div>
-              <button className="px-half py-[8px] shadown-4xl mx-[6px] rounded-2xl cursor-pointer  bg-red text-white  hover:opacity-80">
+              <button className="px-half py-[8px] shadown-4xl mx-[6px]  cursor-pointer  bg-red text-white  hover:opacity-80">
                 Popular
               </button>
-              <button className="px-half py-[8px] shadown-4xl mx-[6px] rounded-2xl cursor-pointer  bg-white hover:text-gray-500">
+              <button className="px-half py-[8px] shadown-4xl mx-[6px]  cursor-pointer  bg-white hover:text-gray-500">
                 Latest
               </button>
-              <button className="px-half py-[8px] shadown-4xl mx-[6px] rounded-2xl cursor-pointer  bg-white hover:text-gray-500">
+              <button className="px-half py-[8px] shadown-4xl mx-[6px]  cursor-pointer  bg-white hover:text-gray-500">
                 Selling
               </button>
               {/* sap xep theo gia */}
 
               <Flex
-                className="bg-white min-w-[190px] w-full h-full mx-[6px] py-[4.5px]  p-[8.2px] rounded-2xl "
+                className="bg-white min-w-[190px] w-full h-full mx-[6px] py-[4.5px]  p-[8.2px]  "
                 justify="between"
               >
                 <h4 className="select-none text-gray-600">Price</h4>
                 {/* tang hoac giam */}
                 <Flex justify="start">
                   <div
-                    className="text-white rounded-2xl hover:text-black bg-red mx-[2px] transition-all cursor-pointer duration-300 p-[4px] px-[8px]"
+                    className="text-white  hover:text-black bg-red mx-[2px] transition-all cursor-pointer duration-300 p-[4px] px-[8px]"
                     onClick={() => {
                       setUpOrDown("down");
                       setIsStatusPriceFilter(true);
@@ -225,7 +331,7 @@ const Products = () => {
                       setIsStatusPriceFilter(!isStatusPrciceFilter);
                       setUpOrDown("up");
                     }}
-                    className="text-white rounded-2xl  hover:text-black bg-red mx-[2px] transition-all cursor-pointer duration-300 p-[4px] px-[8px]"
+                    className="text-white   hover:text-black bg-red mx-[2px] transition-all cursor-pointer duration-300 p-[4px] px-[8px]"
                   >
                     <FaArrowUp />
                   </div>

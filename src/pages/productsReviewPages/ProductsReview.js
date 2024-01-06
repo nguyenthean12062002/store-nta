@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 //cart context
 import { CartContext } from "../../component/cart/CartContext";
 //product context
@@ -16,8 +16,10 @@ import { SiShopee } from "react-icons/si";
 import { PiStarThin } from "react-icons/pi";
 
 const ProductsReview = () => {
+  const [valueComments, setValueComments] = useState("");
+  // Đặt lại pathname về trang chủ
   const handleReload = () => {
-    window.location.href = "/"; // Đặt lại pathname về trang chủ
+    window.location.href = "/";
   };
   useEffect(() => {
     window.addEventListener("load", () => {
@@ -27,14 +29,14 @@ const ProductsReview = () => {
       window.removeEventListener("load", () => {});
     };
   }, []);
+  // Thực hiện scroll đến đầu trang khi component được render lại
   useEffect(() => {
-    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
+    window.scrollTo(0, 0);
   }, []);
-  const navigate = useNavigate();
   const { addProducts } = useContext(CartContext);
   const { id } = useParams();
   const { products } = useContext(ProductsContext);
-  const product = products.find((item, index) => {
+  const product = products.find((item) => {
     return item.id === parseInt(id);
   });
   if (!product) {
@@ -44,13 +46,17 @@ const ProductsReview = () => {
       </div>
     );
   }
-  const { title, images, price, description, amount } = product;
-  console.log(product);
+  const { title, images, price, description } = product;
+  // handle show comment
+  //
+  const showComments = () => {
+    console.log(valueComments);
+  };
   return (
     <div className="bg-bg w-full h-full flex items-center justify-center">
       <div className="w-full max-w-[1200px] h-full mt-full pb-full">
         {/* path */}
-        <div className="px-full md:px-0">
+        <div className="px-full xl:px-0">
           <Path />
         </div>
         {/* review */}
@@ -186,15 +192,6 @@ const ProductsReview = () => {
                     Buy now
                   </Link>
                 </div>
-                {/* <button
-                  className="h-[34px] bg-gray-500 shadow-xl text-white px-[10px] flex items-center justify-between hover:text-main hover:bg-gray-200 transition-all duration-300 "
-                  onClick={() => {
-                    navigate("/products");
-                  }}
-                >
-                  <BiArrowBack className="mr-[3px]" />
-                  Products
-                </button> */}
               </div>
               {/* date create , date update */}
               <div className=" mt-full h-full">
@@ -207,23 +204,26 @@ const ProductsReview = () => {
         </div>
         {/* describe products */}
         <div className="w-full h-full border-b-[0.7px] mt-full">
-          <h3 className="text-[1.2rem] px-full md:px-half">Describe</h3>
+          <h3 className="text-[1.2rem] px-full xl:px-half">Describe</h3>
           <p className="text-gray-400  my-half w-full tracking-tight text-[1.1rem] leading-[1.2rem] pl-[40px] md:pl-full">
             {description}
           </p>
         </div>
         {/* feedback abouts products*/}
-        <div className="w-fulll border-[1px] border-red min-h-[320px] mx-full md:mx-0 mt-full  relative">
+        <div className="w-fulll border-[1px] border-red min-h-[320px] mx-full xl:mx-0 mt-full  relative">
           <div>
             <span className="block py-half px-half bg-white text-[1.2rem]">
               Comments
             </span>
             {/* show comment */}
-            <div className="w-full h-full "></div>
+            <div className="w-full h-full ">{showComments}</div>
             {/* write comment and button */}
             <div className="w-full h-[62px] absolute bottom-[42px] p-half mb-half">
               <input
                 className="border-b-[1px] w-full h-full px-half mb-half "
+                onChange={(e) => {
+                  setValueComments(e.target.value);
+                }}
                 placeholder="...aaa"
               />
               <button className="w-[100px] h-full flex items-center justify-center bg-main text-white cursor-pointer ">

@@ -39,7 +39,7 @@ const CartItem = ({ products }) => {
             {/* name product , add , remove ,price */}
             <div className="w-full mr-[10px]">
               <Link
-                to={`/products/${id}`}
+                to={`/products/id/${id}`}
                 className=" mb-half capitalize font-medium line-clamp-1 text-black text-[1rem] "
               >
                 {title}

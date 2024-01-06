@@ -4,14 +4,15 @@ const ChatModal = ({ isShow }) => {
   return (
     <div
       hidden={isShow}
-      className="w-full h-[300px] bg-[#FEBD68] z-20  transition-all duration-300"
+      className="w-full h-[300px] bg-[#FEBD68] z-20  transition-all duration-300 px-half flex items-center justify-center flex-col"
     >
-      <h3 className="text-center py-[12px] text-white font-bold text-[1.2rem]">
-        Messs
-      </h3>
       <div className="w-[98%] h-[80%] bg-slate-100 flex flex-col items-center justify-center">
         {/* screen chatss */}
-        <div className="w-full h-[90%]"></div>
+        <div className="w-full h-[90%] p-[6px]">
+          <div>
+            <h3>What help do you need?</h3>
+          </div>
+        </div>
         {/* inputs */}
         <div className="w-[90%] flex items-center justify-between">
           <input

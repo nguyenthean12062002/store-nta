@@ -88,7 +88,7 @@ const CartPages = () => {
             </div>
           </Flex>
           {/* show product added cart */}
-          <div className="h-[400px] px-full">
+          <div className="h-[400px] px-full md:px-0">
             {cart.length === 0 ? (
               <div className="w-full pt-[50px] flex items-center justify-center">
                 <div>

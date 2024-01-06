@@ -21,7 +21,7 @@ const Search = () => {
   return (
     <div className=" w-[100%] px-full h-[100%]  py-half  flex flex-col items-center z-[40] transition-all duration-300">
       {/* input search */}
-      <form className="w-full   relative md:w-[60%] h-[36px] md:h-[40px] text-[0.9rem] flex items-center justify-between z-[41]">
+      <form className="w-full relative xl:w-[60%] h-[36px] md:h-[40px] text-[0.9rem] flex items-center justify-between z-[41]">
         <div className="w-full flex-1 h-[40px] pr-[5px] flex items-center justify-center relative">
           <input
             id="input"

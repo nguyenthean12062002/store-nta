@@ -61,7 +61,7 @@ const Home = () => {
       className="w-full h-full transition-all flex-col duration-300 relative  py-full bg-white "
     >
       {/* path */}
-      <div className="w-full h-full max-w-main px-full md:px-0">
+      <div className="w-full h-full max-w-main px-full xl:px-0">
         <Path />
       </div>
       {/* banner  */}
@@ -130,7 +130,7 @@ const Home = () => {
         {/* suggestion products */}
         <div
           id="home__suggestion"
-          className="w-full h-full my-full bg-bg py-full px-half "
+          className="w-full h-full my-full bg-bg py-full px-half md:px-half lg:px-full "
         >
           <h3 className="mt-full  pl-half text-[1.4rem] py-full text-black font-medium ">
             Suggestion today
@@ -205,10 +205,10 @@ const Home = () => {
         </div>
         {/* sales */}
         <div className="w-full h-full bg-white my-[44px] ">
-          <h3 className="my-full text-[1.4rem] text-black font-medium pt-full px-full md:px-0">
+          <h3 className="my-full text-[1.4rem] text-black font-medium pt-full px-full md:px-full ">
             Many customer appreciation programs
           </h3>
-          <div className="w-full mt-[30px] bg-white md:h-[380px] flex items-center justify-center md:justify-between flex-col md:flex-row  px-[24px]">
+          <div className="w-full mt-[30px] bg-white md:h-[380px] flex items-center justify-center md:justify-between flex-col md:flex-row px-full lg:px-0">
             <div className="w-full h-full md:w-[30%]  ">
               <h6 className="w-full h-full text-[1rem] text-gray-700 leading-5 tracking-wider flex items-center justify-center select-none ">
                 There are always great deals and discounts for our customers to

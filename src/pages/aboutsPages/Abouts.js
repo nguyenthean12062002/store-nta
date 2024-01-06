@@ -18,9 +18,6 @@ const Abouts = () => {
   return (
     <div className="bg-white w-full h-full flex items-center  justify-center py-full">
       <div className="w-full max-w-[1200px] px-full md:px-full xl:px-0">
-        <h2 className="text-center py-[22px] font-bold text-[1.6rem]">
-          ABOUTS
-        </h2>
         <p className=" text-start  leading-[1.4rem] tracking-[1px] text-[#444] ">
           Welcome to NTA Store! We are a reliable online shopping website that
           aims to provide you with an excellent shopping experience. At NTA

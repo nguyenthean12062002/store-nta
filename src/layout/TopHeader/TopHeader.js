@@ -23,7 +23,7 @@ const TopHeader = () => {
   }, [user]);
   return (
     <div className=" z-[50] w-full h-full flex items-center justify-center bg-white ">
-      <div className="w-full max-w-[1200px] h-[54px] px-full md:px-half xl:px-0">
+      <div className="w-full max-w-[1200px] h-[54px] px-full  xl:px-0">
         <Flex
           justify="between"
           className=" w-full h-full border-b-[1px] z-10  "

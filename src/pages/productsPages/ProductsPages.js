@@ -151,20 +151,20 @@ const Products = () => {
   return (
     <div className="bg-bg w-full flex items-center flex-col justify-center relative transition-all duration-500">
       {/* path */}
-      <div className="w-full h-full max-w-main mt-full px-full md:px-0">
+      <div className="w-full h-full max-w-main mt-full px-full xl:px-0">
         <Path />
       </div>
       {/* demo sản phẩm hot */}
       <Flex
         justify="center"
-        className="w-full h-full min-h-[400px] bg-white border-b-[1px] mb-half    "
+        className="w-full h-full min-h-[400px] bg-white border-b-[1px] mb-half px-full lg:px-0   "
       >
         {idRandom ? (
           <>
             {products.map((item, index) => {
               if (index === idRandom) {
                 return (
-                  <div className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-full md:px-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-full xl:px-0">
                     {/*info and button action  */}
                     <div className="mb-full md:mb-0">
                       {/* title */}
@@ -284,9 +284,6 @@ const Products = () => {
                 select2="Favourite"
               />
             </div>
-            <div className="mt-[12px]">
-              <Chats />
-            </div>
           </div>
         </aside>
         {/* show products */}
@@ -376,6 +373,10 @@ const Products = () => {
         >
           <BsArrowUpCircleFill className="text-[2rem]" />
         </div>
+      </div>
+      {/* modal chat */}
+      <div className="w-[100%] mt-[12px] fixed right-[10px] bottom-[20px] flex items-center justify-end">
+        <Chats />
       </div>
     </div>
   );

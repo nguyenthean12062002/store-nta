@@ -27,7 +27,7 @@ const BuyProductsPages = () => {
   return (
     <div className="bg-white w-full h-ful flex items-start justify-center flex-col px-full">
       {/* show products and info buyer */}
-      <div className="text-[1rem] w-full h-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[60%,38%] gap-x-[24px] bg-bg my-half py-full px-half">
+      <div className="text-[1rem] w-full h-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[60%,38%] gap-x-[24px] bg-bg my-half py-full px-half md:px-full">
         {/* products want buy */}
         <div>
           {/* info products */}
@@ -128,7 +128,6 @@ const BuyProductsPages = () => {
           Order
         </button>
       </div>
-      l
     </div>
   );
 };

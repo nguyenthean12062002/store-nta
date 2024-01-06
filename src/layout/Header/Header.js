@@ -110,7 +110,7 @@ const Header = (props) => {
         </div>
       ) : (
         <div
-          className={`w-full bg-bg md:px-full xl:px-0 h-[60px] flex justify-center items-center ${
+          className={`w-full bg-bg md:px-full  xl:px-0 h-[60px] flex justify-center items-center ${
             isHeader ? "bg-bg z-[200] fixed top-0" : ""
           } `}
         >
@@ -118,7 +118,7 @@ const Header = (props) => {
           <div
             className={`${
               isHeader
-                ? " fixed top-0 transition-opacity duration-300 shadown-xl"
+                ? " fixed top-0 transition-opacity duration-300 shadown-xl md:px-full lg:px-0"
                 : ""
             }     w-full h-[60px] max-w-[1200px] flex items-center justify-between px-full lg:px-0  z-[60]`}
           >

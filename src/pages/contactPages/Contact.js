@@ -19,9 +19,6 @@ const Contact = () => {
   return (
     <div className="w-full h-full flex items-center justify-center bg-white py-full">
       <div className="max-w-[1200px] px-full md:px-full lg:px-full xl:px-0">
-        <h2 className="text-[1.6rem] text-center font-bold py-[22px]">
-          CONTACT
-        </h2>
         <div className="w-full  text-start  leading-[1.4rem] tracking-[1px] text-[#444]">
           <ul className="w-full mb-[12px]">
             <li>
@@ -76,7 +73,7 @@ const Contact = () => {
               placeholder="..."
               className="border-[#EF4444] w-full h-[44px] border-[1px] px-half mr-half"
             />
-            <button className="bg-red text-white px-half rounded-2xl hover:opacity-[0.8] flex items-center justify-center transition-all duration-300">
+            <button className="bg-red text-white px-half  hover:opacity-[0.8] flex items-center justify-center transition-all duration-300">
               Send
               <IoIosSend className="text-[2.4rem] ml-[6px]" />
             </button>

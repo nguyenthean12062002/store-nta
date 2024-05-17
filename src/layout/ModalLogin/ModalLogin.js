@@ -21,6 +21,9 @@ const ModalLogin = () => {
   // hanlde login
   const handleLogin = (e) => {
     e.preventDefault();
+    if (name === " " || pass === " ") {
+      toast.error("Enter full confidential account informati");
+    }
     //check condition
     if (name === "admin" && pass === "1") {
       login(name);
@@ -121,7 +124,7 @@ const ModalLogin = () => {
                   id="checkRemember"
                 />
                 <label
-                  for="checkRemember"
+                  htmlFor="checkRemember"
                   className="select-none cursor-pointer text-gray-500 text-[0.9rem]"
                 >
                   Remember me!

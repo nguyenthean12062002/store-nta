@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 // cart context
 import { CartContext } from "../../component/cart/CartContext";
 // css pages
@@ -10,11 +9,9 @@ import { ProductsContext } from "../../component/products/ProductsContext";
 import Product from "../../component/products/Product";
 //import Chats
 import Chats from "../../component/chatmess/Chats";
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
 // search
 import Search from "../../component/search/Search";
-// path
-import Path from "../../layout/Path/Path";
 // icon
 import { CiFilter } from "react-icons/ci";
 import { CiCircleList } from "react-icons/ci";
@@ -29,28 +26,19 @@ const Products = () => {
   //  value filer category
   const [values, setValue] = useState("");
   const [upOrDown, setUpOrDown] = useState("=");
-  // filter sản phẩm tăng hoặc giảm theo giá
+  // filter product in price
   const [isStatusPrciceFilter, setIsStatusPriceFilter] = useState(null);
-  // random ngẫu nhiên một sản phẩm review
+  // random product hot
   const lenghProducts = products.length;
   const idRandom = Math.floor(Math.random() * lenghProducts);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
+    window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      handleReload();
-    });
-    return () => {
-      window.removeEventListener("load", () => {});
-    };
-  }, []);
+
   const Item = ({ children }) => {
     const [isActive, setIsActive] = useState(false);
-    const handleClick = () => {
-      setIsActive(true);
-    };
+
     return (
       <div
         className={`item my-[2px] w-full capitalize text-gray-500 hover:text-black h-[42px] flex items-center justify-start cursor-pointer p-[8px] ${
@@ -71,21 +59,21 @@ const Products = () => {
   const LoadCategory = () => {
     const arr = [];
     products.filter((item) => {
-      arr.push(item.category.name);
+      return arr.push(item.category.name);
     });
     const newArr = [...new Set(arr)];
     return newArr.map((item, index) => {
       return <Item key={index}>{item}</Item>;
     });
   };
-  // các phần tử con của Filter
+
   const ChildrenFilter = ({ title, select1, select2, select3 }) => {
     return (
       <div className="w-full h-full py-full border-b-[0.5px] border-[#EF4444]">
         <h4 className="text-[0.95rem] my-half mb-full capitalize  ml-half ">
           {title}
         </h4>
-        {/* show các danh mục chọn lựa */}
+        {/* show select options*/}
         <div className="my-half pl-full text-gray-500 text-[0.9rem]">
           <Flex justify="start" className="my-[6px]">
             <input type="checkbox" className="mr-half" />
@@ -138,10 +126,6 @@ const Products = () => {
       setShowButtonToTop(true);
     }
   });
-  const handleReload = () => {
-    window.location.href = "/"; // Đặt lại pathname về trang chủ
-  };
-
   const itemNameCategory = document.querySelectorAll(".item");
   itemNameCategory.forEach((item) => {
     item.addEventListener("click", () => {
@@ -149,31 +133,30 @@ const Products = () => {
     });
   });
   return (
-    <div className="bg-bg w-full flex items-center flex-col justify-center relative transition-all duration-500">
-      {/* path */}
-      <div className="w-full h-full max-w-main mt-full px-full xl:px-0">
-        <Path />
-      </div>
-      {/* demo sản phẩm hot */}
+    <div className="products__page bg-bg w-full flex items-center flex-col justify-center relative transition-all duration-500">
+      {/* demo product hot */}
       <Flex
         justify="center"
-        className="w-full h-full min-h-[400px] bg-white border-b-[1px] mb-half px-full lg:px-0   "
+        className="w-full h-full  min-h-[400px] bg-white border-b-[1px] mb-half px-full lg:px-0   "
       >
         {idRandom ? (
           <>
             {products.map((item, index) => {
-              if (index === idRandom) {
+              if (index && index === idRandom) {
                 return (
-                  <div className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-full xl:px-0">
+                  <div
+                    key={index}
+                    className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-full xl:px-0"
+                  >
                     {/*info and button action  */}
-                    <div className="mb-full md:mb-0">
+                    <div className="mb-full  md:mb-0">
                       {/* title */}
                       <span className="text-[1.6rem] mb-[40px] block mt-[24px]">
                         SALES PRODUCTS
                       </span>
                       {/* info */}
-                      <div>
-                        {/* tên sản phẩm */}
+                      <div className="">
+                        {/* name*/}
                         <h2 className="py-half text-[1.3rem]">{item.title}</h2>
                         {/* category */}
                         <h4 className="text-main text-[1.1rem] py-half">
@@ -212,17 +195,17 @@ const Products = () => {
                         </Link>
                       </Flex>
                     </div>
-                    {/* ảnh */}
-                    <Flex justify="start" className="w-full h-full flex-col  ">
+                    {/* image */}
+                    <div className="w-full h-full flex flex-col items-end justify-center bg-main  ">
                       <img
-                        className="w-[70%] h-[80%] object-cover 	"
+                        className="w-[80%] h-[80%] object-contain"
                         src={item.images}
-                        alt="img"
+                        alt="img__product"
                       />
-                      <span className="block text-center text-gray-400 pt-[4px] text-[0.8rem]">
+                      <span className="inline-block text-center text-gray-400 pt-[4px] text-[0.8rem] mr-full">
                         {item.updatedAt}
                       </span>
-                    </Flex>
+                    </div>
                   </div>
                 );
               }
@@ -242,12 +225,12 @@ const Products = () => {
       <div className="w-[100%] md:w-[70%]">
         <Search />
       </div>
-      {/* list products */}
+      {/* main products pages */}
       <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[20%,80%] px-full md:px-full xl:px-0 transition-all duration-200  pb-full">
-        {/* thanh bên */}
+        {/* aside product */}
         <aside className="max-w-[90%]  md:max-w-[80%] w-full  mt-full ">
           <div className="w-[100%]">
-            {/* list các tên danh mục mặt hàng */}
+            {/* list name category */}
             <div className="w-full   ">
               <Flex className="font-bold text-[1rem] mt-[22px] mb-[20px] md:text-[1.2rem]">
                 <CiCircleList className="font-bold mr-half text-red text-[1.5rem]" />
@@ -258,7 +241,7 @@ const Products = () => {
                 {LoadCategory()}
               </ul>
             </div>
-            {/* bộ lọc tìm kiếm */}
+            {/* filter */}
             <div className="max-w-[90%] md:max-w-[80%]">
               <Flex
                 justify="start"
@@ -303,14 +286,14 @@ const Products = () => {
               <button className="px-half py-[8px] shadown-4xl mx-[6px]  cursor-pointer  bg-white hover:text-gray-500">
                 Selling
               </button>
-              {/* sap xep theo gia */}
+              {/* arrange price */}
 
               <Flex
                 className="bg-white min-w-[190px] w-full h-full mx-[6px] py-[4.5px]  p-[8.2px]  "
                 justify="between"
               >
                 <h4 className="select-none text-gray-600">Price</h4>
-                {/* tang hoac giam */}
+                {/* up or down price */}
                 <Flex justify="start">
                   <div
                     className="text-white  hover:text-black bg-red mx-[2px] transition-all cursor-pointer duration-300 p-[4px] px-[8px]"
@@ -349,15 +332,17 @@ const Products = () => {
                     }
                     return product;
                   }
+                  return product;
                 }
+                return product;
               })
-              .map((product, index) => {
-                return <Product products={product} key={index} />;
-              })}
+              .map((product, index) => (
+                <Product products={product} key={index} />
+              ))}
           </div>
         </div>
       </div>
-      {/* button lên đầu trang */}
+      {/* button srcoll to top */}
       <div
         hidden={showButtonToTop}
         className="fixed z-[110] w-full bottom-[20px] right-[-10px] transition-all duration-500 "

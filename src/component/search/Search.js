@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { GrSearch } from "react-icons/gr";
 // import Modal
-import Modal from "../modal/Modal";
+import Modal from "../components/modal/Modal";
 // import products context
 import { ProductsContext } from "../products/ProductsContext";
 import OverLay from "../../layout/OverLay/OverLay";
@@ -33,7 +33,7 @@ const Search = () => {
           />
         </div>
         <label
-          for="input"
+          htmlFor="input"
           className="w-[60px] absolute cursor-pointer  right-[5%] md:right-[0%] h-[36px] md:h-[40px] flex items-center justify-center  ]"
         >
           <GrSearch className="text-[1.2rem] font-bold text-main " />

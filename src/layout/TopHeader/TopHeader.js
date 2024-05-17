@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
 // login redux
 import { LoginContext } from "../../component/login/LoginProvider";
 //

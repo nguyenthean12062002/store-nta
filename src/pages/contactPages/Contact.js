@@ -40,7 +40,9 @@ const Contact = () => {
               className="hover:underline decoration-[#FEBD68] text-black"
             >
               <span className="text-[1.1rem] text-red block">Github:</span>
-              <p className="ml-full mb-half">https://github.com/nguyenan12a</p>
+              <p className="ml-full mb-half">
+                https://github.com/nguyenthean12062002
+              </p>
             </a>
           </ul>
           <p>

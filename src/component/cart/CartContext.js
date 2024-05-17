@@ -7,7 +7,7 @@ const CartProvider = ({ children }) => {
   // add produt in cart
   useEffect(() => {
     let isCout = 0;
-    cart.map((item) => {
+    cart.forEach((item) => {
       if (item) {
         isCout = cart.reduce((current, items) => {
           return current + items.amout;
@@ -18,7 +18,6 @@ const CartProvider = ({ children }) => {
   }, [cart]);
   const addProducts = (product, id) => {
     const newItem = { ...product, amout: 1 };
-    // tìm kiếm xem id của item đó đã có trong giỏ hàng chưa có thì return cartItem =true
     const cartItem = cart.find((item) => {
       return item.id === id;
     });
@@ -27,9 +26,8 @@ const CartProvider = ({ children }) => {
       const newCart = [...cart].map((item) => {
         if (item.id === id) {
           return { ...item, amout: cartItem.amout + 1 };
-        } else {
-          return item;
         }
+        return item;
       });
       const idToast = toast.warning("Products already to cart");
       setTimeout(() => {

@@ -7,34 +7,26 @@ import { LoginContext } from "../../component/login/LoginProvider";
 import { BsCartCheck } from "react-icons/bs";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 // flex
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
+import "./cartpage.scss";
 const CartPages = () => {
   const { user } = useContext(LoginContext);
   const { cart, totalCart } = useContext(CartContext);
   const [show, setShow] = useState(true);
   const [hiddenButtonBuy, setHiddenButtonBuy] = useState(false);
-  const handleReload = () => {
-    // window.location.href = "/"; // Đặt lại pathname về trang chủ
-  };
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      handleReload();
-    });
-    return () => {
-      window.removeEventListener("load", () => {});
-    };
-  }, []);
-  // Thực hiện scroll đến đầu trang khi component được render lại
+  const [totalPrice, setTotalPrice] = useState(0);
+  let arrChecked = [];
+  // Scroll to top when pages render
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  // Xem giỏ hàng trống thì ẩn nút nhấn mua
+  // NO product in cart is hidden  button buy
   useEffect(() => {
     if (cart.length === 0) {
       setHiddenButtonBuy(true);
     }
   }, [cart]);
-  // xử lí hành động thực hiện chọn tất cả các sản phẩm trong giỏ hàng
+  // select all product in cart
   const allCheckBox = document.querySelectorAll("#checBoxCartPages");
   const handleCheckBokAll = (e) => {
     allCheckBox.forEach((item) => {
@@ -43,31 +35,21 @@ const CartPages = () => {
       } else item.checked = false;
     });
   };
-
-  //
-  const [check, setCheck] = useState(false);
-  let arrChecked = [];
   allCheckBox.forEach((item) => {
     item.addEventListener("click", () => {
-      if (item.checked === true) {
-        setCheck(true);
-      } else {
-        setCheck(false);
-      }
+      console.log(item);
     });
   });
-  console.log(check);
   // show total money when click products want to buy
   const handleTotalCart = () => {
     arrChecked.forEach((item) => {
       console.log(item);
     });
   };
-  handleTotalCart();
   return (
-    <div className="w-full h-full min-h-[85vh] mt-half flex items-start justify-center bg-white">
+    <div className="cart__page w-full h-full min-h-[85vh] mt-half flex items-start justify-center bg-white">
       {/* show products in cart */}
-      <div className="w-full max-w-[1200px] h-full relative ">
+      <div className="w-full max-w-main h-full relative ">
         <div className="lg:px-0">
           {/* title */}
           <Flex justify="between" className="bg-bg py-full px-full">

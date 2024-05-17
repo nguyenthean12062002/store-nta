@@ -6,26 +6,13 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { FaVoicemail } from "react-icons/fa6";
 
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
 const BuyProductsPages = () => {
-  console.log("reset");
-  const handleReload = () => {
-    // window.location.href = "/"; // Đặt lại pathname về trang chủ
-  };
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      handleReload();
-    });
-    return () => {
-      window.removeEventListener("load", () => {});
-    };
-  }, []);
-  // Thực hiện scroll đến đầu trang khi component được render lại
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="bg-white w-full h-ful flex items-start justify-center flex-col px-full">
+    <div className="bg-white w-full h-ful flex items-center justify-center flex-col px-full">
       {/* show products and info buyer */}
       <div className="text-[1rem] w-full h-full max-w-[1200px] grid grid-cols-1 md:grid-cols-[60%,38%] gap-x-[24px] bg-bg my-half py-full px-half md:px-full">
         {/* products want buy */}

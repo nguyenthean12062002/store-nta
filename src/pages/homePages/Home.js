@@ -1,15 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ProductsContext } from "../../component/products/ProductsContext";
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
 //slide
-import Slides from "../../component/slide/Slide";
+import Banner from "../../component/banner/Banner";
 //cart context
 import { CartContext } from "../../component/cart/CartContext";
 // css
 import "./home.scss";
-// path
-import Path from "../../layout/Path/Path";
 // icon
 import IconFaceBook from "../../component/iconComponent/IconFaceBook";
 import IconTele from "../../component/iconComponent/IconTele";
@@ -51,22 +49,22 @@ const Home = () => {
       return arr.push(item.category.name);
     });
     const newArr = [...new Set(arr)];
-    return newArr.map((item) => {
-      return <li className="py-half mx-half capitalize">{item}</li>;
+    return newArr.map((item, index) => {
+      return (
+        <li key={index} className="py-half mx-half capitalize">
+          {item}
+        </li>
+      );
     });
   };
   return (
     <Flex
       justify="center"
-      className="w-full h-full transition-all flex-col duration-300 relative  py-full bg-white "
+      className="w-full h-full transition-all flex-col duration-300 relative  pb-full bg-white "
     >
-      {/* path */}
-      <div className="w-full h-full max-w-main px-full xl:px-0">
-        <Path />
-      </div>
       {/* banner  */}
       <div className="w-full h-full ">
-        <Slides />
+        <Banner />
       </div>
       {/* content home */}
       <div className="w-full h-full max-w-main">
@@ -150,7 +148,10 @@ const Home = () => {
               })
               .map((item, index) => {
                 return (
-                  <div className="bg-white relative overflow-hidden border-[1px] hover:border-[#ef4444] transition-all duration-300">
+                  <div
+                    key={index}
+                    className="bg-white relative overflow-hidden border-[1px] hover:border-[#ef4444] transition-all duration-300"
+                  >
                     <Link
                       to={`/products/id/${item.id}`}
                       key={index}
@@ -163,26 +164,19 @@ const Home = () => {
                           className="w-auto h-[100%] object-contain"
                         />
                       </div>
-                      <div className="w-full h-full flex-1 ml-full flex items-center justify-center">
+                      <div className="w-full h-full flex-1 ml-half flex items-center justify-center">
                         <div>
-                          <h3 className="text-[1.1rem] uppercase mb-[4px]">
-                            {item.category.name}
-                          </h3>
-                          <div className="text-[1rem] capitalize mb-[4px]">
+                          <div className="text-[1.1rem] capitalize mb-[4px]">
                             {item.title}
                           </div>
-
                           <h4 className="text-main italic mb-[4px]">
                             $ {item.price}
                           </h4>
-                          <p className="text-gray-500 text-[0.9rem] mb-[4px] line-clamp-2">
-                            {item.description}
-                          </p>
                         </div>
                       </div>
                     </Link>
                     {/* button action */}
-                    <div className="mt-[8px] absolute bottom-[2%] right-[4%] md:bottom-[10%] md:right-[10%] flex items-center justify-start ">
+                    <div className="mt-half absolute bottom-[6%] right-[4%] md:bottom-[8%] md:right-[10%] flex items-center justify-start ">
                       <Link
                         to="/cart/buy"
                         className="bg-main h-[32px] inline-block mr-[8px]  px-[8px]  text-white transition-all duration-300 hover:opacity-[0.7] flex items-center justify-center"
@@ -190,7 +184,7 @@ const Home = () => {
                         Buy now
                       </Link>
                       <button
-                        className="h-[32px] border-[1px] border-[#333]  px-[8px] transition-all duration-300 bg-red text-white hover:opacity-[0.7]"
+                        className="h-[32px] px-[8px] transition-all duration-300 bg-red text-white hover:opacity-[0.7]"
                         onClick={() => {
                           addProducts(item, item.id);
                         }}
@@ -226,7 +220,7 @@ const Home = () => {
                 onClick={() => {
                   navigate("/products");
                 }}
-                className=" absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[5%] text-[1.1rem] rounded-xl p-[4px] text-white bg-red  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 "
+                className=" absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[5%] text-[1.1rem]  p-[4px] text-white bg-red  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 "
               >
                 Products Us
               </button>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { IoIosRemove, IoMdAdd } from "react-icons/io";
 import { Link } from "react-router-dom";
-import Flex from "../flex/Flex";
+import Flex from "../components/flex/Flex";
 //import Cartcontext
 import { CartContext } from "./CartContext";
 const CartItem = ({ products }) => {
@@ -25,7 +25,7 @@ const CartItem = ({ products }) => {
       />
       <div
         className={`flex items-center justify-between  w-full h-full border-transparent p-half my-half transtion-all duration-300 border-b-[1px] ${
-          check === true || check === true ? "border-[#ef4444]" : ""
+          check === true ? "border-[#ef4444]" : ""
         }`}
       >
         {/* img */}
@@ -50,7 +50,7 @@ const CartItem = ({ products }) => {
                   onClick={() => {
                     decreaseAmout(products, id);
                   }}
-                  className="w-[20px] h-[20px] bg-gray-200 flex items-center justify-center cursor-pointer "
+                  className="w-[25px] h-[25px] bg-gray-200 flex items-center justify-center cursor-pointer "
                 >
                   <IoIosRemove />
                 </div>
@@ -61,7 +61,7 @@ const CartItem = ({ products }) => {
                   onClick={() => {
                     increaseAmout(products, id);
                   }}
-                  className="w-[20px] h-[20px] bg-gray-200 flex items-center justify-center cursor-pointer"
+                  className="w-[25px] h-[25px] bg-gray-200 flex items-center justify-center cursor-pointer"
                 >
                   <IoMdAdd />
                 </div>

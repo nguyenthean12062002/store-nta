@@ -18,6 +18,7 @@ module.exports = {
       colors: {
         main: "#FEBD68",
         red: "#EF4444",
+        sub: "#777",
       },
       padding: {
         full: "24px",

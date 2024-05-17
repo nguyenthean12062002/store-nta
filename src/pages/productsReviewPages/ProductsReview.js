@@ -7,8 +7,7 @@ import { ProductsContext } from "../../component/products/ProductsContext";
 // products
 import Product from "../../component/products/Product";
 // flex
-import Path from "../../layout/Path/Path";
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
 // icon
 import { FaFacebookSquare } from "react-icons/fa";
 import { GiTwister } from "react-icons/gi";
@@ -55,26 +54,23 @@ const ProductsReview = () => {
   return (
     <div className="bg-bg w-full h-full flex items-center justify-center">
       <div className="w-full max-w-[1200px] h-full mt-full pb-full">
-        {/* path */}
-        <div className="px-full xl:px-0">
-          <Path />
-        </div>
         {/* review */}
         <div className="w-full h-full min-h-[700px] bg-white md:h-[500px] px-full md:px-[10%] grid grid-cols-1 md:grid-cols-2 ">
           {/* img */}
           <div className="w-[90%] md:w-[70%] lg:w-[70%] h-auto m-auto  flex flex-col items-center justify-center py-full">
             <img
               src={images || images[0]}
-              alt=""
+              alt="images"
               className="h-full w-full object-cover"
             />
-            {/* ảnh thêm   */}
+            {/* more images   */}
             <div className="w-full h-[120px] grid grid-cols-3 mt-half gap-x-[8px]">
               {images.map((img, index) => {
                 return (
                   <div onClick={() => {}} className="cursor-pointer">
                     <img
                       src={img}
+                      alt="more__img"
                       key={index}
                       className="w-full object-cover"
                     />

@@ -12,7 +12,7 @@ import { CartContext } from "../../component/cart/CartContext";
 import { LoginContext } from "../../component/login/LoginProvider";
 // list item nav
 import { ListItemNav } from "../Nav/Nav";
-import Flex from "../../component/flex/Flex";
+import Flex from "../../component/components/flex/Flex";
 const Header = (props) => {
   const navigate = useNavigate();
   const { user, logout, login } = useContext(LoginContext);
@@ -61,7 +61,7 @@ const Header = (props) => {
           <div
             className={`${
               isHeader
-                ? "shadow-md bg-main z-90 fixed top-0 right-0 transition-all duration-300 "
+                ? "shadow-lg border-b-[0.5px] border-[#888] bg-main z-90 fixed top-0 right-0 transition-all duration-300 "
                 : ""
             }   right-0  w-full h-[60px]  flex items-center justify-between px-full  z-[90]`}
           >
@@ -110,19 +110,19 @@ const Header = (props) => {
         </div>
       ) : (
         <div
-          className={`w-full bg-bg md:px-full  xl:px-0 h-[60px] flex justify-center items-center ${
-            isHeader ? "bg-bg z-[200] fixed top-0" : ""
+          className={`w-full bg-bg  lg:px-full xl:px-0 h-[60px] flex justify-center items-center ${
+            isHeader ? "bg-bg z-[200] fixed top-0 shadow-xl" : ""
           } `}
         >
           {/* logo and nav */}
           <div
             className={`${
               isHeader
-                ? " fixed top-0 transition-opacity duration-300 shadown-xl md:px-full lg:px-0"
+                ? " fixed top-0  transition-opacity duration-300 shadown-xl md:px-full lg:px-0"
                 : ""
             }     w-full h-[60px] max-w-[1200px] flex items-center justify-between px-full lg:px-0  z-[60]`}
           >
-            {/* logo và chọn khu vực*/}
+            {/* logo and selec region*/}
             <Flex justify="start" className="h-full">
               {/* logo */}
               <a
@@ -135,7 +135,7 @@ const Header = (props) => {
                 </span>
                 A
               </a>
-              {/* chọn khu vực */}
+              {/* select region*/}
               <Flex
                 justify="center"
                 className="border-l-[1px] border-r-[1px] h-full px-half "

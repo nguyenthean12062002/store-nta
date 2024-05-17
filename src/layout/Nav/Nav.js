@@ -2,10 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import { ProductsContext } from "../../component/products/ProductsContext";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
-const ItemNav = ({ children, classe, className }) => {
+const ItemNav = ({ children, className }) => {
   return (
     <div
-      className={`${classe} ${className}  item__nav text-[1.1rem] hover:text-gray-500 w-full h-[60px] md:h-full px-full md:px-0   text-start md:text-center   lg:w-full transition-all duration-300`}
+      className={` ${className}  item__nav text-[1.1rem] hover:text-gray-500 w-full h-[60px] md:h-full px-full md:px-0   text-start md:text-center   lg:w-full transition-all duration-300`}
     >
       {children}
     </div>
@@ -19,15 +19,15 @@ export const ListItemNav = () => {
       setHiddenNav(true);
     }
   }, []);
-  const allItem = document.querySelectorAll(".item__nav");
-  allItem.forEach((item) => {
-    item.addEventListener("click", () => {
-      allItem.forEach((item) => {
-        item.classList.remove("active");
-      });
-      item.classList.add("active");
-    });
-  });
+  // const allItem = document.querySelectorAll(".item__nav");
+  // allItem.forEach((item) => {
+  //   item.addEventListener("click", () => {
+  //     allItem.forEach((item) => {
+  //       item.classList.remove("active");
+  //     });
+  //     item.classList.add("active");
+  //   });
+  // });
   // load category
   const { products } = useContext(ProductsContext);
   const handleLoadCategory = () => {
@@ -54,7 +54,7 @@ export const ListItemNav = () => {
         className={`transition-all duration-300 w-full h-full   flex  items-center justify-center `}
       >
         <nav className=" w-[60%] h-full flex items-center justify-start flex-col md:flex-row transition-all duration-300">
-          <ItemNav classe="active" className="item__home">
+          <ItemNav className="item__home">
             <Link
               className=" w-full h-full flex items-center justify-start md:justify-center "
               to="/"

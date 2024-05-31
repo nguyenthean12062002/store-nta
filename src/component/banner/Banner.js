@@ -27,11 +27,11 @@ const Banner = () => {
             </div>
             <div className="info__wrapper">
               <h4>0.4M</h4>
-              <span>Monthly traffic</span>
+              <span>Monthly Traffic</span>
             </div>
             <div className="info__wrapper">
               <h4>11+</h4>
-              <span>Sales per year</span>
+              <span>Sales Per Year</span>
             </div>
           </Flex>
         </div>

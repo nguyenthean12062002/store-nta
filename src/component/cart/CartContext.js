@@ -3,39 +3,34 @@ import { toast } from "react-toastify";
 import { LoginContext } from "../login/LoginProvider";
 
 export const CartContext = createContext();
+
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cout, setCout] = useState(0);
   const { user } = useContext(LoginContext);
-  // add produt in cart
+
   useEffect(() => {
-    let isCout = 0;
-    cart.forEach((item) => {
-      if (item) {
-        isCout = cart.reduce((current, items) => {
-          return current + items.amout;
-        }, 0);
-      }
-    });
-    return setCout(isCout);
+    const isCout = cart.reduce((current, item) => {
+      return current + item.amout;
+    }, 0);
+    setCout(isCout);
   }, [cart]);
+
   const addProducts = (product, id) => {
-    if (user.auth === false) {
+    if (user.name === "" || user.auth === false) {
       toast.warning("Please login your account!");
     } else {
       const newItem = { ...product, amout: 1 };
-      const cartItem = cart.find((item) => {
-        return item.id === id;
-      });
-      // check the item areadly in cart
+      const cartItem = cart.find((item) => item.id === id);
+
       if (cartItem) {
-        const newCart = [...cart].map((item) => {
+        const newCart = cart.map((item) => {
           if (item.id === id) {
             return { ...item, amout: cartItem.amout + 1 };
           }
           return item;
         });
-        const idToast = toast.warning("Products already to cart");
+        const idToast = toast.warning("Products already in cart");
         setTimeout(() => {
           toast.dismiss(idToast);
         }, 1200);
@@ -49,26 +44,41 @@ const CartProvider = ({ children }) => {
       }
     }
   };
-  const removeProduct = (id) => {
-    const newArr = cart.filter((item) => {
-      return item.id !== id;
-    });
 
+  const removeProduct = (id) => {
+    const newArr = cart.filter((item) => item.id !== id);
     setCart(newArr);
   };
+
   const removeAllProducts = () => {
     setCart([]);
   };
-  const increaseAmout = (products, id) => {
-    setCout(products.amout++);
+
+  const increaseAmout = (id) => {
+    const newCart = cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, amout: item.amout + 1 };
+      }
+      return item;
+    });
+    setCart(newCart);
   };
-  const decreaseAmout = (products, id) => {
-    if (cout === 1) {
+
+  const decreaseAmout = (id) => {
+    const product = cart.find((item) => item.id === id);
+    if (product.amout === 1) {
       removeProduct(id);
     } else {
-      setCout(products.amout--);
+      const newCart = cart.map((item) => {
+        if (item.id === id) {
+          return { ...item, amout: item.amout - 1 };
+        }
+        return item;
+      });
+      setCart(newCart);
     }
   };
+
   return (
     <CartContext.Provider
       value={{

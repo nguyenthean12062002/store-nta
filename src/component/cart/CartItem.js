@@ -48,7 +48,7 @@ const CartItem = ({ products }) => {
               <div className="flex items-center justify-between w-[50px] md:w-[80px] mb-half text-gray-500">
                 <div
                   onClick={() => {
-                    decreaseAmout(products, id);
+                    decreaseAmout(id);
                   }}
                   className="w-[25px] h-[25px] bg-gray-200 flex items-center justify-center cursor-pointer "
                 >
@@ -59,7 +59,7 @@ const CartItem = ({ products }) => {
                 </div>
                 <div
                   onClick={() => {
-                    increaseAmout(products, id);
+                    increaseAmout(id);
                   }}
                   className="w-[25px] h-[25px] bg-gray-200 flex items-center justify-center cursor-pointer"
                 >

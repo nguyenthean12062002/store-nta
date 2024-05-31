@@ -124,7 +124,7 @@ const Home = () => {
           className="w-full flex items-center justify-center flex-col my-full bg-white"
         >
           <h3 className="w-full  pl-full my-half py-half text-[1.4rem] text-black font-medium">
-            Category of products
+            Category Of Products
           </h3>
           <ul className="text-[1.1rem] text-gray-500 text-center flex flex-col md:flex-row items-center justify-evenly my-half">
             {DiversityHandle()}
@@ -136,7 +136,7 @@ const Home = () => {
           className="w-full h-full my-full bg-bg py-full px-half md:px-half lg:px-full "
         >
           <h3 className="mt-full  pl-half text-[1.4rem] py-full text-black font-medium ">
-            Suggestion today
+            Suggestion Today
           </h3>
           <div className="bg-bg w-full pt-half px-full md:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[12px] md:gap-y-0 md:gap-x-[4px]">
             {products
@@ -181,20 +181,20 @@ const Home = () => {
                       </div>
                     </Link>
                     {/* button action */}
-                    <div className="mt-half absolute bottom-[6%] right-[4%] md:bottom-[8%] md:right-[10%] flex items-center justify-start ">
+                    <div className="mt-half absolute bottom-[6%] right-[4%] md:bottom-[8%] md:right-[8%] flex items-center justify-start ">
                       <Link
                         to="/cart/buy"
-                        className="bg-main h-[32px] inline-block mr-[8px]  px-[8px]  text-white transition-all duration-300 hover:opacity-[0.7] flex items-center justify-center"
+                        className="text-[0.9rem] bg-main h-[32px] inline-block mr-[8px]  px-[8px]  text-white transition-all duration-300 hover:opacity-[0.7] flex items-center justify-center"
                       >
-                        Buy now
+                        Buy Now
                       </Link>
                       <button
-                        className="h-[32px] px-[8px] transition-all duration-300 bg-red text-white hover:opacity-[0.7]"
+                        className="text-[0.9rem] h-[32px] px-[8px] transition-all duration-300 bg-red text-white hover:opacity-[0.7]"
                         onClick={() => {
                           addProducts(item, item.id);
                         }}
                       >
-                        Add to cart
+                        Add To Cart
                       </button>
                     </div>
                   </div>

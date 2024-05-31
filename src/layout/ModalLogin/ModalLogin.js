@@ -12,12 +12,11 @@ const ModalLogin = () => {
   const [viewPass, setViewPass] = useState(false);
   const [error, setError] = useState("");
   const [errorPass, setErrorPass] = useState("");
-
   useEffect(() => {
     if (localStorage.getItem("name")) {
       user.name = localStorage.getItem("name");
     }
-  }, [user]);
+  }, []);
   // hanlde login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -71,7 +70,7 @@ const ModalLogin = () => {
                   setName(e.target.value);
                 }}
                 onBlur={handleBlur}
-                className="border-[1px] border-[#888] px-[4px] w-full h-[32px] text-[0.9rem] mt-[4px] "
+                className="border-[1px] border-[#888] px-[6px] w-full h-[32px] text-[0.9rem] mt-[4px] "
                 id="user__name"
                 autoFocus
               />
@@ -96,7 +95,7 @@ const ModalLogin = () => {
                   setPass(e.target.value);
                 }}
                 onBlur={hanldeBlurPass}
-                className="border-[1px] border-[#888] px-[4px]  w-full h-[32px] text-[0.9rem] mt-[4px]"
+                className="border-[1px] border-[#888] px-[6px]  w-full h-[32px] text-[0.9rem] mt-[4px]"
                 id="user__pass"
               />
               {/* show error */}
@@ -107,7 +106,7 @@ const ModalLogin = () => {
               </div>
               {/* show pass  */}
               <div
-                className="top-[34%] right-0 absolute cursor-pointer"
+                className="top-[39%] right-0 absolute cursor-pointer"
                 onClick={() => {
                   setViewPass(!viewPass);
                 }}
@@ -115,7 +114,6 @@ const ModalLogin = () => {
                 <GrFormView className="text-[1.5rem] text-main" />
               </div>
             </div>
-            {/* quên mật khẩu và nhớ tài khoản */}
             <div className="w-[100%] md:w-[65%] lg:w-[60%]  py-half flex items-center justify-between">
               <div className=" flex items-center justify-start">
                 <input

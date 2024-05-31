@@ -1,26 +1,16 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Flex from "../../component/components/flex/Flex";
-// login redux
 import { LoginContext } from "../../component/login/LoginProvider";
-//
 import { useNavigate } from "react-router-dom";
-// toast toastify
 import { ToastContainer, toast } from "react-toastify";
-// icon
 import { FaRegUserCircle } from "react-icons/fa";
-// modal login
 import ModalLogin from "../ModalLogin/ModalLogin";
 import OverLay from "../OverLay/OverLay";
 const TopHeader = () => {
   const [showLogout, setIsShowLogout] = useState(true);
-  const [showLoginModal, setShowLoginModal] = useState(true);
+  const [hiddenLoginModal, setHiddenLoginModal] = useState(true);
   const { user, logout } = useContext(LoginContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (user && user.name) {
-      setShowLoginModal(true);
-    }
-  }, [user]);
   return (
     <div className=" z-[50] w-full h-full flex items-center justify-center bg-white ">
       <div className="w-full max-w-[1200px] h-[54px] px-full  xl:px-0">
@@ -85,14 +75,14 @@ const TopHeader = () => {
                 </div>
               </div>
             ) : (
-              <div
-                onClick={() => {
-                  setShowLoginModal(!showLoginModal);
-                }}
-                className="w-full h-[100%] transition-all duration-500 flex items-center justify-start"
-              >
+              <div className="w-full h-[100%] transition-all duration-500 flex items-center justify-start">
                 <span className="mr-half text-gray-700">Hello!</span>
-                <div className="w-full h-full flex items-center justify-center px-[9px] py-[4px] border-l-[1px] border-r-[1px] transition-all duration-500 bg-white text-red px-half  cursor-pointer  hover:text-main hover:bg-slate-100">
+                <div
+                  onClick={() => {
+                    setHiddenLoginModal(false);
+                  }}
+                  className="w-full h-full flex items-center justify-center px-[9px] py-[4px] border-l-[1px] border-r-[1px] transition-all duration-500 bg-white text-red px-half  cursor-pointer  hover:text-main hover:bg-slate-100"
+                >
                   Login
                 </div>
               </div>
@@ -100,16 +90,14 @@ const TopHeader = () => {
           </div>
         </Flex>
         <ToastContainer />
-        {/* modal login */}
-        <div hidden={showLoginModal} className="transition-all duration-300">
+        <div hidden={hiddenLoginModal} className="transition-all duration-300">
           <ModalLogin />
         </div>
-        {/* overlay */}
         <div
-          hidden={showLoginModal}
+          hidden={hiddenLoginModal}
           className="transition-all duration-300"
           onClick={() => {
-            setShowLoginModal(true);
+            setHiddenLoginModal(true);
           }}
         >
           <OverLay />

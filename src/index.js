@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+// import "dotenv/config";
 // Products provider
 import ProductsProvider from "./component/products/ProductsContext";
 // cart provider

@@ -1,4 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../component/cart/CartContext";
 import CartItem from "../../component/cart/CartItem";
@@ -14,8 +20,6 @@ const CartPages = () => {
   const { cart, totalCart } = useContext(CartContext);
   const [show, setShow] = useState(true);
   const [hiddenButtonBuy, setHiddenButtonBuy] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
-  let arrChecked = [];
   // Scroll to top when pages render
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,8 +35,8 @@ const CartPages = () => {
   const handleCheckBokAll = (e) => {
     allCheckBox.forEach((item) => {
       if (e.target.checked) {
-        item.checked = true;
-      } else item.checked = false;
+        return (item.checked = true);
+      } else return (item.checked = false);
     });
   };
   allCheckBox.forEach((item) => {
@@ -40,12 +44,7 @@ const CartPages = () => {
       console.log(item);
     });
   });
-  // show total money when click products want to buy
-  const handleTotalCart = () => {
-    arrChecked.forEach((item) => {
-      console.log(item);
-    });
-  };
+
   return (
     <div className="cart__page w-full h-full min-h-[85vh] mt-half flex items-start justify-center bg-white">
       {/* show products in cart */}
@@ -64,7 +63,10 @@ const CartPages = () => {
               }}
             >
               <input id="check" type="checkbox" />
-              <label for="check" className="cursor-pointer ml-[4px] text-red">
+              <label
+                htmlFor="check"
+                className="cursor-pointer ml-[4px] text-red"
+              >
                 Select all
               </label>
             </div>

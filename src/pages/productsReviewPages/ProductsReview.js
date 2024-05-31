@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-//cart context
 import { CartContext } from "../../component/cart/CartContext";
-//product context
 import { ProductsContext } from "../../component/products/ProductsContext";
-// products
 import Product from "../../component/products/Product";
-// flex
 import Flex from "../../component/components/flex/Flex";
-// icon
+import { Loading } from "../../component/components";
 import { FaFacebookSquare } from "react-icons/fa";
 import { GiTwister } from "react-icons/gi";
 import { SiShopee } from "react-icons/si";
@@ -16,41 +12,29 @@ import { PiStarThin } from "react-icons/pi";
 
 const ProductsReview = () => {
   const [valueComments, setValueComments] = useState("");
-  // Đặt lại pathname về trang chủ
-  const handleReload = () => {
-    window.location.href = "/";
-  };
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      handleReload();
-    });
-    return () => {
-      window.removeEventListener("load", () => {});
-    };
-  }, []);
-  // Thực hiện scroll đến đầu trang khi component được render lại
+  const { addProducts } = useContext(CartContext);
+  const { products } = useContext(ProductsContext);
+
+  const { id } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { addProducts } = useContext(CartContext);
-  const { id } = useParams();
-  const { products } = useContext(ProductsContext);
-  const product = products.find((item) => {
-    return item.id === parseInt(id);
-  });
-  if (!product) {
-    return (
-      <div className="w-full h-screen flex items-center justify-center text-[20px] font-semibold transition-all ">
-        Loading...
-      </div>
-    );
-  }
+
+  const product = useMemo(() => {
+    return products.find((item) => item.id === parseInt(id));
+  }, [id, products]);
   const { title, images, price, description } = product;
-  // handle show comment
-  //
-  const showComments = () => {
-    console.log(valueComments);
-  };
+  const relatedProducts = useMemo(() => {
+    return products.filter(
+      (item) =>
+        item.category.name === product.category.name &&
+        item.title !== product.title
+    );
+  }, [product, products]);
+  if (!product) {
+    return <Loading />;
+  }
+  const showComments = () => {};
   return (
     <div className="bg-bg w-full h-full flex items-center justify-center">
       <div className="w-full max-w-[1200px] h-full mt-full pb-full">
@@ -67,7 +51,11 @@ const ProductsReview = () => {
             <div className="w-full h-[120px] grid grid-cols-3 mt-half gap-x-[8px]">
               {images.map((img, index) => {
                 return (
-                  <div onClick={() => {}} className="cursor-pointer">
+                  <div
+                    key={index}
+                    onClick={() => {}}
+                    className="cursor-pointer"
+                  >
                     <img
                       src={img}
                       alt="more__img"
@@ -212,7 +200,7 @@ const ProductsReview = () => {
               Comments
             </span>
             {/* show comment */}
-            <div className="w-full h-full ">{showComments}</div>
+            <div className="w-full h-full ">{showComments()}</div>
             {/* write comment and button */}
             <div className="w-full h-[62px] absolute bottom-[42px] p-half mb-half">
               <input
@@ -238,25 +226,10 @@ const ProductsReview = () => {
               </span>
             </h3>
           </div>
-          {/* list sản phẩm liên quan */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[12px]">
-            {products
-              .filter((item) => {
-                if (
-                  item.category.name === product.category.name &&
-                  item.title !== product.title
-                ) {
-                  return item.category.name;
-                } else if (
-                  // product.category.name === "All" ||
-                  product.category.name === ""
-                ) {
-                  return [];
-                }
-              })
-              .map((product, index) => {
-                return <Product products={product} key={index} />;
-              })}
+            {relatedProducts.map((product, index) => {
+              return <Product data={product} key={index} />;
+            })}
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ import { ListItemNav } from "../Nav/Nav";
 import Flex from "../../component/components/flex/Flex";
 const Header = (props) => {
   const navigate = useNavigate();
-  const { user, logout, login } = useContext(LoginContext);
+  const { user, login } = useContext(LoginContext);
   const [isHeader, setIsHeader] = useState(false);
   // moblie
   const [isMobile, setIsMobile] = useState(false);
@@ -33,7 +33,7 @@ const Header = (props) => {
       setIsMobile(true);
     }
   }, []);
-  // scrool của thằng header khi cuộn trang
+
   window.addEventListener("scroll", (item) => {
     if (window.scrollY >= 50) {
       setIsHeader(true);
@@ -135,16 +135,6 @@ const Header = (props) => {
                 </span>
                 A
               </a>
-              {/* select region*/}
-              <Flex
-                justify="center"
-                className="border-l-[1px] border-r-[1px] h-full px-half "
-              >
-                <select>
-                  <option>VN</option>
-                  <option>FOREIGN</option>
-                </select>
-              </Flex>
             </Flex>
             {/* navigation */}
             <Flex justify="center" className="flex-1 w-full h-full ">
@@ -175,7 +165,6 @@ const Header = (props) => {
           </div>
         </div>
       )}
-      {/* overlay */}
     </div>
   );
 };

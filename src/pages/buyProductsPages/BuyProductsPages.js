@@ -96,7 +96,7 @@ const BuyProductsPages = () => {
           <Flex justify="start" className="mt-half">
             <input id="input_check" type="checkbox" />
             <label
-              for="input_check"
+              htmlFor="input_check"
               className="ml-half text-[0.9rem] cursor-pointer"
             >
               I am 18 years old

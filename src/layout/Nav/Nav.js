@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { ProductsContext } from "../../component/products/ProductsContext";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
@@ -13,27 +13,11 @@ const ItemNav = ({ children, className }) => {
 };
 
 export const ListItemNav = () => {
-  const [hiddenNav, setHiddenNav] = useState(false);
-  useEffect(() => {
-    if (window.innerWidth <= 450) {
-      setHiddenNav(true);
-    }
-  }, []);
-  // const allItem = document.querySelectorAll(".item__nav");
-  // allItem.forEach((item) => {
-  //   item.addEventListener("click", () => {
-  //     allItem.forEach((item) => {
-  //       item.classList.remove("active");
-  //     });
-  //     item.classList.add("active");
-  //   });
-  // });
-  // load category
   const { products } = useContext(ProductsContext);
   const handleLoadCategory = () => {
     const arr = [];
     products.filter((item) => {
-      arr.push(item.category.name);
+      return arr.push(item.category.name);
     });
     const newArr = [...new Set(arr)];
     return newArr.map((item, index) => {
@@ -84,13 +68,6 @@ export const ListItemNav = () => {
                   Products
                 </Link>
               </div>
-              {/* img */}
-              {/* <div className="w-full h-[180px]  absolute bottom-0 ">
-                <img
-                  className="w-full h-full object-cover"
-                  src="https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-taobao-july-cool-sky-promotion-poster-banner-background-image_157029.jpg"
-                />
-              </div> */}
             </div>
           </ItemNav>
           <ItemNav className="item__products">
@@ -100,7 +77,6 @@ export const ListItemNav = () => {
             >
               PRODUCTS
             </Link>
-            {/* hover products */}
             <div className="hover__products shadow-xl text-white pl-full pt-full">
               <div className="block text-start mb-half ">All</div>
               <div className="grid grid-cols-2 ">{handleLoadCategory()}</div>

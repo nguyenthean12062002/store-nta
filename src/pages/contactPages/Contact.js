@@ -66,7 +66,7 @@ const Contact = () => {
         </div>
         {/* liên hệ qua email */}
         <div className="w-[30%] mt-full">
-          <label for="input" className="mb-half block">
+          <label htmlFor="input" className="mb-half block">
             Enter your email
           </label>
           <div className="flex item-center justify-start">

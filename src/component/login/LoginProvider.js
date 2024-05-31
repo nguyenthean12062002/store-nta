@@ -1,17 +1,16 @@
 import React, { createContext, useState } from "react";
-export const LoginContext = createContext({ name: "", auth: false });
+export const LoginContext = createContext();
 const LoginProvider = ({ children }) => {
-  const [user, setUser] = useState({ name: "", auth: true });
-  //
+  const [user, setUser] = useState({ name: "", auth: null });
   const login = (name) => {
-    setUser((user) => ({
+    setUser(() => ({
       name: name,
       auth: true,
     }));
     localStorage.setItem("name", name);
   };
   const logout = (name) => {
-    setUser((user) => ({
+    setUser(() => ({
       name: "",
       auth: false,
     }));

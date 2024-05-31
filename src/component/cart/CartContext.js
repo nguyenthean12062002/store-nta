@@ -1,9 +1,12 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
+import { LoginContext } from "../login/LoginProvider";
+
 export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cout, setCout] = useState(0);
+  const { user } = useContext(LoginContext);
   // add produt in cart
   useEffect(() => {
     let isCout = 0;
@@ -17,29 +20,33 @@ const CartProvider = ({ children }) => {
     return setCout(isCout);
   }, [cart]);
   const addProducts = (product, id) => {
-    const newItem = { ...product, amout: 1 };
-    const cartItem = cart.find((item) => {
-      return item.id === id;
-    });
-    // check the item areadly in cart
-    if (cartItem) {
-      const newCart = [...cart].map((item) => {
-        if (item.id === id) {
-          return { ...item, amout: cartItem.amout + 1 };
-        }
-        return item;
-      });
-      const idToast = toast.warning("Products already to cart");
-      setTimeout(() => {
-        toast.dismiss(idToast);
-      }, 1200);
-      setCart(newCart);
+    if (user.auth === false) {
+      toast.warning("Please login your account!");
     } else {
-      const idToast = toast.success("Added to cart");
-      setTimeout(() => {
-        toast.dismiss(idToast);
-      }, 1200);
-      setCart([...cart, newItem]);
+      const newItem = { ...product, amout: 1 };
+      const cartItem = cart.find((item) => {
+        return item.id === id;
+      });
+      // check the item areadly in cart
+      if (cartItem) {
+        const newCart = [...cart].map((item) => {
+          if (item.id === id) {
+            return { ...item, amout: cartItem.amout + 1 };
+          }
+          return item;
+        });
+        const idToast = toast.warning("Products already to cart");
+        setTimeout(() => {
+          toast.dismiss(idToast);
+        }, 1200);
+        setCart(newCart);
+      } else {
+        const idToast = toast.success("Added to cart");
+        setTimeout(() => {
+          toast.dismiss(idToast);
+        }, 1200);
+        setCart([...cart, newItem]);
+      }
     }
   };
   const removeProduct = (id) => {

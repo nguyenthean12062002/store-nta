@@ -8,9 +8,7 @@ import OverLay from "../../layout/OverLay/OverLay";
 import { Link } from "react-router-dom";
 const Search = () => {
   const { products } = useContext(ProductsContext);
-  // show modal kết quả của tìm kiếm
   const [show, setShow] = useState(true);
-  // value của input search
   const [value, setValue] = useState(" ");
   const handleShowModal = () => {
     setShow(false);
@@ -49,18 +47,13 @@ const Search = () => {
           <h4 className="py-[12px] px-half text-[1.1rem] text-red text-center">
             Result:
           </h4>
-          {/* kết quả tìm kiếm các sản phẩm liên quan */}
           <ul className="min-h-[100px] max-h-[240px] overflow-y-scroll pl-full transition-all duration-300 border-[0.5px] py-[8px] ">
             {products
               .filter((item) => {
-                //   logic tìm kiếm value input có trong title của sản phẩm hay không
                 if (value === "" || value === " ") {
                   return [];
-                } else {
-                  if (item.title.toLowerCase().includes(value.toLowerCase())) {
-                    return item.title;
-                  }
                 }
+                return item.title.toLowerCase().includes(value.toLowerCase());
               })
               .map((item, index) => {
                 return (

@@ -11,7 +11,7 @@ const Banner = () => {
         className="max-w-main w-[100%] banner__container "
       >
         <div>
-          <h1 className="text-[2rem] text-white z-[20] text__banner ">
+          <h1 className="text-[2.2rem] text-white z-[20] text__banner ">
             Change Your Life Style
           </h1>
           <Link

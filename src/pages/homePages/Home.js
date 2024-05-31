@@ -1,4 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ProductsContext } from "../../component/products/ProductsContext";
 import Flex from "../../component/components/flex/Flex";
@@ -32,9 +38,8 @@ const Home = () => {
   const idRandom2 = Math.floor(Math.random() * lenghProducts);
   const idRandom3 = Math.floor(Math.random() * lenghProducts);
   useEffect(() => {
-    window.scrollTo(0, 0); // Thực hiện scroll đến đầu trang khi component được render lại
+    window.scrollTo(0, 0);
   }, []);
-  // show button scroll to top
   window.addEventListener("scroll", () => {
     var currentScrollPos = window.scrollY;
     if (currentScrollPos > 480) {
@@ -43,7 +48,7 @@ const Home = () => {
       setShowButtonToTop(true);
     }
   });
-  const DiversityHandle = () => {
+  const DiversityHandle = useCallback(() => {
     const arr = [];
     products.filter((item) => {
       return arr.push(item.category.name);
@@ -56,7 +61,7 @@ const Home = () => {
         </li>
       );
     });
-  };
+  }, [products]);
   return (
     <Flex
       justify="center"
@@ -220,7 +225,7 @@ const Home = () => {
                 onClick={() => {
                   navigate("/products");
                 }}
-                className=" absolute h-[30px] shadow-2xl bottom-[5px] left-[10px] md:top-[50%] md:left-[5%] text-[1.1rem]  p-[4px] text-white bg-red  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 "
+                className="absolute h-[30px] shadow-2xl rounded-[6px] bottom-[5px] left-[10px] md:top-[45%] md:left-[5%] text-[1.1rem]   p-[4px] text-white bg-red "
               >
                 Products Us
               </button>

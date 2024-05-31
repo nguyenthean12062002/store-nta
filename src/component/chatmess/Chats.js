@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AiOutlineMessage } from "react-icons/ai";
-import ChatModal from "./ChatModal";
 const Chats = () => {
   const [show, setShow] = useState(true);
 

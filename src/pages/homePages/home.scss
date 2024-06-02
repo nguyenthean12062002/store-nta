@@ -24,3 +24,37 @@
 }
 .banner__img {
 }
+//
+//          TRENDING        //
+// trending
+.trending__wrapper {
+  width: 100%;
+  align-items: start;
+  color: var();
+}
+.gr__button {
+  transition: transform 0.3s ease-in;
+  transform: translateX(30%);
+  opacity: 0;
+  visibility: hidden;
+}
+.item__trending:hover .gr__button {
+  transform: translateX(0%);
+  opacity: 1;
+  visibility: visible;
+}
+
+.trending__img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.trending__img img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.trending__img:hover img {
+  transform: scale(1.1);
+}

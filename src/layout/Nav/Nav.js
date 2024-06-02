@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../component/products/ProductsContext";
+import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
 const ItemNav = ({ children, className }) => {
@@ -33,7 +34,7 @@ export const ListItemNav = () => {
     });
   };
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full font-[400]">
       <section
         className={`transition-all duration-300 w-full h-full   flex  items-center justify-center `}
       >
@@ -44,21 +45,17 @@ export const ListItemNav = () => {
               to="/"
             >
               HOME
+              <FaChevronDown className="item__icon" />
             </Link>
+
             {/* hover home */}
             <div className="hover__home shadow-xl text-white p-full transition-all duration-300 ">
               {/* list link in the home pages */}
               <div>
-                <a
-                  href="#home__details"
-                  className="block text-start py-[6px] cursor-pointer hover:text-red transition-all duration-300"
-                >
+                <a className="block text-start py-[6px] cursor-pointer hover:text-red transition-all duration-300">
                   Category of products
                 </a>
-                <a
-                  href="#home__suggestion"
-                  className="block text-start py-[6px] cursor-pointer hover:text-red transition-all duration-300"
-                >
+                <a className="block text-start py-[6px] cursor-pointer hover:text-red transition-all duration-300">
                   Suggestion today
                 </a>
                 <Link
@@ -76,6 +73,7 @@ export const ListItemNav = () => {
               to="/products"
             >
               PRODUCTS
+              <FaChevronDown className="item__icon" />
             </Link>
             <div className="hover__products shadow-xl text-white pl-full pt-full">
               <div className="block text-start mb-half ">All</div>

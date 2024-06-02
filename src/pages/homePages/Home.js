@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ProductsContext } from "../../component/products/ProductsContext";
 import Flex from "../../component/components/flex/Flex";
@@ -17,37 +11,38 @@ import "./home.scss";
 // icon
 import IconFaceBook from "../../component/iconComponent/IconFaceBook";
 import IconTele from "../../component/iconComponent/IconTele";
+import { MdAdd } from "react-icons/md";
+import { FaHeart } from "react-icons/fa6";
 import { SiQuarkus } from "react-icons/si";
 import { FaSquareFontAwesomeStroke } from "react-icons/fa6";
 import { FaShippingFast } from "react-icons/fa";
 import { FaHandsHelping } from "react-icons/fa";
-import { BsArrowUpCircleFill } from "react-icons/bs";
-
+import posterTrending from "../../assets/images/poster-trending.avif";
 const Home = () => {
-  useEffect(() => {}, []);
   const navigate = useNavigate();
   //cart context
   const { addProducts } = useContext(CartContext);
   //get products from context file
   const { products } = useContext(ProductsContext);
   // state
-  const [showButtonToTop, setShowButtonToTop] = useState(true);
-  // random demo products
   const lenghProducts = products.length;
   const idRandom = Math.floor(Math.random() * lenghProducts);
   const idRandom2 = Math.floor(Math.random() * lenghProducts);
   const idRandom3 = Math.floor(Math.random() * lenghProducts);
+  const idRandom4 = Math.floor(Math.random() * lenghProducts);
+  const idRandom5 = Math.floor(Math.random() * lenghProducts);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, []);
-  window.addEventListener("scroll", () => {
-    var currentScrollPos = window.scrollY;
-    if (currentScrollPos > 480) {
-      setShowButtonToTop(false);
-    } else {
-      setShowButtonToTop(true);
-    }
-  });
+  // window.addEventListener("scroll", () => {
+  //   var currentScrollPos = window.scrollY;
+  //   if (currentScrollPos > 480) {
+  //     setShowButtonToTop(false);
+  //   } else {
+  //     setShowButtonToTop(true);
+  //   }
+  // });
   const DiversityHandle = useCallback(() => {
     const arr = [];
     products.filter((item) => {
@@ -56,7 +51,10 @@ const Home = () => {
     const newArr = [...new Set(arr)];
     return newArr.map((item, index) => {
       return (
-        <li key={index} className="py-half mx-half capitalize">
+        <li
+          key={index}
+          className="py-half mx-[3px] text-sub font-[300] md:mx-half capitalize"
+        >
           {item}
         </li>
       );
@@ -126,81 +124,119 @@ const Home = () => {
           <h3 className="w-full  pl-full my-half py-half text-[1.4rem] text-black font-medium">
             Category Of Products
           </h3>
-          <ul className="text-[1.1rem] text-gray-500 text-center flex flex-col md:flex-row items-center justify-evenly my-half">
+          <ul className="text-[1.1rem] text-sub text-center flex flex-row whitespace-wrap px-half items-center justify-evenly my-half">
             {DiversityHandle()}
           </ul>
         </div>
         {/* suggestion products */}
         <div
           id="home__suggestion"
-          className="w-full h-full my-full bg-bg py-full px-half md:px-half lg:px-full "
+          className="w-full h-full my-full bg-bg py-full px-half  lg:px-full "
         >
-          <h3 className="mt-full  pl-half text-[1.4rem] py-full text-black font-medium ">
-            Suggestion Today
+          <h3 className="mt-full pl-half text-[1.4rem] py-full text-black font-medium ">
+            Trending Products Today
           </h3>
-          <div className="bg-bg w-full pt-half px-full md:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[12px] md:gap-y-0 md:gap-x-[4px]">
-            {products
-              .filter((item, index) => {
-                if (
-                  index === idRandom ||
-                  index === idRandom2 ||
-                  index === idRandom3
-                ) {
-                  return item.category;
-                } else {
-                  return 0;
-                }
-              })
-              .map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="bg-white relative overflow-hidden border-[1px] hover:border-[#ef4444] transition-all duration-300"
-                  >
-                    <Link
-                      to={`/products/id/${item.id}`}
+          <Flex
+            justify="between"
+            className="trending__wrapper flex-col md:flex-row h-[100%]"
+          >
+            {/* poster trending */}
+            <div className="relative">
+              <img
+                className="w-full h-full"
+                alt="poster__trending"
+                src={posterTrending}
+              />
+              <div className="absolute top-[10%] left-[20px] ">
+                <h4 className="text-[1.5rem] text-sub">
+                  <span className="block text-red font-semmibold text-[1.9rem] underline ">
+                    Explore
+                  </span>
+                  and experience with us
+                </h4>
+              </div>
+            </div>
+            {/* show products trending */}
+            <div className="bg-bg w-full h-full   md:px-0  grid grid-cols-1  lg:grid-cols-2 gap-3">
+              {products
+                .filter((item, index) => {
+                  if (
+                    index === idRandom ||
+                    index === idRandom2 ||
+                    index === idRandom3 ||
+                    index === idRandom4 ||
+                    index === idRandom5
+                  ) {
+                    return item.category;
+                  } else {
+                    return 0;
+                  }
+                })
+                .map((item, index) => {
+                  console.log(item);
+                  return (
+                    <div
                       key={index}
-                      className="w-full h-[210px] flex items-center justify-between  p-[8px] cursor-pointer  transition-all duration-300 "
+                      className="w-full h-full min-w-[100%] min-h-[200px] item__trending relative w-full bg-main h-full transition-all duration-300"
                     >
-                      <div className="w-[40%] h-full ">
-                        <img
-                          src={item.category.image}
-                          alt="img"
-                          className="w-auto h-[100%] object-contain"
-                        />
-                      </div>
-                      <div className="w-full h-full flex-1 ml-half flex items-center justify-center">
-                        <div>
-                          <div className="text-[1.1rem] capitalize mb-[4px]">
-                            {item.title}
+                      <div className="w-full h-full grid grid-cols-2 gap-x-[4px] bg-white ">
+                        {/* img */}
+                        <Link
+                          to={`/products/id/${item.id}`}
+                          key={index}
+                          className="w-[100%]  h-[100%] p-[8px] cursor-pointer  transition-all duration-300 "
+                        >
+                          <div className="trending__img w-full h-full ">
+                            <img
+                              src={item.category.image}
+                              alt="img"
+                              className=" w-full h-full object-cover "
+                            />
                           </div>
+                        </Link>
+                        {/* info product */}
+                        <div className="w-full  h-full p-half ">
+                          <Link
+                            to={`/products/id/${item.id}`}
+                            className="w-[100%] block text-[1rem] text-strat h-auto capitalize mb-[4px] overflow-hidden	 whitespace-nowrap text-ellipsis text__hover"
+                          >
+                            {item.title}
+                          </Link>
+                          <h4 className="text-sub text-[0.9rem]  mb-[4px]">
+                            {item.category.name}
+                          </h4>
+                          <h4 className="text-sub text-[0.9rem]  mb-[4px]">
+                            {item.creationAt}
+                          </h4>
                           <h4 className="text-main italic mb-[4px]">
                             $ {item.price}
                           </h4>
                         </div>
+                        <Flex
+                          justify="between"
+                          className="absolute z-20 gr__button  bottom-[3%] right-[10%] p-[4px]     "
+                        >
+                          <button
+                            onClick={() => {
+                              addProducts(item, item.id);
+                            }}
+                            className="button mr-[6px]  text-white bg-slate-600 flex items-center justify-center "
+                          >
+                            <MdAdd />
+                          </button>
+                          <button
+                            onClick={() => {}}
+                            className="button text-white bg-red flex items-center cursor-pointer justify-center"
+                          >
+                            <FaHeart />
+                          </button>
+                        </Flex>
                       </div>
-                    </Link>
-                    {/* button action */}
-                    <div className="mt-half absolute bottom-[6%] right-[4%] md:bottom-[8%] md:right-[8%] flex items-center justify-start ">
-                      <Link
-                        to="/cart/buy"
-                        className="text-[0.9rem] bg-main h-[32px] inline-block mr-[8px]  px-[8px]  text-white transition-all duration-300 hover:opacity-[0.7] flex items-center justify-center"
-                      >
-                        Buy Now
-                      </Link>
-                      <button
-                        className="text-[0.9rem] h-[32px] px-[8px] transition-all duration-300 bg-red text-white hover:opacity-[0.7]"
-                        onClick={() => {
-                          addProducts(item, item.id);
-                        }}
-                      >
-                        Add To Cart
-                      </button>
                     </div>
-                  </div>
-                );
-              })}
-          </div>
+                  );
+                })}
+            </div>
+          </Flex>
         </div>
         {/* sales */}
         <div className="w-full h-full bg-white my-[44px] ">
@@ -225,7 +261,7 @@ const Home = () => {
                 onClick={() => {
                   navigate("/products");
                 }}
-                className="absolute h-[30px] shadow-2xl rounded-[6px] bottom-[5px] left-[10px] md:top-[45%] md:left-[5%] text-[1.1rem]   p-[4px] text-white bg-red "
+                className="absolute button left-0 md:left-[10px] top-[100%] md:top-[45%] md:left-[5%] text-[1.1rem]  p-[4px] text-white bg-red "
               >
                 Products Us
               </button>
@@ -243,7 +279,7 @@ const Home = () => {
         </div>
       </div>
       {/* button go to top pages */}
-      <div
+      {/* <div
         hidden={showButtonToTop}
         className="fixed z-[110] w-full bottom-[20px] right-[-10px] transition-all duration-500 "
       >
@@ -258,7 +294,7 @@ const Home = () => {
         >
           <BsArrowUpCircleFill className="text-[2rem]" />
         </div>
-      </div>
+      </div> */}
     </Flex>
   );
 };

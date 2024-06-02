@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-gray-500 text-center bg-[#FEBD68] w-full h-[60px]  ">
-        <h5 className="font-bold mt-[12px] mb-[8px] text-white">
+        <h5 className="font-bold mt-[12px] mb-[8px] text-sub">
           Copy right by@ Nguyễn Thế An 1/11/2023.All rights reserved.
         </h5>
         <h6 className="text-gray-500 mb-[12px]">

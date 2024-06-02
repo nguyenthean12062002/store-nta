@@ -7,13 +7,17 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cout, setCout] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [order, setOrder] = useState(0);
+
   const { user } = useContext(LoginContext);
 
   useEffect(() => {
-    const isCout = cart.reduce((current, item) => {
-      return current + item.amout;
+    const isResultTotal = cart.reduce((curentPrice, product) => {
+      return curentPrice + product.price * product.amout;
     }, 0);
-    setCout(isCout);
+    setTotal(isResultTotal);
+    setCout(cart.length);
   }, [cart]);
 
   const addProducts = (product, id) => {
@@ -78,12 +82,19 @@ const CartProvider = ({ children }) => {
       setCart(newCart);
     }
   };
-
+  const orderSucess = () => {
+    setOrder(() => {
+      return order + 1;
+    });
+  };
   return (
     <CartContext.Provider
       value={{
         cart,
         cout,
+        total,
+        order,
+        orderSucess,
         addProducts,
         removeProduct,
         removeAllProducts,

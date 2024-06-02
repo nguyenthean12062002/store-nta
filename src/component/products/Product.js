@@ -22,17 +22,19 @@ const Product = ({ data }) => {
           });
         }}
         to={`/products/id/${id}`}
-        className="w-full z-5 h-full cursor-pointer bg-white  border-[0.6px] hover:border-[1px] hover:border-[#EF4444] hover:border-[0.8px] hover:translate-y-[4px]  flex flex-col items-center justify-start p-[10px] transition-all duration-300   "
+        className="w-full z-5 h-full overflow-hidden  cursor-pointer bg-white  border-[0.6px] hover:border-[1px] hover:border-[#EF4444] hover:border-[0.8px]  flex flex-col items-center justify-start p-[10px] transition-all duration-300   "
       >
-        <div className="h-[120px] md:h-[160px] my-[8px]">
+        {/* img */}
+        <div className="w-full h-[120px] md:h-[160px] my-[8px] ">
           <img
             alt="img_products"
-            className="h-[100%] w-full object-cover  "
+            className="h-[100%] w-full object-cover   "
             src={images || data.images[0]}
           />
         </div>
-        <div className="flex items-center flex-col justify-start">
-          <h1 className="font-medium mb-[6px] h-[24px ] md:h-[30px] md:mb-half  text-ellipsis overflow-hidden ...">
+        {/* title */}
+        <div className="w-full h-full px-half flex items-center flex-col justify-start whitespace-nowrap text-ellipsis overflow-hidden">
+          <h1 className="text-ellipsis mb-[6px] w-[90%] h-[24px ] md:h-[30px] md:mb-half whitespace-nowrap text-ellipsis overflow-hidden ">
             {title}
           </h1>
           <h4 className="text-gray-500 mb-[6px] md:mb-half">{category.name}</h4>
@@ -41,7 +43,7 @@ const Product = ({ data }) => {
           </h3>
         </div>
       </Link>
-      <div className="z-20 flex absolute items-center justify-center bottom-[5%] left-[10%]   p-[4px] min-w-[60px] max-w-[100px] min-h-[45px] opacity-0 group-hover:opacity-100  transition-all duration-200 ">
+      <div className="z-20 flex absolute items-center justify-center bottom-[5%] left-[10%]   p-[4px] min-w-[60px] max-w-[100px] min-h-[45px] translate-x-[-50%] opacity-0 group-hover:opacity-100 group-hover:translate-x-[0]  transition-all duration-200 ">
         <button
           onClick={() => {
             addProducts(data, id);

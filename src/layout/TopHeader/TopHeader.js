@@ -6,17 +6,18 @@ import { ToastContainer, toast } from "react-toastify";
 import { FaRegUserCircle } from "react-icons/fa";
 import ModalLogin from "../ModalLogin/ModalLogin";
 import OverLay from "../OverLay/OverLay";
-
+import { CartContext } from "../../component/cart/CartContext";
 const TopHeader = () => {
   const [showLogout, setIsShowLogout] = useState(false);
   const [hiddenLoginModal, setHiddenLoginModal] = useState(true);
   const { user, logout } = useContext(LoginContext);
+  const { removeAllProducts } = useContext(CartContext);
   const navigate = useNavigate();
-
   const handleLogout = useCallback(() => {
     logout(user.name);
     toast.success("Logout success");
     setIsShowLogout(false);
+    removeAllProducts();
     navigate("/");
   }, [logout, user.name, navigate]);
 
@@ -25,12 +26,8 @@ const TopHeader = () => {
   }, []);
 
   const openLoginModal = useCallback(() => {
-    setHiddenLoginModal(false);
-  }, []);
-
-  const closeLoginModal = useCallback(() => {
-    setHiddenLoginModal(true);
-  }, []);
+    setHiddenLoginModal(!hiddenLoginModal);
+  }, [hiddenLoginModal]);
 
   return (
     <div className="z-[50] w-full h-full flex items-center justify-center bg-white">
@@ -67,8 +64,14 @@ const TopHeader = () => {
                     {user.name}
                   </h2>
                 </div>
-                {!showLogout ? null : (
-                  <div className="z-[160] absolute bottom-[-84px] shadow-gray-500 shadow-3xl right-0 bg-[#FEBD68] w-[200px] h-[80px] flex-col items-center justify-center px-[12px] py-[8px]">
+                {
+                  <div
+                    className={`${
+                      showLogout
+                        ? "translate-y-[0%] opacity-100 visible "
+                        : "translate-y-[20%] opacity-0 invisible "
+                    }z-[160] absolute bottom-[-84px] shadow-gray-500 transition-all duration-300 shadow-3xl right-0 bg-[#FEBD68] w-[200px] h-[80px] flex-col items-center justify-center px-[12px] py-[8px]`}
+                  >
                     <button className="w-[100%] py-[4px] h-[30px] border-[1px] border-[#FEBD68] bg-white my-[4px] p-[4px] text-gray-500">
                       Settings
                     </button>
@@ -79,7 +82,7 @@ const TopHeader = () => {
                       Logout
                     </button>
                   </div>
-                )}
+                }
               </div>
             ) : (
               <div className="w-full h-[100%] flex items-center justify-start">
@@ -95,14 +98,17 @@ const TopHeader = () => {
           </div>
         </Flex>
         <ToastContainer />
-        {!hiddenLoginModal && (
-          <>
-            <div className="transition-all duration-300">
-              <ModalLogin />
-            </div>
-            <OverLay onClick={closeLoginModal} />
-          </>
-        )}
+
+        <ModalLogin
+          hidden={hiddenLoginModal}
+          setHiddenLoginModal={setHiddenLoginModal}
+        />
+        <OverLay
+          hidden={hiddenLoginModal}
+          onClick={() => {
+            setHiddenLoginModal(true);
+          }}
+        />
       </div>
     </div>
   );

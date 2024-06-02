@@ -15,23 +15,21 @@ import "./productsPages.scss";
 // import products
 import Product from "../../component/products/Product";
 // import Chats
-import Chats from "../../component/chatmess/Chats";
 import Flex from "../../component/components/flex/Flex";
 // search
 import Search from "../../component/search/Search";
 // icons
 import { CiFilter, CiCircleList } from "react-icons/ci";
 import { BsArrowUpCircleFill } from "react-icons/bs";
-import { MdOutlineAttachMoney } from "react-icons/md";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import { Overlay, Loading } from "../../component/components";
-
+import { Loading, Overlay } from "../../component/components";
 // Custom hook to fetch products
 const useFetchProducts = (API) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getData = async () => {
       try {
         const response = await fetch(`${API}`);
@@ -47,7 +45,6 @@ const useFetchProducts = (API) => {
 
   return { products, isLoading };
 };
-
 // Custom hook to filter products
 const useFilteredProducts = (products, value, minPrice, maxPrice) => {
   return useMemo(() => {
@@ -85,7 +82,6 @@ const Products = () => {
     setMinPrice(minPriceRef.current.value);
     setMaxPrice(maxPriceRef.current.value);
   }, []);
-
   const Item = ({ children, id }) => {
     return (
       <div
@@ -168,10 +164,13 @@ const Products = () => {
                     {randomProduct.title}
                   </h2>
                   <h4 className="text-main text-[1.1rem] py-half">
-                    {randomProduct.category.name}
+                    Category: {randomProduct.category.name}
                   </h4>
-                  <p className="text-gray-500 tracking-wider text-[1rem]">
-                    {randomProduct.description}
+                  <p className="text-sub  tracking-wider text-[1rem]">
+                    Product description:
+                    <span className="font-[300] pl-[4px]">
+                      {randomProduct.description}
+                    </span>
                   </p>
                 </div>
                 <div className="mt-full">
@@ -180,13 +179,13 @@ const Products = () => {
                       onClick={() =>
                         addProducts(randomProduct, randomProduct.id)
                       }
-                      className="bg-main mr-half border-[1px] p-half hover:opacity-[0.7]"
+                      className="button bg-main mr-half text-white "
                     >
                       Add to cart
                     </button>
                     <Link
                       to={`/cart/buy`}
-                      className="bg-red text-white border-[1px] p-half hover:opacity-[0.7]"
+                      className="button bg-red text-white "
                     >
                       Buy now
                     </Link>
@@ -195,7 +194,7 @@ const Products = () => {
                 <Flex justify="center" className="mt-half">
                   <Link
                     to={`/products/id/${randomProduct.id}`}
-                    className="border-[1px] p-half hover:opacity-[0.7] bg-bg"
+                    className="button border-[1px] p-half hover:opacity-[0.7] bg-bg"
                   >
                     More
                   </Link>
@@ -241,7 +240,7 @@ const Products = () => {
                   {products && LoadCategory()}
                 </ul>
               </div>
-              <div className="max-w-[90%] md:max-w-[80%]">
+              <div className="hidden md:block max-w-[90%] md:max-w-[80%]">
                 <Flex
                   justify="start"
                   className="font-bold text-[1rem] mt-[22px] md:text-[1.2rem]"
@@ -249,7 +248,6 @@ const Products = () => {
                   <CiFilter className="font-bold mr-half text-red text-[1.5rem]" />
                   <h4>Filter</h4>
                 </Flex>
-
                 <div className="mt-[12px] text-[0.9rem] w-full">
                   <ChildrenFilter
                     title="Condition"
@@ -275,24 +273,33 @@ const Products = () => {
                   ref={minPriceRef}
                   type="number"
                   placeholder="Min"
-                  className="border-[1px] text-[0.9rem] w-[10%] h-full border-gray-300 px-half  outline-red"
+                  className="border-[1px] text-[0.9rem] w-[20%] md:w-[10%] h-full border-gray-300 px-half  outline-red"
                 />
                 <FaLongArrowAltRight className="mx-half text-sub" />
                 <input
                   ref={maxPriceRef}
                   type="number"
                   placeholder="Max"
-                  className="border-[1px] text-[0.9rem] w-[10%] h-full border-gray-300 px-half mr-half outline-red"
+                  className="border-[1px] text-[0.9rem] w-[20%] md:w-[10%] h-full border-gray-300 px-half mr-half outline-red"
                 />
                 <button
                   onClick={handleFilterPrice}
-                  className="bg-main h-full text-white px-half border-[1px] border-main hover:opacity-[0.7]"
+                  className="bg-main button text-white"
                 >
                   Filter
                 </button>
               </Flex>
             </div>
-            <div justify="start" className="grid grid-cols-4 gap-[10px]">
+            {filteredProducts === "" ||
+              (filteredProducts.length === 0 && (
+                <span className="text-black font-medium text-[1.1rem]">
+                  No suitable products were found
+                </span>
+              ))}
+            <div
+              justify="start"
+              className="grid grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-[10px] transition-all duration-300"
+            >
               {filteredProducts.map((product) => (
                 <Product
                   key={product.id}

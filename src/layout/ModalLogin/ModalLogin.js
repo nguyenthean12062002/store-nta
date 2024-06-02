@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { LoginContext } from "../../component/login/LoginProvider";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { GrFormView } from "react-icons/gr";
 
-const ModalLogin = () => {
+const ModalLogin = ({ hidden, setHiddenLoginModal }) => {
   const navigate = useNavigate();
   const { user, login } = useContext(LoginContext);
   const [name, setName] = useState("");
@@ -18,7 +18,7 @@ const ModalLogin = () => {
     }
   }, []);
   // hanlde login
-  const handleLogin = (e) => {
+  const handleLogin = useCallback((e) => {
     e.preventDefault();
     if (name === " " || pass === " ") {
       toast.error("Enter full confidential account informati");
@@ -28,12 +28,13 @@ const ModalLogin = () => {
       login(name);
       setName("");
       setPass("");
+      setHiddenLoginModal(true);
       toast.success("Login sucess");
       navigate("/");
     } else {
       toast.error("Account or password is incorrect");
     }
-  };
+  });
   //  error name
   const handleBlur = (e) => {
     if (e.target.value === "" || e.target.value === " ") {
@@ -43,16 +44,22 @@ const ModalLogin = () => {
     }
   };
   //   error pass
-  const hanldeBlurPass = (e) => {
+  const hanldeBlurPass = useCallback((e) => {
     if (e.target.value === "" || e.target.value === " ") {
       setErrorPass("invalid no empty!");
     } else {
       setErrorPass("");
     }
-  };
+  });
   return (
     <>
-      <div className="transition-all duration-300 fixed z-[100] top-0 right-0 left-0 m-auto mt-[25%]  md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl ">
+      <div
+        className={` ${
+          hidden
+            ? " translate-y-[-100%] opacity-0 invisible "
+            : "opacity-100 translate-y-[0] visible fixed "
+        }  z-[100] top-0 transition-all duration-500 right-0 left-0 m-auto mt-[25%]  md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl`}
+      >
         <div className="w-full h-full  md:min-h-[70vh] relative px-[22px] flex items-start justify-center transition-all duration-300 ">
           <div className=" w-[90%] md:w-[80%] lg:w-[70%] h-[85%] xl:h-[80%]   mt-[22px] flex flex-col items-center justify-center pb-[22px] ">
             <h4 className="text-[1.3rem] text-red  lg:text-[1.5rem] font-bold py-[12px] text-center">

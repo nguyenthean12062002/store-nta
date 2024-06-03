@@ -173,7 +173,6 @@ const Home = () => {
                   }
                 })
                 .map((item, index) => {
-                  console.log(item);
                   return (
                     <div
                       key={index}

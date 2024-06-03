@@ -1,7 +1,7 @@
-import React, { Children } from "react";
+import React from "react";
 import "./index.scss";
-const OverLay = ({ children }) => {
+const Overlay = ({ children }) => {
   return <div className="overlay">{children}</div>;
 };
 
-export default OverLay;
+export default Overlay;

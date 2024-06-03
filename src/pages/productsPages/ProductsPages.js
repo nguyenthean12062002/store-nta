@@ -23,7 +23,7 @@ import { CiFilter, CiCircleList } from "react-icons/ci";
 import { BsArrowUpCircleFill } from "react-icons/bs";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import { Loading, Overlay } from "../../component/components";
+import { Loading } from "../../component/components";
 // Custom hook to fetch products
 const useFetchProducts = (API) => {
   const [products, setProducts] = useState([]);
@@ -147,7 +147,6 @@ const Products = () => {
   return (
     <Fragment>
       {isLoading && <Loading />}
-      {isLoading && <Overlay />}
       <div className="products__page bg-bg w-full flex items-center flex-col justify-center relative transition-all duration-500">
         <Flex
           justify="center"

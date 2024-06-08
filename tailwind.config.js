@@ -21,10 +21,14 @@ module.exports = {
         sub: "#777",
       },
       padding: {
+        sm: "4px",
+        lg: "8px",
         full: "24px",
         half: "12px",
       },
       margin: {
+        sm: "4px",
+        lg: "8px",
         full: "24px",
         half: "12px",
       },

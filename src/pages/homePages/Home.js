@@ -33,16 +33,9 @@ const Home = () => {
   const idRandom5 = Math.floor(Math.random() * lenghProducts);
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
-  // window.addEventListener("scroll", () => {
-  //   var currentScrollPos = window.scrollY;
-  //   if (currentScrollPos > 480) {
-  //     setShowButtonToTop(false);
-  //   } else {
-  //     setShowButtonToTop(true);
-  //   }
-  // });
+
   const DiversityHandle = useCallback(() => {
     const arr = [];
     products.filter((item) => {
@@ -53,7 +46,7 @@ const Home = () => {
       return (
         <li
           key={index}
-          className="py-half mx-[3px] text-sub font-[300] md:mx-half capitalize"
+          className="py-half mx-[3px] bg-bg px-full text-black font-[300] md:mx-half capitalize"
         >
           {item}
         </li>
@@ -124,21 +117,22 @@ const Home = () => {
           <h3 className="w-full  pl-full my-half py-half text-[1.4rem] text-black font-medium">
             Category Of Products
           </h3>
-          <ul className="text-[1.1rem] text-sub text-center flex flex-row whitespace-wrap px-half items-center justify-evenly my-half">
+          <ul className="w-[90%] lg:w-full  text-[1.1rem] text-sub text-center flex flex-row overflow-x-auto px-half items-center justify-evenly my-half">
             {DiversityHandle()}
           </ul>
         </div>
         {/* suggestion products */}
-        <div
+        <Flex
+          justify="start"
           id="home__suggestion"
-          className="w-full h-full my-full bg-bg py-full px-half  lg:px-full "
+          className="w-full  h-full bg-white flex-col py-full  px-full md:px-0  border-t-[0.5rem] border-b-[0.5rem] border-main  "
         >
-          <h3 className="mt-full pl-half text-[1.4rem] py-full text-black font-medium ">
+          <h3 className=" pl-half text-[1.4rem]  text-black font-medium text-center   ">
             Trending Products Today
           </h3>
           <Flex
             justify="between"
-            className="trending__wrapper flex-col md:flex-row h-[100%]"
+            className="trending__wrapper my-full flex-col md:flex-row h-[100%]"
           >
             {/* poster trending */}
             <div className="relative">
@@ -157,7 +151,7 @@ const Home = () => {
               </div>
             </div>
             {/* show products trending */}
-            <div className="bg-bg w-full h-full   md:px-0  grid grid-cols-1  lg:grid-cols-2 gap-3">
+            <div className="w-full h-full mt-half lg:mt-0 lg:ml-[8px]  grid grid-cols-1  lg:grid-cols-2 gap-3">
               {products
                 .filter((item, index) => {
                   if (
@@ -176,14 +170,14 @@ const Home = () => {
                   return (
                     <div
                       key={index}
-                      className="w-full h-full min-w-[100%] min-h-[200px] item__trending relative w-full bg-main h-full transition-all duration-300"
+                      className="w-full h-full min-w-[100%] min-h-[200px] item__trending relative w-full  h-full hover:border-[0.5px] hover:border-main transition-all duration-300"
                     >
-                      <div className="w-full h-full grid grid-cols-2 gap-x-[4px] bg-white ">
+                      <div className="w-full h-full grid grid-cols-2 gap-x-[4px]  ">
                         {/* img */}
                         <Link
                           to={`/products/id/${item.id}`}
                           key={index}
-                          className="w-[100%]  h-[100%] p-[8px] cursor-pointer  transition-all duration-300 "
+                          className="w-[100%]  h-[100%]  cursor-pointer  transition-all duration-300 "
                         >
                           <div className="trending__img w-full h-full ">
                             <img
@@ -210,6 +204,7 @@ const Home = () => {
                           <h4 className="text-main italic mb-[4px]">
                             $ {item.price}
                           </h4>
+                          <h4 className="text-sub">Sold: 4</h4>
                         </div>
                         <Flex
                           justify="between"
@@ -236,7 +231,15 @@ const Home = () => {
                 })}
             </div>
           </Flex>
-        </div>
+          <button
+            className="button bg-bg text-black text-center mt-full"
+            onClick={() => {
+              navigate("/products");
+            }}
+          >
+            See more
+          </button>
+        </Flex>
         {/* sales */}
         <div className="w-full h-full bg-white my-[44px] ">
           <h3 className="my-full text-[1.4rem] text-black font-medium pt-full px-full md:px-full ">

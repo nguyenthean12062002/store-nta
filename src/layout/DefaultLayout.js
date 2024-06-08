@@ -1,16 +1,16 @@
 import React from "react";
-import TopHeader from "../TopHeader/TopHeader";
-import Footer from "../Footer";
-import Header from "../Header/Header";
+import TopHeader from "./TopHeader/TopHeader";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //
-import Home from "../../pages/homePages/Home";
-import ProductsPages from "../../pages/productsPages/ProductsPages";
-import Abouts from "../../pages/aboutsPages/Abouts";
-import Contact from "../../pages/contactPages/Contact";
-import CartPages from "../../pages/cartPages/CartPages";
-import ProductsReview from "../../pages/productsReviewPages/ProductsReview";
-import BuyProductsPages from "../../pages/buyProductsPages/BuyProductsPages";
+import Home from "../pages/homePages/Home";
+import ProductsPages from "../pages/productsPages/ProductsPages";
+import Abouts from "../pages/aboutsPages/Abouts";
+import Contact from "../pages/contactPages/Contact";
+import CartPages from "../pages/cartPages/CartPages";
+import ProductsReview from "../pages/productsReviewPages/ProductsReview";
+import BuyProductsPages from "../pages/buyProductsPages/BuyProductsPages";
 import { ToastContainer } from "react-toastify";
 
 const DefaultLayout = () => {

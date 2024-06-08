@@ -3,9 +3,12 @@ import { ProductsContext } from "../../component/products/ProductsContext";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
-const ItemNav = ({ children, className }) => {
+const ItemNav = ({ children, className, setShowSidebar }) => {
   return (
     <div
+      onClick={() => {
+        setShowSidebar(true);
+      }}
       className={` ${className}  item__nav text-[1.1rem] hover:text-gray-500 w-full h-[60px] md:h-full px-full md:px-0   text-start md:text-center   lg:w-full transition-all duration-300`}
     >
       {children}
@@ -13,7 +16,7 @@ const ItemNav = ({ children, className }) => {
   );
 };
 
-export const ListItemNav = () => {
+export const ListItemNav = ({ setShowSidebar }) => {
   const { products } = useContext(ProductsContext);
   const handleLoadCategory = () => {
     const arr = [];
@@ -39,7 +42,7 @@ export const ListItemNav = () => {
         className={`transition-all duration-300 w-full h-full   flex  items-center justify-center `}
       >
         <nav className=" w-[60%] h-full flex items-center justify-start flex-col md:flex-row transition-all duration-300">
-          <ItemNav className="item__home">
+          <ItemNav setShowSidebar={setShowSidebar} className="item__home">
             <Link
               className=" w-full h-full flex items-center justify-start md:justify-center "
               to="/"
@@ -47,7 +50,6 @@ export const ListItemNav = () => {
               HOME
               <FaChevronDown className="item__icon" />
             </Link>
-
             {/* hover home */}
             <div className="hover__home shadow-xl text-white p-full transition-all duration-300 ">
               {/* list link in the home pages */}
@@ -67,7 +69,7 @@ export const ListItemNav = () => {
               </div>
             </div>
           </ItemNav>
-          <ItemNav className="item__products">
+          <ItemNav setShowSidebar={setShowSidebar} className="item__products">
             <Link
               className="w-full h-full flex items-center justify-start md:justify-center"
               to="/products"
@@ -80,7 +82,7 @@ export const ListItemNav = () => {
               <div className="grid grid-cols-2 ">{handleLoadCategory()}</div>
             </div>
           </ItemNav>
-          <ItemNav>
+          <ItemNav setShowSidebar={setShowSidebar}>
             <Link
               className="w-full h-full flex items-center justify-start md:justify-center"
               to="/abouts"
@@ -88,7 +90,7 @@ export const ListItemNav = () => {
               ABOUTS
             </Link>
           </ItemNav>
-          <ItemNav>
+          <ItemNav setShowSidebar={setShowSidebar}>
             <Link
               className="w-full h-full flex items-center justify-start md:justify-center"
               to="/contact"

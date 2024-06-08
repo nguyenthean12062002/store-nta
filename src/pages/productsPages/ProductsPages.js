@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -24,12 +25,15 @@ import { BsArrowUpCircleFill } from "react-icons/bs";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 import { Loading } from "../../component/components";
+import Overlay from "../../component/components/overlay/Overlay";
 // Custom hook to fetch products
 const useFetchProducts = (API) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  useLayoutEffect(() => {
+    window.scrollTo(-2000, 0);
+  }, []);
   useEffect(() => {
-    window.scrollTo(0, 0);
     const getData = async () => {
       try {
         const response = await fetch(`${API}`);
@@ -147,6 +151,7 @@ const Products = () => {
   return (
     <Fragment>
       {isLoading && <Loading />}
+      {isLoading && <Overlay />}
       <div className="products__page bg-bg w-full flex items-center flex-col justify-center relative transition-all duration-500">
         <Flex
           justify="center"
@@ -159,13 +164,13 @@ const Products = () => {
                   SALES PRODUCTS
                 </span>
                 <div>
-                  <h2 className="py-half text-[1.3rem]">
+                  <h2 className="max-w-[60%] py-half text-[1.3rem]">
                     {randomProduct.title}
                   </h2>
                   <h4 className="text-main text-[1.1rem] py-half">
                     Category: {randomProduct.category.name}
                   </h4>
-                  <p className="text-sub  tracking-wider text-[1rem]">
+                  <p className="max-w-[70%] block h-auto text-sub  tracking-wider text-[1rem]">
                     Product description:
                     <span className="font-[300] pl-[4px]">
                       {randomProduct.description}

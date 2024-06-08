@@ -54,13 +54,13 @@ const Header = (props) => {
         hidden={showSidebar}
         className="top-[50px] left-0 fixed bg-white w-[60%] h-[100vh] z-[100]"
       >
-        <ListItemNav />
+        <ListItemNav setShowSidebar={setShowSidebar} />
       </div>
     );
   };
   return (
     <div
-      className={`w-full bg-bg h-full border-b-[0.5px] flex items-center justify-center z-[90]`}
+      className={`w-full bg-main text-black h-full border-b-[0.5px] flex items-center justify-center z-[90]`}
     >
       {isMobile ? (
         <div className=" w-full h-[60px] flex items-center justify-center border-b-[1px] transition-transform	">
@@ -117,7 +117,7 @@ const Header = (props) => {
         </div>
       ) : (
         <div
-          className={`w-full bg-bg  lg:px-full xl:px-0 h-[60px] flex justify-center items-center ${
+          className={`w-full bg-main text-black  lg:px-full xl:px-0 h-[60px] flex justify-center items-center ${
             isHeader ? "bg-bg z-[200] fixed top-0 shadow-xl" : ""
           } `}
         >

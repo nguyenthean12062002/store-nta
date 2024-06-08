@@ -1,4 +1,5 @@
 import React from "react";
+import "./Footer.scss";
 const List = ({ children }) => {
   return (
     <ul className="text-start text-gray-500 text-[0.9rem] mt-[12px]">
@@ -8,12 +9,14 @@ const List = ({ children }) => {
 };
 const Item = ({ children }) => {
   return (
-    <li className="leading-[22px] tracking-wider text-[0.86rem]">{children}</li>
+    <li className="leading-[22px] tracking-wider text-[0.86rem] py-[2px] lg:py-[8px]">
+      {children}
+    </li>
   );
 };
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col bg-main items-center justify-center  border-t-[1px] pt-[30px] transition-all duration-300 pb-[12px]">
+    <div className="w-full flex flex-col bg-bg items-center justify-center  border-t-[1px] pt-[30px] transition-all duration-300 pb-[12px]">
       <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-[20px] px-[20px] mb-[20px]">
         <div className="text-center ">
           <h4 className="font-bold text-[1.1rem] text-[#555]">Support</h4>
@@ -73,8 +76,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-gray-500 text-center bg-[#FEBD68] w-full h-[60px]  ">
-        <h5 className="font-bold mt-[12px] mb-[8px] text-sub">
+      <div className="text-gray-500   text-center  w-full h-[60px] md:h-[80px] lg:h-[100px]  ">
+        <h5 className="font-bold mt-[12px] lg:mt-[24px] mb-[8px] md:mb-[12px] lg:mb-[18px] text-sub">
           Copy right by@ Nguyễn Thế An 1/11/2023.All rights reserved.
         </h5>
         <h6 className="text-gray-500 mb-[12px]">

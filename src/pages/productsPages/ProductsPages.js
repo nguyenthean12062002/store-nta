@@ -30,9 +30,6 @@ import Overlay from "../../component/components/overlay/Overlay";
 const useFetchProducts = (API) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  useLayoutEffect(() => {
-    window.scrollTo(-2000, 0);
-  }, []);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -64,6 +61,12 @@ const useFilteredProducts = (products, value, minPrice, maxPrice) => {
 };
 
 const Products = () => {
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const { addProducts } = useContext(CartContext);
   const API = process.env.REACT_APP_API_PRODUCTS;
   const [value, setValue] = useState(null);
@@ -158,8 +161,8 @@ const Products = () => {
           className="w-full h-full min-h-[400px] bg-white border-b-[1px] mb-half px-full lg:px-0"
         >
           {randomProduct && (
-            <div className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-full xl:px-0">
-              <div className="mb-full md:mb-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 max-w-main w-full h-full py-full px-half xl:px-0">
+              <div className="w-[100%]  mb-full md:mb-0">
                 <span className="text-[1.6rem] mb-[40px] block mt-[24px]">
                   SALES PRODUCTS
                 </span>
@@ -170,7 +173,7 @@ const Products = () => {
                   <h4 className="text-main text-[1.1rem] py-half">
                     Category: {randomProduct.category.name}
                   </h4>
-                  <p className="max-w-[70%] block h-auto text-sub  tracking-wider text-[1rem]">
+                  <p className="w-[100%] max-w-[100%] lg:max-w-[70%] block h-auto text-sub  tracking-wider text-[1rem]">
                     Product description:
                     <span className="font-[300] pl-[4px]">
                       {randomProduct.description}

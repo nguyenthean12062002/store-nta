@@ -7,7 +7,7 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { FaVoicemail } from "react-icons/fa6";
 import { MdOutlineCancelPresentation } from "react-icons/md";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Flex from "../../component/components/flex/Flex";
 import { CartContext } from "../../component/cart/CartContext";
 import Overlay from "../../layout/OverLay/OverLay";
@@ -21,7 +21,10 @@ const BuyProductsPages = () => {
   const [checkAge, setCheckAge] = useState(false);
   const [confirmOrder, setConfirmOrder] = useState(false);
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
   function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
@@ -29,13 +32,6 @@ const BuyProductsPages = () => {
   }
 
   const handleOrder = () => {
-    const isEmail = validateEmail(email);
-    console.log(isEmail);
-    if (isEmail === false) {
-      return () => {
-        clearTimeout();
-      };
-    }
     if (
       !name ||
       !address ||
@@ -44,7 +40,7 @@ const BuyProductsPages = () => {
       !email ||
       checkAge === false
     ) {
-      toast.warning("Please enter all information fields");
+      return toast.warning("Please enter all information fields");
     } else {
       setConfirmOrder(!confirmOrder);
     }
@@ -339,6 +335,7 @@ const BuyProductsPages = () => {
           setConfirmOrder(false);
         }}
       />
+      <ToastContainer />
     </div>
   );
 };

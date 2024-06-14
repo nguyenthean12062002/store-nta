@@ -122,13 +122,7 @@ const Header = (props) => {
           } `}
         >
           {/* logo and nav */}
-          <div
-            className={`${
-              isHeader
-                ? " fixed top-0  transition-opacity duration-300 shadown-xl md:px-full lg:px-0"
-                : ""
-            }     w-full h-[60px] max-w-[1200px] flex items-center justify-between px-full lg:px-0  z-[60]`}
-          >
+          <div className=" sticky w-full h-[60px] max-w-[1200px] flex items-center justify-between px-full lg:px-0  z-[60]">
             {/* logo and selec region*/}
             <Flex justify="start" className="h-full">
               {/* logo */}

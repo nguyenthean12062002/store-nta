@@ -65,7 +65,7 @@ const Contact = () => {
           </p>
         </div>
         {/* liên hệ qua email */}
-        <div className="w-[30%] mt-full">
+        <div className="w-[100%] md:w-[50%] lg:w-[30%] mt-full">
           <label htmlFor="input" className="mb-half block">
             Enter your email
           </label>
@@ -77,7 +77,7 @@ const Contact = () => {
             />
             <button className="bg-red text-white px-half  hover:opacity-[0.8] flex items-center justify-center transition-all duration-300">
               Send
-              <IoIosSend className="text-[2.4rem] ml-[6px]" />
+              <IoIosSend className="text-[2rem] lg:text-[2.4rem] ml-[6px]" />
             </button>
           </div>
         </div>

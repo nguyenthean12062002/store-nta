@@ -45,3 +45,13 @@
     }
   }
 }
+@media only screen and (max-width: 768px) {
+  .banner {
+    .info__banner {
+      .info__wrapper {
+        width: 80px;
+        height: 50px;
+      }
+    }
+  }
+}

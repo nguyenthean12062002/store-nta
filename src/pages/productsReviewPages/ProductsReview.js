@@ -25,7 +25,10 @@ const ProductsReview = () => {
   const { products } = useContext(ProductsContext);
   const { id } = useParams();
   useLayoutEffect(() => {
-    window.scrollTo(-2000, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
   useLayoutEffect(() => {
     setImageSelect(images);
@@ -308,7 +311,7 @@ const ProductsReview = () => {
             <h3 className="text-[1.2rem] px-full xl:px-0">
               Product Description
             </h3>
-            <p className="text-sub font-[300]  my-half w-full tracking-normal text-[1.1rem] leading-[1.4rem] pl-full lg:pl-[40px] md:pl-half">
+            <p className="text-sub font-[300] block  my-half  w-full tracking-normal text-[1.1rem] leading-[1.4rem] px-full lg:pl-[40px] md:pl-half">
               {description}
             </p>
           </div>

@@ -11,8 +11,16 @@ const Banner = () => {
         justify="between"
         className="max-w-main  w-[100%] flex-col md:flex-row banner__container px-full md:px-o "
       >
+        {/* img */}
+        <Flex justify="end" className="banner__images">
+          <img
+            className="w-[36rem] h-[36rem] object-contain z-10 "
+            src={bannerImg}
+            alt="banner__img"
+          />
+        </Flex>
         {/* slogan */}
-        <div>
+        <div className="mb-[24px]">
           <h1 className="text-[1.8rem] md:text-[2.2rem] text-white z-[20] text__banner ">
             Change Your Life Style
           </h1>
@@ -24,7 +32,7 @@ const Banner = () => {
             <MdNavigateNext className="text-[1.1rem]" />
           </Link>
           <div className="info__banner w-[100%] grid grid-cols-2 md:grid-cols-3 gap-y-[12px]">
-            <div className="info__wrapper">
+            <div className="info__wrapper w-[30%] h-[30%] lg: w-[50%] h-[50%]">
               <h4>90K</h4>
               <span>Happy Clients</span>
             </div>
@@ -38,14 +46,6 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        {/* img */}
-        <Flex justify="end" className="banner__images">
-          <img
-            className="w-[36rem] h-[36rem] object-contain z-10 "
-            src={bannerImg}
-            alt="banner__img"
-          />
-        </Flex>
       </Flex>
     </Flex>
   );

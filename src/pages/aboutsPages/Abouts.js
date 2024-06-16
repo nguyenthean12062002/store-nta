@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import poster from "../../assets/images/poster_about.jpg";
 // header
 const Abouts = () => {
   useEffect(() => {
@@ -44,7 +45,8 @@ const Abouts = () => {
           possible. Thank you sincerely, and we look forward to serving you at
           NTA Store!
         </p>
-        {/*  liên quan */}
+        <img src={poster} className="my-full" />
+
         <div className="leading-[1.4rem] tracking-[1px] text-[#444]">
           <span className="text-red block text-[1.2rem] my-full ">
             Our Mission

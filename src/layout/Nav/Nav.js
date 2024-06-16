@@ -6,9 +6,6 @@ import "./Nav.scss";
 const ItemNav = ({ children, className, setShowSidebar }) => {
   return (
     <div
-      onClick={() => {
-        setShowSidebar(true);
-      }}
       className={` ${className}  item__nav text-[1.1rem] hover:text-gray-500 w-full h-[60px] md:h-full px-full md:px-0   text-start md:text-center   lg:w-full transition-all duration-300`}
     >
       {children}

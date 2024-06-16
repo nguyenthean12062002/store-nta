@@ -19,7 +19,7 @@ body {
 .button {
   width: fit-content;
   padding: 0.5em 1.4em;
-  border-radius: 18px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,4 +39,27 @@ body {
   color: #febd68;
   font-style: italic;
   transition: all 0.2s linear;
+}
+.item__about-home {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 1s ease 1;
+}
+.active__scrollX {
+  transform: translateX(0px);
+  transition: transform 0.5s ease 1;
+  opacity: 1;
+}
+.active__scrollY {
+  transform: translateY(0px);
+  transition: transform 0.5s ease 1;
+  opacity: 1;
+}
+.active__scale {
+  transform: scale(1);
+  transition: scale 0.5s ease 1;
+  opacity: 1;
+}
+iframe#webpack-dev-server-client-overlay {
+  display: none !important;
 }

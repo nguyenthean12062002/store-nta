@@ -23,9 +23,9 @@ import Search from "../../component/search/Search";
 import { CiFilter, CiCircleList } from "react-icons/ci";
 import { BsArrowUpCircleFill } from "react-icons/bs";
 import { FaLongArrowAltRight } from "react-icons/fa";
-
 import { Loading } from "../../component/components";
 import Overlay from "../../component/components/overlay/Overlay";
+import { motion } from "framer-motion";
 // Custom hook to fetch products
 const useFetchProducts = (API) => {
   const [products, setProducts] = useState([]);
@@ -67,6 +67,7 @@ const Products = () => {
       behavior: "smooth",
     });
   }, []);
+
   const { addProducts } = useContext(CartContext);
   const API = process.env.REACT_APP_API_PRODUCTS;
   const [value, setValue] = useState(null);
@@ -303,7 +304,20 @@ const Products = () => {
                   No suitable products were found
                 </span>
               ))}
-            <div
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                },
+                show: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 1,
+                  },
+                },
+              }}
+              initial="hidden"
+              animate="show"
               justify="start"
               className="grid grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-[10px] transition-all duration-300"
             >
@@ -314,7 +328,7 @@ const Products = () => {
                   addProducts={addProducts}
                 />
               ))}
-            </div>
+            </motion.div>
           </section>
         </div>
         {showButtonToTop && (

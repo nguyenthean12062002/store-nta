@@ -1,54 +1,96 @@
 import React from "react";
+import { Fade } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 import { Link } from "react-router-dom";
-import bannerImg from "../../assets/images/img-banner.png";
-import Flex from "../components/flex/Flex";
-import { MdNavigateNext } from "react-icons/md";
-import "./banner.scss";
+import "react-slideshow-image/dist/styles.css";
+import banner1 from "../../assets/images/banner1.jpg";
+import banner2 from "../../assets/images/clem-onojeghuo-c4pbb7yNM2c-unsplash.jpg";
+import banner3 from "../../assets/images/banner3.jpg";
+import { motion } from "framer-motion";
+
+const fadeImages = [
+  {
+    url: banner1,
+    slogan:
+      "Quality brings satisfaction so you can have happy and comfortable moments ",
+  },
+  {
+    url: banner2,
+    slogan:
+      "always bring great experiences and support so that you have satisfactory products",
+  },
+  {
+    url: banner3,
+    slogan:
+      "If you feel anything is not satisfied, please contact us for feedback ",
+  },
+];
+
 const Banner = () => {
   return (
-    <Flex justify="center" className="bg-main banner ">
-      <Flex
-        justify="between"
-        className="max-w-main  w-[100%] flex-col md:flex-row banner__container px-full md:px-o "
-      >
-        {/* img */}
-        <Flex justify="end" className="banner__images">
-          <img
-            className="w-[36rem] h-[36rem] object-contain z-10 "
-            src={bannerImg}
-            alt="banner__img"
-          />
-        </Flex>
-        {/* slogan */}
-        <div className="mb-[24px]">
-          <h1 className="text-[1.8rem] md:text-[2.2rem] text-white z-[20] text__banner ">
-            Change Your Life Style
-          </h1>
-          <Link
-            to="/products"
-            className="button inline-block bg-red text-white px-[0.4rem] py-[0.6rem] my-half"
+    <motion.div
+      initial={{
+        y: -200,
+        opacity: 0,
+      }}
+      animate={{
+        y: 0,
+        opacity: 1,
+        transition: {
+          staggerChildren: 1,
+        },
+      }}
+      className="slide-container relative"
+    >
+      <Fade>
+        {fadeImages.map((fadeImage, index) => (
+          <motion.div
+            initial={{
+              y: -100,
+              opacity: 0,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.5,
+              },
+            }}
+            key={index}
           >
-            Start Shoping
-            <MdNavigateNext className="text-[1.1rem]" />
-          </Link>
-          <div className="info__banner w-[100%] grid grid-cols-2 md:grid-cols-3 gap-y-[12px]">
-            <div className="info__wrapper w-[30%] h-[30%] lg: w-[50%] h-[50%]">
-              <h4>90K</h4>
-              <span>Happy Clients</span>
-            </div>
-            <div className="info__wrapper rounded-[100%]">
-              <h4>0.4M</h4>
-              <span>Monthly Traffic</span>
-            </div>
-            <div className="info__wrapper rounded-[270px]">
-              <h4>11+</h4>
-              <span>Sales Per Year</span>
-            </div>
-          </div>
-        </div>
-      </Flex>
-    </Flex>
+            <img style={{ width: "100%", height: "80%" }} src={fadeImage.url} />
+            <motion.div
+              initial={{
+                y: -100,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.4 }}
+              className="absolute top-[32%] left-[10%] translate-x-[-50%] translate-y-[-50%] w-[80%] md:w-[70%] lg:w-[60%] h-[35%] flex flex-col items-start justify-start"
+            >
+              <h4
+                className={`w-[70%] md:w-[60%] lg:w-[50%] text-[1.2rem] md:text-[1.5rem] lg:text-[2rem] capitalize font-[500] md:font-[600] lg:font-[800] ${
+                  index === 0 && "text-white"
+                } ${index === 1 && "text-white"}`}
+              >
+                {fadeImage.slogan}
+              </h4>
+              <div className="mt-8 flex items-center justify-center text-black ">
+                <Link to="/products" className="button bg-red text-white">
+                  Shop Now
+                </Link>
+                <Link to="/contact" className="button bg-white ml-8">
+                  Contact Us
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        ))}
+      </Fade>
+    </motion.div>
   );
 };
-
 export default Banner;

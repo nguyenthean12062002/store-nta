@@ -6,6 +6,7 @@ import { FaHeart } from "react-icons/fa6";
 import { CartContext } from "../cart/CartContext";
 import { toast } from "react-toastify";
 import { Loading } from "../components";
+import { motion } from "framer-motion";
 const Product = ({ data }) => {
   if (!data) {
     <Loading />;
@@ -18,7 +19,10 @@ const Product = ({ data }) => {
   ).toFixed(0);
   const { addProducts } = useContext(CartContext);
   return (
-    <div className="group w-full h-full relative">
+    <motion.div
+      variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
+      className="group w-full h-full relative product__item  transition-all duration-300"
+    >
       <Link
         onClick={() => {
           window.scrollTo({
@@ -74,7 +78,7 @@ const Product = ({ data }) => {
           <FaHeart />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

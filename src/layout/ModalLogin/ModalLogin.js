@@ -58,7 +58,7 @@ const ModalLogin = ({ hidden, setHiddenLoginModal }) => {
           hidden
             ? " translate-y-[-100%] opacity-0 invisible "
             : "opacity-100 translate-y-[0] visible fixed "
-        }  z-[100] top-0 transition-all duration-500 right-0 left-0 m-auto mt-[50%]  md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl`}
+        }  z-[500] top-0 transition-all duration-500 right-0 left-0 m-auto mt-[50%]  md:mt-[3%] w-[90%] md:w-[70%] h-[50%] lg:h-[90%] bg-bg shadow-4xl`}
       >
         <div className="w-full h-full  md:min-h-[70vh] relative px-[22px] flex items-start justify-center transition-all duration-300 ">
           <div className=" w-[90%] md:w-[80%] lg:w-[70%] h-[85%] xl:h-[80%]   mt-[22px] flex flex-col items-center justify-center pb-[22px] ">

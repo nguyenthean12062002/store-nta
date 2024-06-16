@@ -1,5 +1,4 @@
 import React from "react";
-import TopHeader from "./TopHeader/TopHeader";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,15 +11,13 @@ import CartPages from "../pages/cartPages/CartPages";
 import ProductsReview from "../pages/productsReviewPages/ProductsReview";
 import BuyProductsPages from "../pages/buyProductsPages/BuyProductsPages";
 import { ToastContainer } from "react-toastify";
+import "react-slideshow-image/dist/styles.css";
 
 const DefaultLayout = () => {
   return (
     <Router>
       <div className="relative">
-        <div className="w-ful ">
-          <TopHeader />
-        </div>
-        <header>
+        <header className="sticky top-0 z-[100]">
           <Header />
         </header>
         <main className="w-full h-full ">

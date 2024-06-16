@@ -18,6 +18,8 @@ import { FaSquareFontAwesomeStroke } from "react-icons/fa6";
 import { FaShippingFast } from "react-icons/fa";
 import { FaHandsHelping } from "react-icons/fa";
 import posterTrending from "../../assets/images/poster-trending.avif";
+import { motion } from "framer-motion";
+import { scrollToView } from "../../component/srcollToView/scrollToView.js";
 const Home = () => {
   const navigate = useNavigate();
   //cart context
@@ -31,11 +33,16 @@ const Home = () => {
   const idRandom3 = Math.floor(Math.random() * lenghProducts);
   const idRandom4 = Math.floor(Math.random() * lenghProducts);
   const idRandom5 = Math.floor(Math.random() * lenghProducts);
-
   useEffect(() => {
     window.scrollTo(0, 0);
+    scrollToView(".item__diversity", "active__scrollX");
+    scrollToView(".item__about-home ", "active__scrollY");
+    scrollToView(".text__about-home ", "active__scale");
+    scrollToView(".poster__trending ", "active__scrollY");
+    scrollToView(".item__trending ", "active__scrollX");
+    scrollToView(".img__sale", "active__scale");
+    scrollToView(".text__sale", "active__scrollY");
   }, []);
-
   const DiversityHandle = useCallback(() => {
     const arr = [];
     products.filter((item) => {
@@ -46,13 +53,14 @@ const Home = () => {
       return (
         <li
           key={index}
-          className="py-half mx-[3px] bg-bg px-full text-black font-[300] md:mx-half capitalize"
+          className="item__diversity py-half translate-x-[100px]  transition-all duration-300 mx-[3px] bg-bg px-full text-black font-[300] md:mx-half capitalize opacity-0"
         >
           {item}
         </li>
       );
     });
   }, [products]);
+
   return (
     <Flex
       justify="center"
@@ -65,10 +73,13 @@ const Home = () => {
       {/* content home */}
       <div className="w-full h-full max-w-main">
         {/* show icon about shop */}
-        <div className="w-full bg-bg flex items-center justify-center px-full my-full ">
+        <h4 className="text__about-home scale-50 opacity-0 transition-all duration-500  text-center text-[1.5rem] my-12">
+          We Will Try To Bring You The Best Experience And Service
+        </h4>
+        <div className="w-full  flex items-center justify-center px-full my-full border-t-[0.5px] border-[#888] ">
           <div className="w-full h-full  py-[58px] md:py-[88px] grid grid-cols-2 md:grid-cols-4 gap-[12px] ">
             {/* item */}
-            <div className="flex items-center select-none  justify-start flex-col">
+            <div className="item__about-home transition-all duration-[1s] flex items-center select-none  justify-start flex-col">
               <SiQuarkus className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
               <h4 className="text-center text-[1rem] mb-[8px] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red md:text-start">
                 Commitment to quality
@@ -78,7 +89,7 @@ const Home = () => {
               </p>
             </div>
             {/* item */}
-            <div className="flex items-center select-none  justify-start flex-col">
+            <div className="item__about-home transition-all duration-[1s] flex items-center select-none  justify-start flex-col">
               <FaSquareFontAwesomeStroke className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
               <h4 className="text-center text-[1rem] mb-[8px] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red md:text-start">
                 return the product
@@ -88,7 +99,7 @@ const Home = () => {
               </p>
             </div>
             {/* item */}
-            <div className="flex items-center select-none  justify-start flex-col">
+            <div className="item__about-home transition-all duration-[1s] flex items-center select-none  justify-start flex-col">
               <FaShippingFast className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
               <h4 className="text-center text-[1rem] mb-[8px] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red md:text-start">
                 Delivery
@@ -98,7 +109,7 @@ const Home = () => {
               </p>
             </div>
             {/* item */}
-            <div className="flex items-center select-none  justify-start flex-col">
+            <div className="item__about-home transition-all duration-[1s] flex items-center select-none  justify-start flex-col">
               <FaHandsHelping className=" text-[2.5rem] md:text-[2.8rem] h-[50px] lg:text-[3.5rem] mb-full text-[#333] " />
               <h4 className="text-center text-[1rem] mb-[8px] md:text-[1.1rem] uppercase h-[30px] md:h-auto  text-red md:text-start">
                 Enthusiastic advice
@@ -117,7 +128,7 @@ const Home = () => {
           <h3 className="w-full  pl-full my-half py-half text-[1.4rem] text-black font-medium">
             Category Of Products
           </h3>
-          <ul className="w-[90%] lg:w-full  text-[1.1rem] text-sub text-center flex flex-row overflow-x-auto px-half items-center justify-evenly my-half">
+          <ul className="w-[100%] lg:w-full  text-[1.1rem] text-sub text-center flex flex-row overflow-x-auto px-half items-center justify-evenly my-half">
             {DiversityHandle()}
           </ul>
         </div>
@@ -125,7 +136,7 @@ const Home = () => {
         <Flex
           justify="start"
           id="home__suggestion"
-          className="w-full  h-full bg-white flex-col py-full  px-full md:px-0  border-t-[0.5rem] border-b-[0.5rem] border-main  "
+          className="w-full h-full bg-white flex-col py-full  px-full md:px-0  border-t-[0.5rem] border-b-[0.5rem] border-main  "
         >
           <h3 className=" pl-half text-[1.4rem]  text-black font-medium text-center   ">
             Trending Products Today
@@ -137,7 +148,7 @@ const Home = () => {
             {/* poster trending */}
             <div className="relative">
               <img
-                className="w-full h-full"
+                className="w-full h-full poster__trending translate-y-[50px] transition-all duration-300 opacity-0"
                 alt="poster__trending"
                 src={posterTrending}
               />
@@ -151,7 +162,20 @@ const Home = () => {
               </div>
             </div>
             {/* show products trending */}
-            <div className="w-full h-full mt-half lg:mt-0 lg:ml-[8px]  grid grid-cols-1  lg:grid-cols-2 gap-3">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 1,
+                  },
+                },
+              }}
+              initial="hidden"
+              animate="show"
+              className="w-full h-full mt-half lg:mt-0 lg:ml-[8px]  grid grid-cols-1  lg:grid-cols-2 gap-3"
+            >
               {products
                 .filter((item, index) => {
                   if (
@@ -170,7 +194,7 @@ const Home = () => {
                   return (
                     <div
                       key={index}
-                      className="w-full h-full min-w-[100%] min-h-[200px] item__trending relative w-full  h-full hover:border-[0.5px] hover:border-main transition-all duration-300"
+                      className="w-full h-full min-w-[100%] min-h-[200px] item__trending translate-x-[100px]  opacity-0 relative w-full  h-full hover:border-[0.5px] hover:border-main transition-all duration-300"
                     >
                       <div className="w-full h-full grid grid-cols-2 gap-x-[4px]  ">
                         {/* img */}
@@ -229,7 +253,7 @@ const Home = () => {
                     </div>
                   );
                 })}
-            </div>
+            </motion.div>
           </Flex>
           <button
             className="button bg-bg text-black text-center mt-full"
@@ -247,7 +271,7 @@ const Home = () => {
           </h3>
           <div className="w-full mt-[30px] bg-white md:h-[380px] flex items-center justify-center md:justify-between flex-col md:flex-row px-full lg:px-0">
             <div className="w-full h-full md:w-[30%]  ">
-              <h6 className="w-full h-full text-[1rem] text-gray-700 leading-5 tracking-wider flex items-center justify-center select-none ">
+              <h6 className="w-full h-full text-[1rem] text-gray-700 leading-5 tracking-wider flex items-center justify-center select-none text__sale translate-y-[200px] opacity-0 transition-all duration-[1s] ">
                 There are always great deals and discounts for our customers to
                 experience these products. But besides that, it still has to
                 bring durability and beauty to the product
@@ -257,7 +281,7 @@ const Home = () => {
               <img
                 alt="img"
                 src="https://intphcm.com/data/upload/banner-quang-cao-vang.jpg"
-                className="h-full object-contain w-full rounded-xl md:rounded-none"
+                className="img__sale scale-50 opacity-0 transition-all duration-300 h-full object-contain w-full rounded-xl md:rounded-none"
               />
               <button
                 onClick={() => {
